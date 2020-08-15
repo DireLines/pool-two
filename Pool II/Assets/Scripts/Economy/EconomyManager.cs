@@ -7,7 +7,7 @@ public class EconomyManager : MonoBehaviour {
     [SerializeField]
     [Range(0, 5000)]
     private int startingGold = 1000;
-    
+
     [HideInInspector]
     public int currentGold { get; private set; }
 
@@ -16,17 +16,14 @@ public class EconomyManager : MonoBehaviour {
     [SerializeField]
     private List<ShopItem> items;
 
-    string PrefabsFolderAbsolutePath;
-
     void Awake() {
-
         items = new List<ShopItem>(specialItemList.shopItems);
         string prefabsFolder = Path.Combine(Application.dataPath, "Prefabs", "Balls");
         string[] prefabPaths = Directory.GetFiles(prefabsFolder, "*.prefab", SearchOption.AllDirectories);
         foreach (string path in prefabPaths) {
             print(path);
             string assetPath = "Assets" + path.Replace(Application.dataPath, "").Replace("\\", "/");
-            GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));
+            GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));//TODO: will this fail in build?
             items.Add(ShopItemFor(prefab));
         }
 

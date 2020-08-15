@@ -1226,8 +1226,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 741611994}
   m_HandleRect: {fileID: 741611993}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.37747836
+  m_Value: 1
+  m_Size: 0.3774783
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1433,6 +1433,7 @@ GameObject:
   - component: {fileID: 1495850063}
   - component: {fileID: 1495850062}
   - component: {fileID: 1495850065}
+  - component: {fileID: 1495850066}
   m_Layer: 5
   m_Name: ScrollToggle
   m_TagString: Untagged
@@ -1568,6 +1569,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 1495850061}
   damping: 0.1
+--- !u!114 &1495850066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495850060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebeed2458d09d4d309cadbf26ca6bcdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EM: {fileID: 812614593}
 --- !u!1 &1496533192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,7 +1752,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 82151327}
   m_HandleRect: {fileID: 82151326}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
