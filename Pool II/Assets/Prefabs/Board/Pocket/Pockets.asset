@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b004adb2a2487724daabd0dfe9084a08, type: 3}
   m_Name: Pockets
   m_EditorClassIdentifier: 
-  small_count: 0
+  small_count: 5
   medium_count: 0
   large_count: 0
-  small_features: []
+  small_features:
+  - {fileID: 7920376756855201129, guid: 6bf5588ef487aae499fe3ca70e42b515, type: 3}
   medium_features: []
   large_features: []
