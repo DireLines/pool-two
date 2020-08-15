@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CueBall : MonoBehaviour
+public class CueBall : BaseBall
 {
-
-    Transform body, sprite;
     Rigidbody2D rb;
     LineRenderer line;
     Camera cam;
     public float max_distance = 4f, power = 4f;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        body = transform.FindDeepChild("Body");
-        sprite = transform.FindDeepChild("Sprite");
+        base.Start();
         rb = GetComponentInChildren<Rigidbody2D>();
         line = GetComponentInChildren<LineRenderer>();
         line.useWorldSpace = true;
@@ -32,7 +29,8 @@ public class CueBall : MonoBehaviour
         {
             rb.velocity = -direction * power;
         }
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButton(0))
+        {
             direction = ((Vector2)cam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)body.position);
             if (direction.magnitude > max_distance) direction = direction.normalized * max_distance;
             line.enabled = true;
@@ -44,10 +42,5 @@ public class CueBall : MonoBehaviour
             line.SetPosition(0, body.position);
             line.enabled = false;
         }
-    }
-
-    private void LateUpdate()
-    {
-        sprite.position = body.position;
     }
 }
