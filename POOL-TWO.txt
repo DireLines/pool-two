@@ -23,6 +23,7 @@ Pool II!: !!!!!!!!!!!
         -on launch
         -on collision
         -on settle (when it stops moving)
+	-on sink
     -cost to place
 -pool ball physics
 -launching system
