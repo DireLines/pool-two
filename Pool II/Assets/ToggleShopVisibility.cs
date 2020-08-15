@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleShopVisibility : MonoBehaviour
-{
+public class ToggleShopVisibility : MonoBehaviour {
     [SerializeField]
     private RectTransform rectTransform = null;
 
@@ -15,25 +14,22 @@ public class ToggleShopVisibility : MonoBehaviour
     private bool open;
     private Vector2 target;
 
-    private void Start()
-    {
+    private void Start() {
         open = false;
         target = Vector2.zero;
     }
 
-    public void Toggle()
-    {
+    public void Toggle() {
         open = !open;
         target = open ? Vector2.right * 128 : Vector2.zero;
+        transform.Find("Arrow").GetComponent<RectTransform>().localScale *= new Vector2(-1, 1);
     }
 
-    private void Update()
-    {
+    private void Update() {
         SetPositionOfPivot(Vector2.SmoothDamp(rectTransform.anchoredPosition, target, ref positionSmoothing, damping));
     }
 
-    private void SetPositionOfPivot(Vector2 newPos)
-    {
+    private void SetPositionOfPivot(Vector2 newPos) {
         rectTransform.anchoredPosition = newPos;
     }
 }
