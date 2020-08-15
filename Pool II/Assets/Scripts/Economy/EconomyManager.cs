@@ -30,9 +30,7 @@ public class EconomyManager : MonoBehaviour {
         currentGold = startingGold;
     }
 
-    public List<ShopItem> GetShopItems() {
-        return items;
-    }
+    public List<ShopItem> GetShopItems() => items;
 
     public int GetCurrentGold() => currentGold;
 
@@ -46,12 +44,11 @@ public class EconomyManager : MonoBehaviour {
     }
 
     ShopItem ShopItemFor(GameObject prefab) {
-        ShopItem result = new ShopItem {
+        return new ShopItem {
             name = prefab.name,
             cost = prefab.GetComponent<BaseBall>().cost,
             prefab = prefab,
             icon = prefab.transform.FindDeepChild("Sprite").GetComponent<SpriteRenderer>().sprite,
         };
-        return result;
     }
 }

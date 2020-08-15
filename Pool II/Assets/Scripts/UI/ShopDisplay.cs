@@ -12,15 +12,16 @@ public class ShopDisplay : MonoBehaviour {
 
     void Start() {
         foreach (ShopItem item in EM.GetShopItems()) {
-            print(item.name);
-            UIForShopItem(item);
+            FillUIForShopItem(item);
         }
     }
 
-    GameObject UIForShopItem(ShopItem item) {
+    GameObject FillUIForShopItem(ShopItem item) {
         GameObject itemUI = Instantiate(ShopItemUI, transform.FindDeepChild("Content"));
+        //itemUI.GetComponent<Button>().onClick needs to trigger TryToPurchase on the item
         itemUI.GetComponent<Image>().sprite = item.icon;
         itemUI.transform.Find("ItemName").GetComponent<TextMeshProUGUI>().text = item.name.ToUpper();
+        itemUI.transform.Find("Cost").GetComponent<TextMeshProUGUI>().text = "COST: " + item.cost;
         return itemUI;
     }
 }
