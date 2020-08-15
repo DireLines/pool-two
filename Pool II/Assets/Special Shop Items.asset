@@ -12,8 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6c7a17622dba94299711a4006f9423, type: 3}
   m_Name: Special Shop Items
   m_EditorClassIdentifier: 
-  shopItems:
-  - name: Standard Ball
-    cost: 100
-    prefab: {fileID: 0}
-    icon: {fileID: 0}
+  shopItems: []
