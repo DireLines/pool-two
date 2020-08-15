@@ -1,0 +1,54 @@
+Pool II!: MORE POOL
+Pool II!: TRIAL BY POOL
+Pool II!: A POOL GAME
+Pool II!: POOL TWO
+Pool II!: BILLIARsD
+Pool II!: THE CLONE WARS
+Pool II!: THE OFFICIAL SEQUAL
+Pool II!: THE OFFICIAL SQL
+Pool II!: THE UNOFFICIAL SEQUEL
+Pool II!: THE
+Pool II!: DIRECTORS CUT
+Pool II!: DIRECTED BY CHRISTOPHER NOLAN
+Pool II!: LET'S POOL
+Pool II!: PLAY THE GAME
+Pool II!: STOP RELOADING TO SEE WHAT TITLES WE PUT HERE
+Pool II!: 
+Pool II!: !!!!!!!!!!!
+-pool ball base class with bunch of variants
+    -sprite mapped onto a circle
+    -circle collider
+    -rigidbody2D
+    -events
+        -on launch
+        -on collision
+        -on settle (when it stops moving)
+    -cost to place
+-pool ball physics
+-launching system
+-pockets / goals
+-cue balls
+    -neutral
+    -10 total
+    -can hit any of them on your turn as long as they are on the ~2/3 of the board closest to your side
+    -if they are all on one side, the player with no cue balls can control any of them until one makes it back to their side
+    -they can trigger the effects of any ball, but hitting an enemy's ball first is a scratch
+-objective
+    -sink your balls into enemy's pockets - first to particular number of balls sunk wins
+    -sudden death if game takes too long - first to sink after sudden death hits wins 
+-game loop
+    -generate the board
+        -place several holes randomly, symmetrically about the origin
+        -place trees/decoration, neutral balls in the middle third
+    -building phase
+        -you get a budget
+        -taking turns placing offensive / defensive balls on the third of the board with your pockets on it
+    -pool phase
+        -taking turns hitting cue balls
+-design snookers
+    -what happens when all your offensive stuff is pushed into the enemy's territory, but you can't reach it with cue balls?
+    need mechanics to give control of stuff in the enemy's zone
+        -portal ball
+        -exceptions to the rule of cue balls
+            -maybe a ball which, if you sink it, lets you and the enemy control any cue ball on next turn
+        -sinking a ball lets you place it back on your side
