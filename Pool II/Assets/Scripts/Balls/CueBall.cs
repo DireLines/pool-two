@@ -43,4 +43,34 @@ public class CueBall : BaseBall
             line.enabled = false;
         }
     }
+
+    private void OnMouseOver()
+    {
+        
+    }
+
+    private void OnMouseDown()
+    {
+        
+    }
+
+    private void OnMouseUp()
+    {
+
+    }
+
+    private void OnMouseDrag()
+    {
+        
+    }
+
+    private void OnMouseEnter()
+    {
+        
+    }
+
+    private void OnMouseExit()
+    {
+        
+    }
 }
