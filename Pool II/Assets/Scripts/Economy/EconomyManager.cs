@@ -21,7 +21,6 @@ public class EconomyManager : MonoBehaviour {
         string prefabsFolder = Path.Combine(Application.dataPath, "Prefabs", "Balls");
         string[] prefabPaths = Directory.GetFiles(prefabsFolder, "*.prefab", SearchOption.AllDirectories);
         foreach (string path in prefabPaths) {
-            print(path);
             string assetPath = "Assets" + path.Replace(Application.dataPath, "").Replace("\\", "/");
             GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));//TODO: will this fail in build?
             items.Add(ShopItemFor(prefab));
