@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Events;
 
 public class EconomyManager : MonoBehaviour {
     [SerializeField]
     [Range(0, 5000)]
     private int startingGold = 1000;
-    private int currentGold;
+    
+    [HideInInspector]
+    public int currentGold { get; private set; }
 
     [SerializeField]
     private ShopItemList specialItemList = null;
@@ -16,7 +19,12 @@ public class EconomyManager : MonoBehaviour {
     private List<ShopItem> items;
 
     string PrefabsFolderAbsolutePath;
-    void Awake() {
+
+    private void Awake()
+    {
+    }
+
+    void Start() {
         items = new List<ShopItem>(specialItemList.shopItems);
         PrefabsFolderAbsolutePath = Path.Combine(Application.dataPath, "Prefabs");
         string[] absolutePaths = Directory.GetFiles(PrefabsFolderAbsolutePath, "*.prefab", SearchOption.AllDirectories);
@@ -26,9 +34,7 @@ public class EconomyManager : MonoBehaviour {
             GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));
             items.Add(ShopItemFor(prefab));
         }
-    }
 
-    private void Start() {
         currentGold = startingGold;
     }
 
