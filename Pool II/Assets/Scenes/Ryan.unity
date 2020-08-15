@@ -3234,7 +3234,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 741611993}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.44992483
+  m_Size: 0.4499248
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4363,7 +4363,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 82151327}
   m_HandleRect: {fileID: 82151326}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5318,7 +5318,7 @@ GameObject:
   - component: {fileID: 2144736943}
   - component: {fileID: 2144736942}
   m_Layer: 5
-  m_Name: BG
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

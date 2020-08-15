@@ -16,7 +16,7 @@ public class EconomyManager : MonoBehaviour {
 
     void Awake() {
         items = new List<ShopItem>(specialItemList.shopItems);
-        string prefabsFolder = Path.Combine(Application.dataPath, "Prefabs");
+        string prefabsFolder = Path.Combine(Application.dataPath, "Prefabs", "Balls");
         string[] prefabPaths = Directory.GetFiles(prefabsFolder, "*.prefab", SearchOption.AllDirectories);
         foreach (string path in prefabPaths) {
             print(path);
@@ -46,8 +46,7 @@ public class EconomyManager : MonoBehaviour {
     }
 
     ShopItem ShopItemFor(GameObject prefab) {
-        ShopItem result = new ShopItem
-        {
+        ShopItem result = new ShopItem {
             name = prefab.name,
             cost = prefab.GetComponent<BaseBall>().cost,
             prefab = prefab,
