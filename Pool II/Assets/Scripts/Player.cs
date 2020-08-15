@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
     [HideInInspector]
     bool myTurn = false;
 
-    public void StartTurn()
+    public void StartTurn(TurnResult result)
     {
         print(gameObject + ":");
-        print("It's my turn");
+        print($"It's a {result} turn!");
         myTurn = true;
     }
 
