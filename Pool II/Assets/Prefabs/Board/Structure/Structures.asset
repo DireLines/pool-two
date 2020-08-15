@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b004adb2a2487724daabd0dfe9084a08, type: 3}
   m_Name: Structures
   m_EditorClassIdentifier: 
-  small_count: 0
+  small_count: 3
   medium_count: 0
   large_count: 0
-  small_features: []
+  small_features:
+  - {fileID: 1415619905353286311, guid: 202b98f7223e9af4baef93595b63b376, type: 3}
   medium_features: []
   large_features: []

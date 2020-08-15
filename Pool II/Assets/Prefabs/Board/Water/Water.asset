@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b004adb2a2487724daabd0dfe9084a08, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  small_count: 0
+  small_count: 4
   medium_count: 0
   large_count: 0
-  small_features: []
+  small_features:
+  - {fileID: 3150282037648055745, guid: c8edd002ca15d1f45ac5dd70591b8098, type: 3}
+  - {fileID: 3150282037648055745, guid: 620b996dc1c54cf48a6639b9c85e396e, type: 3}
   medium_features: []
   large_features: []
