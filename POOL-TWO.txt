@@ -30,7 +30,7 @@ Pool II!: !!!!!!!!!!!
 	-mass
 	-drag
 	-size
-	-static friction
+	-friction
 	-bounciness
     -cost to place
 -pool ball physics
