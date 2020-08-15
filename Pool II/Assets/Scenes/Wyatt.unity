@@ -360,7 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42939d043ad70fd4b997f2b5c0099048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFirstCollision:
+  cost: 0
+  OnLaunch:
     m_PersistentCalls:
       m_Calls: []
   OnCollision:
@@ -853,7 +854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45cf0c40997cb041a9ebbd923d1638a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFirstCollision:
+  cost: 0
+  OnLaunch:
     m_PersistentCalls:
       m_Calls: []
   OnCollision:
@@ -966,6 +968,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &627676293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 627676295}
+  - component: {fileID: 627676294}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &627676294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627676293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b12895a9882cf41a2268bae5e2e01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRound: 0
+--- !u!4 &627676295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627676293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633897177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42939d043ad70fd4b997f2b5c0099048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFirstCollision:
+  cost: 0
+  OnLaunch:
     m_PersistentCalls:
       m_Calls: []
   OnCollision:
@@ -1478,7 +1525,7 @@ GameObject:
   - component: {fileID: 951616380}
   - component: {fileID: 951616379}
   m_Layer: 0
-  m_Name: Player1 (1)
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1762,7 +1809,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42939d043ad70fd4b997f2b5c0099048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFirstCollision:
+  cost: 0
+  OnLaunch:
     m_PersistentCalls:
       m_Calls: []
   OnCollision:
@@ -1971,7 +2019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1376923092
 Transform:
   m_ObjectHideFlags: 0
@@ -2092,7 +2140,7 @@ GameObject:
   - component: {fileID: 1929786702}
   - component: {fileID: 1929786701}
   m_Layer: 0
-  m_Name: Player1 (2)
+  m_Name: Player3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2169,7 +2217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42939d043ad70fd4b997f2b5c0099048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFirstCollision:
+  cost: 0
+  OnLaunch:
     m_PersistentCalls:
       m_Calls: []
   OnCollision:
@@ -2226,7 +2275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42939d043ad70fd4b997f2b5c0099048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFirstCollision:
+  cost: 0
+  OnLaunch:
     m_PersistentCalls:
       m_Calls: []
   OnCollision:
@@ -2283,7 +2333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42939d043ad70fd4b997f2b5c0099048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnFirstCollision:
+  cost: 0
+  OnLaunch:
     m_PersistentCalls:
       m_Calls: []
   OnCollision:
