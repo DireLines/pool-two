@@ -7,6 +7,8 @@ public class TurnManager : MonoBehaviour
     List<Player> players = new List<Player>();
     int currentPlayer;
 
+    public TurnEvent EndTurnEvent;
+
     public static TurnManager instance;
     private void Awake()
     {
@@ -19,15 +21,23 @@ public class TurnManager : MonoBehaviour
         instance = this;
         players = new List<Player>(FindObjectsOfType<Player>());
         currentPlayer = Random.Range(0, players.Count);
-
-        NextTurn(true);
     }
 
-    public void NextTurn(bool first = false)
+    public void NextTurn(TurnResult result)
     {
-        if (!first) players[currentPlayer].EndTurn();
-        players[currentPlayer].StartTurn();
-        currentPlayer = ++currentPlayer % players.Count;
+        players[currentPlayer].StartTurn(result);
+        currentPlayer = ++currentPlayer;
+    }
+
+    public void EndTurn(TurnResult result)
+    {
+        if (currentPlayer >= players.Count)
+        {
+            GameManager.instance.currentRound++;
+            currentPlayer = currentPlayer % players.Count;
+        }
+        players[currentPlayer].EndTurn();
+        EndTurnEvent?.Invoke(result);
     }
 
     // Update is called once per frame
@@ -35,7 +45,7 @@ public class TurnManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            NextTurn();
+            EndTurn(TurnResult.Default);
         }
     }
 }

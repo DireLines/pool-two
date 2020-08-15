@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-using System.IO;
-using UnityEngine.Events;
 
 public class EconomyManager : MonoBehaviour {
     [SerializeField]
@@ -20,15 +18,12 @@ public class EconomyManager : MonoBehaviour {
 
     string PrefabsFolderAbsolutePath;
 
-    private void Awake()
-    {
-    }
+    void Awake() {
 
-    void Start() {
         items = new List<ShopItem>(specialItemList.shopItems);
-        PrefabsFolderAbsolutePath = Path.Combine(Application.dataPath, "Prefabs");
-        string[] absolutePaths = Directory.GetFiles(PrefabsFolderAbsolutePath, "*.prefab", SearchOption.AllDirectories);
-        foreach (string path in absolutePaths) {
+        string prefabsFolder = Path.Combine(Application.dataPath, "Prefabs");
+        string[] prefabPaths = Directory.GetFiles(prefabsFolder, "*.prefab", SearchOption.AllDirectories);
+        foreach (string path in prefabPaths) {
             print(path);
             string assetPath = "Assets" + path.Replace(Application.dataPath, "").Replace("\\", "/");
             GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));

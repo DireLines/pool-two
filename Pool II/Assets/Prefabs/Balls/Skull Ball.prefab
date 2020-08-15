@@ -92,6 +92,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skull Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 5631759493834072662, guid: 8353f41f2fa854e8488d67bfce364800,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7840330483264212714, guid: fae8fac4e3be96c4399418a84f4b74fc,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 5631759493711660413, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}
