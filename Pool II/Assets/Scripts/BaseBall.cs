@@ -8,10 +8,9 @@ public class BaseBall : MonoBehaviour {
 
     public int cost;
 
-    public UnityEvent OnLaunch;
-    public UnityEvent OnCollision;
-    public UnityEvent OnSettle;
-    public UnityEvent OnSink;
+    protected virtual void OnLaunch() { }
+    protected virtual void OnSettle() { }
+    protected virtual void OnSink() { }
 
     protected virtual void Start() {
         body = transform.FindDeepChild("Body");

@@ -13,18 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 150
-  OnLaunch:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollision:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettle:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSink:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1684986491659635697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,6 +85,12 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7840330483264212714, guid: fae8fac4e3be96c4399418a84f4b74fc,
+        type: 3}
+    - target: {fileID: 5793678186897353990, guid: 8353f41f2fa854e8488d67bfce364800,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5064215441075482510, guid: 219f90dc3420da4448196a005c5b32cb,
         type: 3}
     m_RemovedComponents:
     - {fileID: 5631759493711660413, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}

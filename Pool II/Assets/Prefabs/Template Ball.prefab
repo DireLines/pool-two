@@ -49,18 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 100
-  OnLaunch:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollision:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettle:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSink:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!58 &5202871579564308295
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4926518962980050084, guid: 219f90dc3420da4448196a005c5b32cb,
+  m_Sprite: {fileID: 1925829747476322960, guid: 219f90dc3420da4448196a005c5b32cb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -252,7 +240,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_Sprite: {fileID: -1988442695075546301, guid: 219f90dc3420da4448196a005c5b32cb,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4056604, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -333,7 +321,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 99bd35d4cbcaf2f4980aecdbf662c77b, type: 3}
-  m_Color: {r: 0.8117648, g: 0.77647066, b: 0.72156864, a: 1}
+  m_Color: {r: 0.32941177, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -48,7 +48,7 @@ public class EconomyManager : MonoBehaviour {
             name = prefab.name,
             cost = prefab.GetComponent<BaseBall>().cost,
             prefab = prefab,
-            icon = prefab.transform.FindDeepChild("Sprite").GetComponent<SpriteRenderer>().sprite,
+            icon = prefab.transform.FindDeepChild("Icon").GetComponent<SpriteRenderer>().sprite,
         };
     }
 }
