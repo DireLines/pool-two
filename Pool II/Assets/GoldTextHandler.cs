@@ -6,10 +6,10 @@ using TMPro;
 public class GoldTextHandler : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text text;
+    private TMP_Text text = null;
 
     [SerializeField]
-    private EconomyManager economyManager;
+    private EconomyManager economyManager = null;
 
     private void Update()
     {
