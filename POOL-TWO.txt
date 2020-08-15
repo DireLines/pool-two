@@ -20,10 +20,18 @@ Pool II!: !!!!!!!!!!!
     -circle collider
     -rigidbody2D
     -events
-        -on launch
+        -on first collision
         -on collision
-        -on settle (when it stops moving)
 	-on sink
+        -on settle (when it stops moving)
+	-when moving
+	-passive ability
+    -properties
+	-mass
+	-drag
+	-size
+	-static friction
+	-bounciness
     -cost to place
 -pool ball physics
 -launching system
