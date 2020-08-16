@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartGame();
+        BoardGenerator.instance.Generate();
+        BoardGenerator.instance.GenerationDoneEvent += StartGame;
     }
 
     public void StartGame()

@@ -186,7 +186,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -3714409817710726143, guid: 4393a8a105b9f6b498acafa8e718de95,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -518,7 +518,7 @@ Transform:
   m_GameObject: {fileID: 8436081210944655122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
   m_Children:
   - {fileID: 8436081211578892407}
   m_Father: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 8436081211267029695}
   - component: {fileID: 8436081211267029689}
   - component: {fileID: 8436081211267029688}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 8436081211411218086}
   - component: {fileID: 8436081211411218080}
   - component: {fileID: 8436081211411218087}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NeutralBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,7 +878,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -3714409817710726143, guid: 4393a8a105b9f6b498acafa8e718de95,
     type: 3}
-  m_Color: {r: 0.8113208, g: 0.79983985, b: 0.79983985, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -912,8 +912,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8436081211578892406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.23, y: 1.8, z: 1}
   m_Children:
   - {fileID: 8436081211267029695}
   - {fileID: 8436081211411218086}

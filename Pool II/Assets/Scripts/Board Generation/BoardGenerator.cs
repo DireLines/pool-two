@@ -8,30 +8,38 @@ using System.Linq;
 
 public class BoardGenerator : MonoBehaviour
 {
-
     public List<FeatureSet> playerFeatureSets = new List<FeatureSet>(), neutralFeatureSets = new List<FeatureSet>();
-
     Transform pivot;
     public Board playerBoard, neutralBoard;
-
     bool simulating = false;
+    public GameEvent GenerationDoneEvent;
 
-    // Start is called before the first frame update
-    void Start()
+    public static BoardGenerator instance;
+    private void Awake()
     {
+        if (instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
         pivot = transform.FindDeepChild("BoardPivot");
+    }
+
+    public void Generate()
+    {
         StartCoroutine(CreateBoard());
     }
 
     IEnumerator CreateBoard()
     {
         neutralBoard.gameObject.SetActive(false);
-        Generate(playerFeatureSets, playerBoard);
+        Aggregate(playerFeatureSets, playerBoard);
         while (simulating) yield return null;
         neutralBoard.gameObject.SetActive(true);
         playerBoard.DeactivateWalls();
         playerBoard.gameObject.SetActive(false);
-        Generate(neutralFeatureSets, neutralBoard);
+        Aggregate(neutralFeatureSets, neutralBoard);
         while (simulating) yield return null;
         neutralBoard.DeactivateWalls();
         playerBoard.gameObject.SetActive(true);
@@ -45,9 +53,10 @@ public class BoardGenerator : MonoBehaviour
                 -feature.transform.localScale.y, 
                 feature.transform.localScale.z);
         }
+        GenerationDoneEvent?.Invoke();
     }
 
-    public void Generate(List<FeatureSet> featureSets, Board board) 
+    void Aggregate(List<FeatureSet> featureSets, Board board) 
     {
         List<Feature> features = new List<Feature>();
         foreach (var featureSet in featureSets)
