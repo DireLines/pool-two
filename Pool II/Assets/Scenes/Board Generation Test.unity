@@ -198,6 +198,71 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.78500986
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.textureMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.alignment
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046065653637910269, guid: 5bf7c3a32d3194aa7847184babc6126c,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bf7c3a32d3194aa7847184babc6126c, type: 3}
 --- !u!1 &903620450
