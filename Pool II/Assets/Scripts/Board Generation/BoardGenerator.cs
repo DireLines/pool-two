@@ -66,7 +66,6 @@ public class BoardGenerator : MonoBehaviour
         {
             feature.Place();
         }
-        print(simulating);
         simulating = false;
     }
 }

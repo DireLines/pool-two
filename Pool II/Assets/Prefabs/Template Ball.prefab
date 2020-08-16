@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5631759493711660413}
   - component: {fileID: 5202871579564308295}
   - component: {fileID: 4422899187890303604}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Template Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,9 +154,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1087526275
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1925829747476322960, guid: 219f90dc3420da4448196a005c5b32cb,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -236,8 +236,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1087526275
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_Sprite: {fileID: -1988442695075546301, guid: 219f90dc3420da4448196a005c5b32cb,
     type: 3}
@@ -318,8 +318,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1087526275
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 99bd35d4cbcaf2f4980aecdbf662c77b, type: 3}
   m_Color: {r: 0.2784314, g: 0.1764706, b: 0.23529413, a: 1}
