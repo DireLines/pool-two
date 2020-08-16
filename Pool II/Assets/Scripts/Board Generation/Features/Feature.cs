@@ -5,10 +5,10 @@ using UnityEngine;
 public class Feature : MonoBehaviour
 {
 
-    Transform simulatorBody, body, sprite;
+    protected Transform simulatorBody, body, sprite;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         simulatorBody = transform.FindDeepChild("SimulatorBody");
         body = transform.FindDeepChild("Body");
