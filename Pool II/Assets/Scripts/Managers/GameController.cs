@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    GameObject game, copy;
+    [SerializeField]
+    private GameObject game; 
+    private GameObject copy;
     // Start is called before the first frame update
     void Start()
     {
-        game = transform.FindDeepChild("Game").gameObject;
+        if (game == null) game = transform.FindDeepChild("Game").gameObject;
         copy = Instantiate(game, transform);
         copy.SetActive(false);
     }
