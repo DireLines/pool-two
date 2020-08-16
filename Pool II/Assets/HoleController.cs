@@ -18,6 +18,7 @@ public class HoleController : MonoBehaviour
         Vector2 direction;
         float t = 0f;
         rb.velocity = ((Vector2)transform.position - rb.position).normalized * 10f;
+        float initialDrag = rb.drag;
         rb.drag = 10f;
         while (t < 1f)
         {
@@ -27,5 +28,6 @@ public class HoleController : MonoBehaviour
             t += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        rb.drag = initialDrag;
     }
 }

@@ -4,20 +4,21 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class BaseBall : MonoBehaviour {
-    protected Transform body, sprite;
-
     public int cost;
+
+    [SerializeField]
+    private Transform sprite;
 
     protected virtual void OnLaunch() { }
     protected virtual void OnSettle() { }
     protected virtual void OnSink() { }
 
     protected virtual void Start() {
-        body = transform.FindDeepChild("Body");
-        sprite = transform.FindDeepChild("Sprite");
+        if (sprite == null) sprite = GetComponentInChildren<SpriteRenderer>().transform;
     }
 
     protected virtual void LateUpdate() {
-        sprite.position = body.position;
+        transform.right = Vector3.right;
+        transform.up = Vector3.up;
     }
 }
