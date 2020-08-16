@@ -10,6 +10,12 @@ public class Feature : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        body = transform.FindDeepChild("Body");
+        sprite = transform.FindDeepChild("Sprite");
+    }
+
+    public void Setup()
+    {
         simulatorBody = transform.FindDeepChild("SimulatorBody");
         body = transform.FindDeepChild("Body");
         body.gameObject.SetActive(false);

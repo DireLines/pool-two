@@ -10,21 +10,24 @@ public class FeatureSet : ScriptableObject
     public List<GameObject> medium_features;
     public List<GameObject> large_features;
 
-    public List<Feature> Populate()
+    public List<Feature> Populate(Board board)
     {
         List<Feature> features = new List<Feature>();
-        features.AddRange(Select(small_count, small_features));
-        features.AddRange(Select(medium_count, medium_features));
-        features.AddRange(Select(large_count, large_features));
+        features.AddRange(Select(small_count, small_features, board));
+        features.AddRange(Select(medium_count, medium_features, board));
+        features.AddRange(Select(large_count, large_features, board));
         return features;
     }
 
-    List<Feature> Select(int count, List<GameObject> set)
+    List<Feature> Select(int count, List<GameObject> set, Board board)
     {
         List<Feature> features = new List<Feature>();
         for (int i=0; i < count; i ++)
         {
-            features.Add(Instantiate(set[Random.Range(0, set.Count)], Board.instance.RandomPointInBounds(), Quaternion.identity).GetComponent<Feature>());
+            Transform feature = Instantiate(set[Random.Range(0, set.Count)], board.RandomPointInBounds(), Quaternion.identity).transform;
+            feature.parent = board.transform;
+            feature.GetComponent<Feature>().Setup();
+            features.Add(feature.GetComponent<Feature>());
         }
 
         return features;
