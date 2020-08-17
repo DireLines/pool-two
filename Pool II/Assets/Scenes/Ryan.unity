@@ -899,8 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingGold: 1000
-  specialItemList: {fileID: 11400000, guid: 64d3b7b2b91177a4e988ebc35fac0117, type: 2}
-  items: []
+  allItems: {fileID: 11400000, guid: a3df2c7b790f146119a3a90ca214bebe, type: 2}
 --- !u!4 &812614594
 Transform:
   m_ObjectHideFlags: 0
@@ -1132,7 +1131,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 741611993}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.37747833
+  m_Size: 0.3774783
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

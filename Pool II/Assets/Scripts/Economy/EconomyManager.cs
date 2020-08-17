@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 
 public class EconomyManager : MonoBehaviour {
@@ -12,20 +11,11 @@ public class EconomyManager : MonoBehaviour {
     public int currentGold { get; private set; }
 
     [SerializeField]
-    private ShopItemList specialItemList = null;
-    [SerializeField]
+    private ShopItemList allItems = null;
     private List<ShopItem> items;
 
     void Awake() {
-        items = new List<ShopItem>(specialItemList.shopItems);
-        string prefabsFolder = Path.Combine(Application.dataPath, "Prefabs", "Balls");
-        string[] prefabPaths = Directory.GetFiles(prefabsFolder, "*.prefab", SearchOption.AllDirectories);
-        foreach (string path in prefabPaths) {
-            string assetPath = "Assets" + path.Replace(Application.dataPath, "").Replace("\\", "/");
-            GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));//TODO: will this fail in build?
-            items.Add(ShopItemFor(prefab));
-        }
-
+        items = new List<ShopItem>(allItems.shopItems);
         currentGold = startingGold;
     }
 
@@ -40,14 +30,5 @@ public class EconomyManager : MonoBehaviour {
         currentGold -= item.cost;
         Instantiate(item.prefab, spawnPoint, Quaternion.identity);
         return true;
-    }
-
-    ShopItem ShopItemFor(GameObject prefab) {
-        return new ShopItem {
-            name = prefab.name,
-            cost = prefab.GetComponent<BaseBall>().cost,
-            prefab = prefab,
-            icon = prefab.transform.FindDeepChild("Icon").GetComponent<SpriteRenderer>().sprite,
-        };
     }
 }
