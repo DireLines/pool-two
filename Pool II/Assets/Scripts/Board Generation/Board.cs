@@ -7,7 +7,7 @@ public class Board : MonoBehaviour
     Bounds bounds;
     Transform wall;
 
-    float thickness = 1f, padding = 0.8f;
+    float thickness = 1f, padding = 0.75f;
 
     private void Awake()
     {

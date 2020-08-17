@@ -450,12 +450,12 @@ PrefabInstance:
     - target: {fileID: 8436081211267029688, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.9
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211267029688, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.9
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211267029695, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
@@ -485,32 +485,32 @@ PrefabInstance:
     - target: {fileID: 8436081211411218086, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.454
+      value: -0.535
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211411218086, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.003
+      value: -0.008
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211411218086, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.4261475
+      value: 3.292459
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211411218086, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2658486
+      value: 1.2298785
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211411218087, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.9
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211411218087, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.9
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8436081211434840729, guid: c4c65b9ee1048134cb273f94561be116,
         type: 3}
@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 6636629340738055598, guid: 7a86cb49d00260442ab36ddff81e461c,
         type: 3}
       propertyPath: orthographic size
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6636629340738055599, guid: 7a86cb49d00260442ab36ddff81e461c,
         type: 3}
@@ -693,12 +693,12 @@ PrefabInstance:
     - target: {fileID: 5972484841822275736, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5972484841822275736, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5972484841822275739, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
