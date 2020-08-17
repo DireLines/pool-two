@@ -7,6 +7,12 @@ using System.Linq;
 
 public static class ExtensionMethods
 {
+
+    public static int RandomSign()
+    {
+        return Random.Range(0, 2) * 2 - 1;
+    }
+
     public static T GetCopyOf<T>(this Component comp, T other) where T : Component
     {
         System.Type type = comp.GetType();
@@ -37,17 +43,30 @@ public static class ExtensionMethods
         return go.AddComponent<T>().GetCopyOf(toAdd) as T;
     }
 
-    public static T FindComponent<T>(this UnityEngine.GameObject g, bool in_parent = true, bool in_children = true, int sibling_depth = 0) where T : Component
+    public static T FindComponent<T>(this UnityEngine.GameObject g, bool in_parent = true, bool in_children = true, int sibling_depth = 0, bool ignore_self = false) where T : Component
     {
+        if (ignore_self)
+        {
+            if (in_children)
+            {
+                foreach (Transform child in g.transform)
+                {
+                    if (child.GetComponentInChildren<T>()) return child.GetComponentInChildren<T>();
+                }
+            }
+            if (in_parent)
+                return g.transform.parent.GetComponentInParent<T>();
+        }
+
         if (g.GetComponent<T>() != null)
         {
             return g.GetComponent<T>();
         }
-        else if (in_children && g.GetComponentInChildren<T>() != null)
+        if (in_children && g.GetComponentInChildren<T>() != null)
         {
             return g.GetComponentInChildren<T>();
         }
-        else if (in_parent)
+        if (in_parent)
             if (g.GetComponentInParent<T>() != null)
                 return g.GetComponentInParent<T>();
 
@@ -65,6 +84,45 @@ public static class ExtensionMethods
         }
 
         return g.GetComponent<T>();
+    }
+
+    public static T[] FindComponents<T>(this UnityEngine.GameObject g, bool in_parent = true, bool in_children = true, int sibling_depth = 0, bool ignore_self = false) where T : Component
+    {
+        HashSet<T> components = new HashSet<T>();
+        if (ignore_self)
+        {
+            if (in_children)
+            {
+                foreach (Transform child in g.transform)
+                {
+                    components.Concat(child.GetComponentsInChildren<T>());
+                }
+            }
+            if (in_parent)
+                components.Concat(g.transform.parent.GetComponentsInParent<T>());
+
+            return components.ToArray();
+        }
+
+        if (!in_children && !in_parent)
+            return g.GetComponents<T>();
+        if (in_children)
+            components.Concat(g.GetComponentsInChildren<T>());
+        if (in_parent && g.transform.parent)
+            components.Concat(g.transform.parent.GetComponentsInParent<T>());
+
+        GameObject current = g;
+        GameObject last = g;
+        while (sibling_depth > 0)
+        {
+            current = current.transform.parent.gameObject;
+            if (!current)
+                break;
+            components.Concat(current.GetComponentsInChildren<T>());
+            sibling_depth--;
+        }
+
+        return components.ToArray();
     }
 
     public static TValue GetValueOrDefault<TKey, TValue>
@@ -102,6 +160,22 @@ public static class TransformDeepChildExtension
                 queue.Enqueue(t);
         }
         return null;
+    }
+
+    public static Transform[] FindDeepChildren(this Transform aParent, string aName)
+    {
+        Queue<Transform> queue = new Queue<Transform>();
+        queue.Enqueue(aParent);
+        List<Transform> children = new List<Transform>();
+        while (queue.Count > 0)
+        {
+            var c = queue.Dequeue();
+            if (c.name == aName)
+                children.Add(c);
+            foreach (Transform t in c)
+                queue.Enqueue(t);
+        }
+        return children.ToArray();
     }
 
     public static Transform FindDeepParent(this Transform aChild, string aName)

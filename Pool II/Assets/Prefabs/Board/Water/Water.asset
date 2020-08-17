@@ -17,6 +17,5 @@ MonoBehaviour:
   large_count: 0
   small_features:
   - {fileID: 3150282037648055745, guid: c8edd002ca15d1f45ac5dd70591b8098, type: 3}
-  - {fileID: 3150282037648055745, guid: 620b996dc1c54cf48a6639b9c85e396e, type: 3}
   medium_features: []
   large_features: []

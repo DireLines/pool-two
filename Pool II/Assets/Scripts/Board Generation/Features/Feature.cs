@@ -16,6 +16,7 @@ public class Feature : MonoBehaviour
 
     public void Setup()
     {
+        foreach (var randomTile in GetComponentsInChildren<RandomTiles>()) randomTile.Setup();
         simulatorBody = transform.FindDeepChild("SimulatorBody");
         body = transform.FindDeepChild("Body");
         body.gameObject.SetActive(false);

@@ -170,6 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6397200473883429280}
   - component: {fileID: -5285496193575818863}
+  - component: {fileID: 679304557411428855}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -206,6 +207,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca2c3fe80410ff4bbcaac632b5ccc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &679304557411428855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397200473883429343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e94c3d5f97650b41b6cc6c614f14824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 5509712231387707372, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 7711446426263226812, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -6224410429619551159, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  tileSetting: 3
+  targetName: Sprite
+  rotateSetting: 2
+  randomXFlip: 1
+  randomYFlip: 0
+  applyToSprites: 1
 --- !u!1 &6397200473909863492
 GameObject:
   m_ObjectHideFlags: 0
