@@ -171,6 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1415619905353286329}
   - component: {fileID: 1415619905353286328}
+  - component: {fileID: 2611695847383357515}
   m_Layer: 0
   m_Name: Structure
   m_TagString: Untagged
@@ -207,6 +208,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151fe32e3258b39409c61a73bc81d726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2611695847383357515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415619905353286311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e94c3d5f97650b41b6cc6c614f14824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: -8997606253251336505, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -8519127337581954305, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 784069301136807116, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -2979675472250605021, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 646883803564140448, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -9064104922841812969, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 2360104304107194154, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -1375649787016688466, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 8344216171947714237, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 651748621363323835, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 7519026095801135303, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 2947308908011596413, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 3219735944435994335, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 3454217171308896097, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 762318085811067336, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -5955229476768863543, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 6066400863390533418, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -1032316048794621579, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 9124786955130548043, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -6837935036668130989, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 542916353515657911, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -3559784473230253125, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 72883563415735111, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 651748621363323835, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: -961160425148310290, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 5806347151414098911, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 8181317802687247729, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - {fileID: 4231237481287871383, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  tileSetting: 3
+  targetName: Sprite
+  rotateSetting: 2
+  randomXFlip: 1
+  randomYFlip: 0
+  applyToSprites: 1
 --- !u!1 &1415619906001199465
 GameObject:
   m_ObjectHideFlags: 0
