@@ -6,10 +6,6 @@ using System.Collections.Generic;
 public class PopulateShopItems : SaveAssetsProcessor {
 
     static string[] OnWillSaveAssets(string[] paths) {
-        Debug.Log("OnWillSaveAssets called on:");
-        foreach (string path in paths) {
-            Debug.Log(path);
-        }
         string specialItemsPath = "Assets/Special Shop Items.asset";
         string allItemsPath = "Assets/All Shop Items.asset".Replace("\\", "/");
         ShopItemList specialItems = (ShopItemList)AssetDatabase.LoadAssetAtPath(specialItemsPath, typeof(ShopItemList));
@@ -23,6 +19,7 @@ public class PopulateShopItems : SaveAssetsProcessor {
             GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));
             allItems.shopItems.Add(ShopItemFor(prefab));
         }
+        Debug.Log("populated shop items");
         return paths;
     }
     static ShopItem ShopItemFor(GameObject prefab) {
