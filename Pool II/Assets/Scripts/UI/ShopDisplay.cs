@@ -18,7 +18,9 @@ public class ShopDisplay : MonoBehaviour {
 
     GameObject FillUIForShopItem(ShopItem item) {
         GameObject itemUI = Instantiate(ShopItemUI, transform.FindDeepChild("Content"));
-        //itemUI.GetComponent<Button>().onClick needs to trigger TryToPurchase on the item
+        itemUI.GetComponent<Button>().onClick.AddListener(delegate {
+            BuildController.instance.onClickShopButton(item.prefab);
+        });
         itemUI.GetComponent<Image>().sprite = item.icon;
         itemUI.transform.Find("ItemName").GetComponent<TextMeshProUGUI>().text = item.name.ToUpper();
         itemUI.transform.Find("Cost").GetComponent<TextMeshProUGUI>().text = "COST: " + item.cost;

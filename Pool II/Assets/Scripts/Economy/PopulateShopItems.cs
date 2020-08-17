@@ -6,10 +6,8 @@ using System.Collections.Generic;
 public class PopulateShopItems : UnityEditor.AssetModificationProcessor {
 
     static string[] OnWillSaveAssets(string[] paths) {
-        string specialItemsPath = "Assets/Special Shop Items.asset";
-        string allItemsPath = "Assets/All Shop Items.asset".Replace("\\", "/");
-        ShopItemList specialItems = (ShopItemList)AssetDatabase.LoadAssetAtPath(specialItemsPath, typeof(ShopItemList));
-        ShopItemList allItems = (ShopItemList)AssetDatabase.LoadAssetAtPath(allItemsPath, typeof(ShopItemList));
+        ShopItemList specialItems = (ShopItemList)AssetDatabase.LoadAssetAtPath("Assets/Special Shop Items.asset", typeof(ShopItemList));
+        ShopItemList allItems = (ShopItemList)AssetDatabase.LoadAssetAtPath("Assets/All Shop Items.asset", typeof(ShopItemList));
         allItems.shopItems = new List<ShopItem>(specialItems.shopItems);
 
         string prefabsFolder = Path.Combine(Application.dataPath, "Prefabs", "Balls");
@@ -23,7 +21,8 @@ public class PopulateShopItems : UnityEditor.AssetModificationProcessor {
         return paths;
     }
     static ShopItem ShopItemFor(GameObject prefab) {
-        return new ShopItem {
+        return new ShopItem
+        {
             name = prefab.name,
             cost = prefab.GetComponent<BaseBall>().cost,
             prefab = prefab,
