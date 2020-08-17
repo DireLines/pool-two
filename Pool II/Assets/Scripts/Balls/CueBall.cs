@@ -10,12 +10,19 @@ public class CueBall : BaseBall
     private LineRenderer line;
     [SerializeField]
     private Camera cam;
+
+    [SerializeField]
+    private LayerMask ballLayer;
     
     public float max_distance = 4f, power = 4f;
     
     private bool primed;
     private bool ready;
     private bool mouseOver;
+
+    Vector2 direction = Vector2.zero;
+    RaycastHit2D hit;
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -32,7 +39,16 @@ public class CueBall : BaseBall
         mouseOver = false;
     }
 
-    Vector2 direction = Vector2.zero;
+    private void Update()
+    {
+        //if (Physics2D.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit))
+        //{
+
+        //    Debug.Log(hitInfo.transform.gameObject.name);
+
+        //}
+    }
+
 
     private void OnMouseDown()
     {
