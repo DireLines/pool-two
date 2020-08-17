@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 1415619905353286329}
   - component: {fileID: 1415619905353286328}
   - component: {fileID: 2611695847383357515}
+  - component: {fileID: 6779574446496780154}
   m_Layer: 0
   m_Name: Structure
   m_TagString: Untagged
@@ -255,6 +256,20 @@ MonoBehaviour:
   randomXFlip: 1
   randomYFlip: 0
   applyToSprites: 1
+--- !u!114 &6779574446496780154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415619905353286311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18a4140fe929e498d612efd3273662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affecterSetting: 3
+  targetName: Sprite
 --- !u!1 &1415619906001199465
 GameObject:
   m_ObjectHideFlags: 0

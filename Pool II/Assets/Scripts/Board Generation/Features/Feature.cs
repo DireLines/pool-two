@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Feature : MonoBehaviour
 {
 
     protected Transform simulatorBody, body, sprite;
+    protected Rigidbody2D rb;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        if (!rb) rb = gameObject.AddComponent<Rigidbody2D>();
+        rb.isKinematic = true;
         body = transform.FindDeepChild("Body");
         sprite = transform.FindDeepChild("Sprite");
     }

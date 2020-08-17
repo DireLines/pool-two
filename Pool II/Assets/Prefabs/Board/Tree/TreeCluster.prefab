@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8287178706704968276}
   - component: {fileID: 6492764801399784356}
   m_Layer: 0
-  m_Name: New Sprite (3)
+  m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1221163912302823179}
   - component: {fileID: 7092272520429212889}
   m_Layer: 0
-  m_Name: New Sprite (1)
+  m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 468665380970112905}
   - component: {fileID: 7290766053137152734}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 1845963925392511932}
   - component: {fileID: 2943192812073980677}
   m_Layer: 0
-  m_Name: New Sprite (2)
+  m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,6 +328,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4450641842144392914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863610466525564798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18a4140fe929e498d612efd3273662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affecterSetting: 3
+  targetName: Tree
 --- !u!61 &6357118405352262141
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -444,6 +458,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9121879925828744983, guid: 79f96b92e0b6424489176d0a814a31cc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79f96b92e0b6424489176d0a814a31cc, type: 3}
+--- !u!1 &2863610466525564798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9121879924563377697, guid: 79f96b92e0b6424489176d0a814a31cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 6425224870413807967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2863610467561576692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9121879925532141995, guid: 79f96b92e0b6424489176d0a814a31cc,

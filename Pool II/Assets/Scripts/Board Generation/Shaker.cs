@@ -6,7 +6,8 @@ public class Shaker : Affecter
 {
     Dictionary<Transform, Vector3> startingPos = new Dictionary<Transform, Vector3>();
 
-    float distance = 0.1f;
+    float distance = 0.05f;
+    bool shaking;
 
     private void Awake()
     {
@@ -15,19 +16,16 @@ public class Shaker : Affecter
             startingPos[target] = target.localPosition;
     }
 
-    private void Start()
+    public void Activate(float time=float.NaN)
     {
-        Activate(0.25f);
-    }
-
-    public void Activate(float time=-1)
-    {
+        if (shaking) return;
         StartCoroutine(ActivateCo(time));
     }
 
-    IEnumerator ActivateCo(float time=-1)
+    IEnumerator ActivateCo(float time=float.NaN)
     {
-        while (time > 0)
+        shaking = true;
+        while (float.IsNaN(time) || time > 0)
         {
             foreach (var target in startingPos.Keys)
             {
@@ -37,6 +35,7 @@ public class Shaker : Affecter
             yield return null;
         }
         ResetPositions();
+        shaking = false;
     }
 
     void ResetPositions() 
@@ -51,6 +50,7 @@ public class Shaker : Affecter
     {
         StopAllCoroutines();
         ResetPositions();
+        shaking = false;
     }
 
 }
