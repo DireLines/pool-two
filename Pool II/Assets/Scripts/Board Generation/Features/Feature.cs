@@ -31,9 +31,11 @@ public class Feature : MonoBehaviour
 
     public void Place()
     {
-        sprite.position = simulatorBody.position;
+        Vector2 pos = simulatorBody.position;
+        transform.position = pos;
+        //sprite.position = simulatorBody.position;
         sprite.gameObject.SetActive(true);
-        body.position = simulatorBody.position;
+        //body.position = simulatorBody.position;
         body.gameObject.SetActive(true);
         Destroy(simulatorBody.gameObject);
     }

@@ -25,6 +25,7 @@ public class TurnManager : MonoBehaviour
 
     public void NextTurn(TurnResult result)
     {
+        if (players.Count == 0) return;
         players[currentPlayer].StartTurn(result);
         currentPlayer = ++currentPlayer;
     }

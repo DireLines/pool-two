@@ -70,7 +70,7 @@ public class BoardGenerator : MonoBehaviour
     IEnumerator Simulate(List<Feature> features)
     {
         simulating = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         foreach (var feature in features)
         {
             feature.Place();
@@ -92,11 +92,8 @@ public class BoardGeneratorEditor : Editor
         if (GUILayout.Button("GENERATE BOUNDS"))
             foreach (var script in scripts) {
                 var pivot = script.transform.FindDeepChild("BoardPivot");
-                var scale = pivot.localScale;
-                pivot.localScale = Vector3.one; 
                 script.playerBoard.SetupWalls();
                 script.neutralBoard.SetupWalls();
-                pivot.localScale = scale;
             }
     }
 }
