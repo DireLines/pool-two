@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
-public class PopulateShopItems : SaveAssetsProcessor {
+public class PopulateShopItems : UnityEditor.AssetModificationProcessor {
 
     static string[] OnWillSaveAssets(string[] paths) {
         string specialItemsPath = "Assets/Special Shop Items.asset";
