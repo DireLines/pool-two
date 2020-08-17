@@ -3,11 +3,14 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
-public class PopulateShopItems : MonoBehaviour {
+public class PopulateShopItems : SaveAssetsProcessor {
 
-    [UnityEditor.Callbacks.DidReloadScripts]
-    private static void OnScriptsReloaded() {
-        string specialItemsPath = "Assets/Special Shop Items.asset".Replace("\\", "/");
+    static string[] OnWillSaveAssets(string[] paths) {
+        Debug.Log("OnWillSaveAssets called on:");
+        foreach (string path in paths) {
+            Debug.Log(path);
+        }
+        string specialItemsPath = "Assets/Special Shop Items.asset";
         string allItemsPath = "Assets/All Shop Items.asset".Replace("\\", "/");
         ShopItemList specialItems = (ShopItemList)AssetDatabase.LoadAssetAtPath(specialItemsPath, typeof(ShopItemList));
         ShopItemList allItems = (ShopItemList)AssetDatabase.LoadAssetAtPath(allItemsPath, typeof(ShopItemList));
@@ -20,6 +23,7 @@ public class PopulateShopItems : MonoBehaviour {
             GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject));
             allItems.shopItems.Add(ShopItemFor(prefab));
         }
+        return paths;
     }
     static ShopItem ShopItemFor(GameObject prefab) {
         return new ShopItem {
