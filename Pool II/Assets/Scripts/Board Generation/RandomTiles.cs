@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum RandomTileSetting { Self, Children, All, WithName, None};
 public enum RandomRotateSetting { Flip, Turn, None };
-public delegate void ApplyDel<T>(T obj);
 
-public class RandomTiles : MonoBehaviour
+public class RandomTiles : Affecter
 {
     public List<Sprite> tiles = new List<Sprite>();
-    public RandomTileSetting tileSetting;
-    public string targetName;
     public RandomRotateSetting rotateSetting;
     public bool randomXFlip, randomYFlip, applyToSprites;
 
@@ -18,31 +14,6 @@ public class RandomTiles : MonoBehaviour
     {
         if (tiles.Count > 0) Apply<SpriteRenderer>(ApplyTile);
         if (!applyToSprites) Apply<Transform>(ApplyFlip);
-    }
-
-    void Apply<T>(ApplyDel<T> application) where T : Component
-    {
-        List<T> targets = new List<T>();
-        switch (tileSetting)
-        {
-            case RandomTileSetting.Self:
-                targets.Add(GetComponent<T>());
-                break;
-            case RandomTileSetting.Children:
-                targets.AddRange(gameObject.FindComponents<T>(in_parent: false, ignore_self: true));
-                break;
-            case RandomTileSetting.All:
-                targets.AddRange(GetComponentsInChildren<T>());
-                break;
-            case RandomTileSetting.WithName:
-                foreach (var child in transform.FindDeepChildren(targetName))
-                    targets.Add(child.GetComponent<T>());
-                break;
-            case RandomTileSetting.None:
-                break;
-        }
-        foreach (var target in targets)
-            application(target);
     }
 
     void ApplyTile(SpriteRenderer target)
@@ -71,11 +42,5 @@ public class RandomTiles : MonoBehaviour
             target.localScale.y * ((randomYFlip) ? ExtensionMethods.RandomSign() : 1),
             1);
         target.parent = parent;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

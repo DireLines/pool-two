@@ -196,13 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e94c3d5f97650b41b6cc6c614f14824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affecterSetting: 3
+  targetName: Sprite
   tiles:
   - {fileID: 4285185840188377049, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
   - {fileID: 8355749346602332410, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
   - {fileID: 3230059895664381876, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
   - {fileID: 8960789074176448079, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
-  tileSetting: 3
-  targetName: Sprite
   rotateSetting: 1
   randomXFlip: 1
   randomYFlip: 1
