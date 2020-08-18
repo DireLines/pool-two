@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e18a4140fe929e498d612efd3273662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affecterName: 
+  affecterName: MainAffecter
   affecterSetting: 3
   selected_targets: []
   targetName: Sprite

@@ -38,7 +38,10 @@ public class Destroyer : MonoBehaviour
         {
             foreach (var r in renderers)
             {
-                r.color = new Color(r.color.r, r.color.g, r.color.b, (destroy_timer - timer) / destroy_timer);
+                r.color = Color.Lerp(
+                    new Color(r.color.r, r.color.g, r.color.b, 1), 
+                    new Color(r.color.r, r.color.g, r.color.b, 0), 
+                    (destroy_timer - timer) / destroy_timer);
             }
             timer -= Time.deltaTime;
             yield return null;

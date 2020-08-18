@@ -6,12 +6,19 @@ public class Structure : Feature
 {
     List<Collider2D> colliders = new List<Collider2D>();
 
-    public float shakeThreshold = 4f, destroyThreshold = 7f;
+    public float shakeThreshold = 8f, destroyThreshold = 12f;
 
     protected override void Start()
     {
         base.Start();
-        colliders = new List<Collider2D>(GetComponentsInChildren<Collider2D>());
+        colliders = new List<Collider2D>();
+        foreach (var c in GetComponentsInChildren<Collider2D>())
+        {
+            if (c.gameObject.name != "SimulatorBody")
+            {
+                colliders.Add(c);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

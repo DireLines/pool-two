@@ -8,29 +8,29 @@ public class Shaker : Affecter
 
     public float speed = 10f, amount = 0.15f;
     float radius = 0;
-    bool shaking;
+    bool shaking, shooketh;
 
     private void Awake()
     {
         radius = amount / 2f;
     }
 
-    private void Start()
-    {
-        List<Transform> targets = GetTargets<Transform>();
-        foreach (var target in targets)
-        {
-            startingPos[target] = new Vector4(
-                target.localPosition.x - radius,
-                target.localPosition.y - radius,
-                Random.Range(0, 1f),
-                Random.Range(0, 1f));
-        }
-    }
-
     public void Activate(float time=float.NaN)
     {
         if (shaking) return;
+        if (!shooketh)
+        {
+            shooketh = true;
+            List<Transform> targets = GetTargets<Transform>();
+            foreach (var target in targets)
+            {
+                startingPos[target] = new Vector4(
+                    target.position.x - radius,
+                    target.position.y - radius,
+                    Random.Range(0, 1f),
+                    Random.Range(0, 1f));
+            }
+        }
         StartCoroutine(ActivateCo(time));
     }
 
@@ -41,7 +41,7 @@ public class Shaker : Affecter
         {
             foreach (var target in startingPos.Keys)
             {
-                target.localPosition = (Vector2)startingPos[target] + new Vector2(
+                target.position = (Vector2)startingPos[target] + new Vector2(
                     Mathf.PerlinNoise(Time.time * speed, startingPos[target].z) * amount, 
                     Mathf.PerlinNoise(Time.time * speed, startingPos[target].w) * amount);
             }
@@ -56,7 +56,7 @@ public class Shaker : Affecter
     {
         foreach (var target in startingPos.Keys)
         {
-            target.localPosition = (Vector2)startingPos[target] + new Vector2(radius, radius);
+            target.position = (Vector2)startingPos[target] + new Vector2(radius, radius);
         }
     }
 

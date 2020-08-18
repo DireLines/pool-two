@@ -9,7 +9,7 @@ public class Tree : Feature
     protected override void Start()
     {
         base.Start();
-        shaker = GetComponent<Shaker>();
+        shaker = (Shaker)gameObject.GetAffecter("MainAffecter");
     }
 
     private void OnTriggerStay2D(Collider2D collision)

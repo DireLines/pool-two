@@ -7,7 +7,7 @@ public delegate void ApplyDel<T>(T obj);
 
 public class Affecter : MonoBehaviour
 {
-    public string affecterName = "Affecter";
+    public string affecterName = "MainAffecter";
     public AffecterSetting affecterSetting;
     public List<Transform> selected_targets = new List<Transform>();
     public string targetName;
@@ -44,5 +44,17 @@ public class Affecter : MonoBehaviour
     {
         foreach (var target in GetTargets<T>())
             application(target);
+    }
+}
+
+public static class AffecterExtensions
+{
+    public static Affecter GetAffecter(this GameObject g, string affecterName, bool in_children=false)
+    {
+        Affecter[] affecters = (in_children) ? g.GetComponentsInChildren<Affecter>() : g.GetComponents<Affecter>();
+        foreach (var a in affecters)
+            if (a.affecterName == affecterName)
+                return a;
+        return null;
     }
 }
