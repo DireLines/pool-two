@@ -26,9 +26,9 @@ public class BaseBall : MonoBehaviour {
     protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();
 
-        icon = transform.Find("Icon").GetComponent<SpriteRenderer>();
-        inside = transform.Find("Inside").GetComponent<SpriteRenderer>();
-        outline = transform.Find("Outline").GetComponent<SpriteRenderer>();
+        icon = transform.Find("Icon")?.GetComponent<SpriteRenderer>();
+        inside = transform.Find("Inside")?.GetComponent<SpriteRenderer>();
+        outline = transform.Find("Outline")?.GetComponent<SpriteRenderer>();
     }
 
     protected virtual void LateUpdate() {
