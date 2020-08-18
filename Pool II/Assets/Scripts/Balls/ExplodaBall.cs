@@ -33,8 +33,6 @@ public class ExplodaBall : BaseBall
         fuse_lit = true;
 
         icon.sprite = lit_icon;
-
-        print("shit's lit");
     }
 
     protected override void OnHitOtherBall()
@@ -47,6 +45,9 @@ public class ExplodaBall : BaseBall
 
     void Explode()
     {
+        // TODO: destroy objects around you
+        // TODO: add sound effect to Big & Small Explosion prefabs
+
         Vector3 explosionPos = transform.position;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
         foreach (Collider2D hit in colliders)

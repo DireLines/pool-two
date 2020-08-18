@@ -7,10 +7,11 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     bool myTurn = false;
+    public static int playerCount = 0;
+    public int playerNum { get; private set; }
 
     public void StartTurn(TurnResult result)
     {
-        print(gameObject + ":");
         print($"It's a {result} turn!");
         myTurn = true;
     }
@@ -21,10 +22,9 @@ public class Player : MonoBehaviour
         myTurn = false;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        playerNum = playerCount++;
     }
 
     // Update is called once per frame
