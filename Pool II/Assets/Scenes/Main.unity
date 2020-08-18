@@ -1040,6 +1040,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 960384332, guid: 32130514ba21f324596b765dac19cf43, type: 3}
+      propertyPath: blowSpeedX.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 960384332, guid: 32130514ba21f324596b765dac19cf43, type: 3}
+      propertyPath: blowSpeedY.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 960384332, guid: 32130514ba21f324596b765dac19cf43, type: 3}
+      propertyPath: blowSpeedX.m_ConstantMin
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 960384332, guid: 32130514ba21f324596b765dac19cf43, type: 3}
+      propertyPath: blowSpeedX.m_ConstantMax
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 960384332, guid: 32130514ba21f324596b765dac19cf43, type: 3}
+      propertyPath: blowSpeedY.m_ConstantMin
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 960384332, guid: 32130514ba21f324596b765dac19cf43, type: 3}
+      propertyPath: blowSpeedY.m_ConstantMax
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5240370610510379050, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: m_Name
@@ -1099,6 +1123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240370610896650149, guid: 32130514ba21f324596b765dac19cf43,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 45.5
       objectReference: {fileID: 0}
     - target: {fileID: 5240370611557169088, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}

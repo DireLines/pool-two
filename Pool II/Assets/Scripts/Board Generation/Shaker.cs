@@ -8,7 +8,10 @@ public class Shaker : Affecter
 
     public float speed = 10f, amount = 0.15f;
     float radius = 0;
-    bool shaking, shooketh;
+    [HideInInspector]
+    public bool shaking;
+    [HideInInspector]
+    public bool shooketh;
 
     private void Awake()
     {
@@ -19,19 +22,22 @@ public class Shaker : Affecter
     {
         if (shaking) return;
         if (!shooketh)
-        {
-            shooketh = true;
-            List<Transform> targets = GetTargets<Transform>();
-            foreach (var target in targets)
-            {
-                startingPos[target] = new Vector4(
-                    target.position.x - radius,
-                    target.position.y - radius,
-                    Random.Range(0, 1f),
-                    Random.Range(0, 1f));
-            }
-        }
+            SetPositions();
         StartCoroutine(ActivateCo(time));
+    }
+
+    public void SetPositions()
+    {
+        shooketh = true;
+        List<Transform> targets = GetTargets<Transform>();
+        foreach (var target in targets)
+        {
+            startingPos[target] = new Vector4(
+                target.position.x - radius,
+                target.position.y - radius,
+                Random.Range(0, 1f),
+                Random.Range(0, 1f));
+        }
     }
 
     IEnumerator ActivateCo(float time=float.NaN)

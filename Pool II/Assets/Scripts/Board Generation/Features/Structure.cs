@@ -8,9 +8,9 @@ public class Structure : Feature
 
     public float shakeThreshold = 8f, destroyThreshold = 12f;
 
-    protected override void Start()
+    public override void PostSetup()
     {
-        base.Start();
+        base.PostSetup();
         colliders = new List<Collider2D>();
         foreach (var c in GetComponentsInChildren<Collider2D>())
         {

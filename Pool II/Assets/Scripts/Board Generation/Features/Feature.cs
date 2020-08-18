@@ -14,6 +14,20 @@ public class Feature : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+    }
+
+    public virtual void Setup()
+    {
+        foreach (var randomTile in GetComponentsInChildren<RandomTiles>()) randomTile.Setup();
+        simulatorBody = transform.FindDeepChild("SimulatorBody");
+        body = transform.FindDeepChild("Body");
+        body.gameObject.SetActive(false);
+        sprite = transform.FindDeepChild("Sprite");
+        sprite.gameObject.SetActive(false);
+    }
+
+    public virtual void PostSetup()
+    {
         rb = GetComponent<Rigidbody2D>();
         if (!rb) rb = gameObject.AddComponent<Rigidbody2D>();
         rb.isKinematic = true;
@@ -27,21 +41,11 @@ public class Feature : MonoBehaviour
         if (destroyer) destroyer.DestroyEvent += Destroy;
     }
 
-    public void Setup()
-    {
-        foreach (var randomTile in GetComponentsInChildren<RandomTiles>()) randomTile.Setup();
-        simulatorBody = transform.FindDeepChild("SimulatorBody");
-        body = transform.FindDeepChild("Body");
-        body.gameObject.SetActive(false);
-        sprite = transform.FindDeepChild("Sprite");
-        sprite.gameObject.SetActive(false);
-    }
-
     protected virtual void Destroy()
     {
     }
 
-    public void Place()
+    public virtual void Place()
     {
         Vector2 pos = simulatorBody.position;
         transform.position = pos;

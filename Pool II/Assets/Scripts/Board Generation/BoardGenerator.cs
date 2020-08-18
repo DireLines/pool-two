@@ -53,6 +53,7 @@ public class BoardGenerator : MonoBehaviour
                 -feature.transform.localScale.y, 
                 feature.transform.localScale.z);
         }
+        foreach (var feature in FindObjectsOfType<Feature>()) feature.PostSetup();
         GenerationDoneEvent?.Invoke();
     }
 
