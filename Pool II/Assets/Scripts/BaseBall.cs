@@ -9,9 +9,10 @@ public class BaseBall : MonoBehaviour {
     [SerializeField]
     private Transform sprite;
 
-    protected virtual void OnLaunch() { }
-    protected virtual void OnSettle() { }
-    protected virtual void OnSink() { }
+    public virtual void OnFirstBallCollide() { }
+    public virtual void OnBallCollide() { }
+    public virtual void OnSettle() { }
+    public virtual void OnSink() { }
 
     protected virtual void Start() {
         if (sprite == null) sprite = GetComponentInChildren<SpriteRenderer>().transform;
