@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     int buildThreshold = 3;
 
 
-    public bool debug;
+    public bool debug = true;
 
     public static GameManager instance;
     private void Awake()
