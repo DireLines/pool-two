@@ -11,4 +11,14 @@ public class Tree : Feature
         base.Start();
         shaker = GetComponent<Shaker>();
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        print("bite me retard");
+        if (collision.GetComponent<BaseBall>())
+        {
+            print("Mega bite me retard");
+            shaker.Activate(0.2f);
+        }
+    }
 }

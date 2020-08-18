@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AffecterSetting { Self, Children, All, WithName, None };
+public enum AffecterSetting { Self, Children, All, WithName, Selected, None };
 public delegate void ApplyDel<T>(T obj);
 
 public class Affecter : MonoBehaviour
 {
     public AffecterSetting affecterSetting;
+    public List<Transform> selected_targets = new List<Transform>();
     public string targetName;
 
     public virtual List<T> GetTargets<T>() where T : Component
@@ -27,6 +28,13 @@ public class Affecter : MonoBehaviour
             case AffecterSetting.WithName:
                 foreach (var child in transform.FindDeepChildren(targetName))
                     targets.Add(child.GetComponent<T>());
+                break;
+            case AffecterSetting.Selected:
+                foreach (var selected in selected_targets)
+                {
+                    print(selected);
+                    targets.Add(selected.GetComponent<T>());
+                }
                 break;
             case AffecterSetting.None:
                 break;
