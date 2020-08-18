@@ -7,8 +7,9 @@ using UnityEngine.Events;
 public class BaseBall : MonoBehaviour {
     public int cost;
 
-    [SerializeField]
-    private Transform sprite;
+    protected SpriteRenderer icon;
+    protected SpriteRenderer inside;
+    protected SpriteRenderer outline;
 
     protected Rigidbody2D rb;
 
@@ -24,7 +25,10 @@ public class BaseBall : MonoBehaviour {
 
     protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();
-        if (sprite == null) sprite = GetComponentInChildren<SpriteRenderer>().transform;
+
+        icon = transform.Find("icon").GetComponent<SpriteRenderer>();
+        inside = transform.Find("inside").GetComponent<SpriteRenderer>();
+        outline = transform.Find("outline").GetComponent<SpriteRenderer>();
     }
 
     protected virtual void LateUpdate() {
