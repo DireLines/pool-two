@@ -14,9 +14,6 @@ public class ExplodaBall : BaseBall
     [SerializeField]
     Sprite lit_icon;
 
-    [SerializeField]
-    ParticleSystem particles;
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,16 +30,15 @@ public class ExplodaBall : BaseBall
 
     protected override void OnHitByOtherBall()
     {
-        base.OnHitByOtherBall();
         fuse_lit = true;
 
         icon.sprite = lit_icon;
+
+        print("shit's lit");
     }
 
     protected override void OnHitOtherBall()
     {
-        base.OnHitOtherBall();
-
         if (fuse_lit)
         {
             Explode();
@@ -60,18 +56,7 @@ public class ExplodaBall : BaseBall
             if (rb != null)
                 rb.AddExplosionForce(power, explosionPos, radius, 3.0F);
         }
-        StartCoroutine(Explosion());
-    }
-
-    protected IEnumerator Explosion()
-    {
-        particles.Play();
-
-        while (particles.isEmitting)
-        {
-            yield return null;
-        }
-
+        FX_Spawner.instance.SpawnFX(FXType.SmallExplosion, transform.position, Quaternion.identity, parent : transform);
         Destroy(gameObject);
     }
 

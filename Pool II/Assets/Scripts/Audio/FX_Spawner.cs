@@ -6,8 +6,8 @@ using UnityEngine.Audio;
 public enum FXType
 {
     Default,
-    EXPLOSION,
-
+    SmallExplosion,
+    BigExplosion
 }
 
 public class FX_Spawner : MonoBehaviour
@@ -65,5 +65,10 @@ public class FX_Spawner : MonoBehaviour
     public UnityEngine.GameObject SpawnFX(FXType effectName, Vector3 position, Vector3 rotation, float vol = -1, Transform parent = null) {
         return SpawnFX(FX_Dict[effectName], position, rotation, vol, parent);
         //return SpawnFX(FX_Dict.GetValueOrDefault(effectName, FX_Dict[FXType.Default]), position, rotation, vol, parent);
+    }
+
+    public UnityEngine.GameObject SpawnFX(FXType effectName, Vector3 position, Quaternion rotation, float vol = -1, Transform parent = null)
+    {
+        return SpawnFX(FX_Dict[effectName], position, rotation.eulerAngles, vol, parent);
     }
 }
