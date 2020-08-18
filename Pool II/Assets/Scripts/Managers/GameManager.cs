@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public int currentRound;
     int buildThreshold = 3;
 
+
+    public bool debug;
+
     public static GameManager instance;
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (debug) return;
         BoardGenerator.instance.Generate();
         BoardGenerator.instance.GenerationDoneEvent += StartGame;
     }
