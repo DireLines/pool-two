@@ -14,7 +14,7 @@ public class BaseBall : MonoBehaviour {
 
     protected Rigidbody2D rb;
 
-    bool moving;
+    public bool moving { get; private set; }
 
     float epsilon = 0.1f;
 

@@ -9,15 +9,14 @@ public class CueBall : BaseBall {
     [SerializeField]
     private Camera cam;
 
-    [SerializeField]
-    private LayerMask ballLayer;
-
     public float max_distance = 4f, power = 4f;
 
     private bool primed;
     private bool ready;
 
     Vector2 direction = Vector2.zero;
+
+    List<Rect> playableAreas;
 
     protected override void Start() {
         base.Start();

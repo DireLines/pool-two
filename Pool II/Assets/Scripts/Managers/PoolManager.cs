@@ -11,7 +11,6 @@ public class PoolManager : MonoBehaviour
 
     private const float secondsNeutralUntilRoundEnd = 1f;
     private float currentSecondsNeutral;
-    private const float epsilon = 0.1f;
 
     #region EVENTS
     public delegate void BoardDeactivateEvent();
@@ -58,7 +57,6 @@ public class PoolManager : MonoBehaviour
 
         if (currentSecondsNeutral >= secondsNeutralUntilRoundEnd)
         {
-            print("Time to deactivate board!");
             boardActive = false;
             OnBoardDeactivate?.Invoke();
         }
@@ -79,7 +77,7 @@ public class PoolManager : MonoBehaviour
     {
         foreach (var ball in activeBalls)
         {
-            if (ball.GetComponent<Rigidbody2D>().velocity.sqrMagnitude > epsilon * epsilon) return false;
+            if (ball.moving) return false;
         }
         return true;
     }
