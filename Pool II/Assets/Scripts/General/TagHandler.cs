@@ -6,7 +6,7 @@ public enum Tag { None, Ball };
 
 public class TagHandler : MonoBehaviour
 {
-    public List<Tag> tags = new List<Tag>();
+    public HashSet<Tag> tags = new HashSet<Tag>();
 }
 
 public static class TagExtension

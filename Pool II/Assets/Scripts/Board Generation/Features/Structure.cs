@@ -16,11 +16,14 @@ public class Structure : Feature
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        float impulse = collision.contacts[0].normalImpulse;
-        if (impulse > shakeThreshold)
-            destroyer.shaker.Activate(1f);
-        else if (impulse > destroyThreshold) 
-            destroyer.Destroy();
+        if (collision.collider.gameObject.HasTag(Tag.Ball))
+        {
+            float impulse = collision.contacts[0].normalImpulse;
+            if (impulse > shakeThreshold)
+                destroyer.shaker.Activate(1f);
+            else if (impulse > destroyThreshold)
+                destroyer.Destroy();
+        }
     }
 
     protected override void Destroy()

@@ -17,10 +17,22 @@ public class BuildController : MonoBehaviour {
         instance = this;
     }
 
+    private void Update() {
+        if (heldObject) {
+            heldObject.transform.position = transform.position;//TODO: put object at mouse position
+        }
+    }
+
 
     //pick up an item from the shop
     public void onClickShopButton(GameObject obj) {
         print("clicked on " + obj.name);
+        if (holdingSomething()) {
+            Destroy(heldObject);
+            heldObject = null;
+        } else {
+            Instantiate(obj, transform);
+        }
     }
 
     public void onClick() {

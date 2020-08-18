@@ -21,8 +21,7 @@ public class PopulateShopItems : UnityEditor.AssetModificationProcessor {
         return paths;
     }
     static ShopItem ShopItemFor(GameObject prefab) {
-        return new ShopItem
-        {
+        return new ShopItem {
             name = prefab.name,
             cost = prefab.GetComponent<BaseBall>().cost,
             prefab = prefab,
