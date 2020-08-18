@@ -20,6 +20,10 @@ public class Feature : MonoBehaviour
         body = transform.FindDeepChild("Body");
         sprite = transform.FindDeepChild("Sprite");
         destroyer = GetComponent<Destroyer>();
+        TagHandler handler = GetComponent<TagHandler>();
+        if (!GetComponent<TagHandler>())
+            handler = gameObject.AddComponent<TagHandler>();
+        handler.tags.Add(Tag.Feature);
         if (destroyer) destroyer.DestroyEvent += Destroy;
     }
 
