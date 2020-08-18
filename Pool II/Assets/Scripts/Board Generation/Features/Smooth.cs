@@ -15,7 +15,8 @@ public class Smooth : Feature
         {
             targetBodies[r] = r.drag;
             r.drag *= dragReductionMultiplier;
-            r.velocity *= speedMultiplier * Mathf.Log10(r.velocity.magnitude) + 1;
+            if (r.velocity.magnitude > 0)
+                r.velocity *= speedMultiplier * Mathf.Log10(r.velocity.magnitude) + 1;
         }
     }
 
