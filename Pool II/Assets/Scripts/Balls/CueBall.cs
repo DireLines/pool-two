@@ -35,21 +35,16 @@ public class CueBall : BaseBall {
         mouseOver = false;
     }
 
-    private void Update() {
-        //if (Physics2D.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit))
-        //{
-
-        //    Debug.Log(hitInfo.transform.gameObject.name);
-
-        //}
-    }
-
 
     private void OnMouseDown() {
+        if (ownerNumber != TurnManager.instance.currentPlayer) return;
+        
         primed = true;
     }
 
     private void OnMouseUp() {
+        if (ownerNumber != TurnManager.instance.currentPlayer) return;
+
         if (ready) {
             rb.velocity = -direction * power;
         }
@@ -62,6 +57,8 @@ public class CueBall : BaseBall {
     }
 
     private void OnMouseDrag() {
+        if (ownerNumber != TurnManager.instance.currentPlayer) return;
+
         direction = ((Vector2)cam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position);
         if (direction.magnitude > max_distance) direction = direction.normalized * max_distance;
         line.enabled = true;
@@ -70,11 +67,15 @@ public class CueBall : BaseBall {
     }
 
     private void OnMouseEnter() {
+        if (ownerNumber != TurnManager.instance.currentPlayer) return;
+
         if (primed) ready = false;
         mouseOver = true;
     }
 
     private void OnMouseExit() {
+        if (ownerNumber != TurnManager.instance.currentPlayer) return;
+
         if (primed) ready = true;
         mouseOver = false;
     }

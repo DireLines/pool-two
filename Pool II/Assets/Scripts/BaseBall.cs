@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D), typeof(TagHandler))]
 public class BaseBall : MonoBehaviour {
     public int cost;
+    public int ownerNumber;// {get; private set; }
 
     protected SpriteRenderer icon;
     protected SpriteRenderer inside;
@@ -55,5 +56,10 @@ public class BaseBall : MonoBehaviour {
                 OnHitOtherBall();
             }
         }
+    }
+
+    public virtual void SetOwner (int number) 
+    {
+        ownerNumber = number;
     }
 }

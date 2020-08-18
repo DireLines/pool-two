@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     List<Player> players = new List<Player>();
-    int currentPlayer;
+    public int currentPlayer { get; private set; }
 
     public TurnEvent EndTurnEvent;
 
