@@ -29,6 +29,10 @@ public class BaseBall : MonoBehaviour {
         icon = transform.Find("Icon")?.GetComponent<SpriteRenderer>();
         inside = transform.Find("Inside")?.GetComponent<SpriteRenderer>();
         outline = transform.Find("Outline")?.GetComponent<SpriteRenderer>();
+
+        TagHandler handler = GetComponent<TagHandler>();
+        if (!handler) handler = gameObject.AddComponent<TagHandler>();
+        handler.tags.Add(Tag.Ball);
     }
 
     protected virtual void LateUpdate() {
