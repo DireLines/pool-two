@@ -14,6 +14,9 @@ public class ExplodaBall : BaseBall
     [SerializeField]
     Sprite lit_icon;
 
+    [SerializeField]
+    ParticleSystem particles;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -57,6 +60,19 @@ public class ExplodaBall : BaseBall
             if (rb != null)
                 rb.AddExplosionForce(power, explosionPos, radius, 3.0F);
         }
+        StartCoroutine(Explosion());
+    }
+
+    protected IEnumerator Explosion()
+    {
+        particles.Play();
+
+        while (particles.isEmitting)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 
 }
