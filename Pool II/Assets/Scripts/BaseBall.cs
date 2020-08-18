@@ -48,7 +48,7 @@ public class BaseBall : MonoBehaviour {
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
-        if (true) {//TODO: if other thing is ball
+        if (collision.gameObject.HasTag(Tag.Ball)) {//TODO: if other thing is ball
             if (!moving) {
                 OnHitByOtherBall();
             } else {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Tag { None };
+public enum Tag { None, Ball };
 
 public class TagHandler : MonoBehaviour
 {
