@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4418b5500c78e4b85dbabaeaa97b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
-  sprite: {fileID: 0}
+  cost: 2
   radius: 5
   power: 10
+  lit_icon: {fileID: -1416402422317084636, guid: 4393a8a105b9f6b498acafa8e718de95,
+    type: 3}
 --- !u!114 &5890450435060833539
 MonoBehaviour:
   m_ObjectHideFlags: 0
