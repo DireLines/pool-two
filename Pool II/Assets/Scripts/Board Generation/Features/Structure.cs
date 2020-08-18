@@ -6,7 +6,7 @@ public class Structure : Feature
 {
     List<Collider2D> colliders = new List<Collider2D>();
 
-    public float shakeThreshold = 3f, destroyThreshold = 6f;
+    public float shakeThreshold = 2f, destroyThreshold = 5f;
 
     protected override void Start()
     {

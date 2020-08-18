@@ -19,7 +19,7 @@ public class Destroyer : MonoBehaviour
         shaker = gameObject.AddComponent<Shaker>();
         shaker.affecterName = "DestroyerShaker";
         shaker.affecterSetting = AffecterSetting.Self;
-        shaker.speed = 50f;
+        shaker.speed = 20f;
     }
 
     public void Destroy()
