@@ -6,8 +6,8 @@ using UnityEngine.Audio;
 public enum FXType
 {
     Default,
-    PLATFORM_BREAK,
-    FOOTSTEP
+    EXPLOSION,
+
 }
 
 public class FX_Spawner : MonoBehaviour
