@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce2ede673e5f2f41a1a19f539d3708c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaker: {fileID: 0}
+  leaves: []
 --- !u!50 &5033290848984776661
 Rigidbody2D:
   serializedVersion: 4
@@ -235,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shaker: {fileID: 0}
+  destroyFX: 4
 --- !u!114 &4450641842144392914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +257,7 @@ MonoBehaviour:
   speed: 10
   amount: 0.15
   shaking: 0
+  shooketh: 0
 --- !u!1 &2863610467288139350
 GameObject:
   m_ObjectHideFlags: 0

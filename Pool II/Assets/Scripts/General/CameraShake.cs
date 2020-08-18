@@ -8,10 +8,10 @@ public class CameraShake : MonoBehaviour
     private Transform t;
 
     // Desired duration of the shake effect
-    private float shakeDuration = 0f;
+    private float shakeDuration = 0f, _shakeDuration = 0f;
 
     // A measure of magnitude for the shake. Tweak based on your preference
-    private float shakeMagnitude = 0.4f;
+    private float shakeMagnitude = 0f, _shakeMagnitude = 0.4f;
 
     // A measure of how quickly the shake effect should evaporate
     private float dampingSpeed = 1.0f;
@@ -46,13 +46,20 @@ public class CameraShake : MonoBehaviour
         }
         else
         {
+            shakeMagnitude = 0f;
             shakeDuration = 0f;
             transform.localPosition = initialPosition;
         }
     }
 
-    public void TriggerShake()
+    public void TriggerShake(float duration = float.NaN, float magnitude = float.NaN)
     {
-        shakeDuration = 0.5f;
+        if (float.IsNaN(magnitude)) magnitude = _shakeMagnitude;
+        if (float.IsNaN(duration)) duration = _shakeDuration;
+        if (magnitude > shakeMagnitude)
+        {
+            shakeDuration = duration;
+            shakeMagnitude = magnitude;
+        }
     }
 }

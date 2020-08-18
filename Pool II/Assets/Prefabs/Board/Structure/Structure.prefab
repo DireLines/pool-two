@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151fe32e3258b39409c61a73bc81d726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeThreshold: 8
+  destroyThreshold: 12
 --- !u!114 &2611695847383357515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +258,8 @@ MonoBehaviour:
   targetName: Sprite
   speed: 10
   amount: 0.15
+  shaking: 0
+  shooketh: 0
 --- !u!114 &7387076114489275722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a69d672d5436704ea4618d0846ebd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaker: {fileID: 0}
+  destroyFX: 3
 --- !u!50 &-7435689588797504605
 Rigidbody2D:
   serializedVersion: 4

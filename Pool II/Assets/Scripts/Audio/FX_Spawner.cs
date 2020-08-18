@@ -7,7 +7,9 @@ public enum FXType
 {
     Default,
     SmallExplosion,
-    BigExplosion
+    BigExplosion,
+    StructureDestroy,
+    TreeDestroy,
 }
 
 public class FX_Spawner : MonoBehaviour

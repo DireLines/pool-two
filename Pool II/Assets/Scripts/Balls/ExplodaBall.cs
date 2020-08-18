@@ -5,9 +5,9 @@ using UnityEngine;
 public class ExplodaBall : BaseBall
 {
     [SerializeField]
-    protected float radius = 5.0F;
-    [SerializeField]
     protected float power = 10.0F;
+
+    float radius;
 
     bool fuse_lit = false;
 
@@ -18,7 +18,8 @@ public class ExplodaBall : BaseBall
     protected override void Start()
     {
         base.Start();
-        
+        foreach (var collider in GetComponents<CircleCollider2D>())
+            if (collider.isTrigger) radius = collider.radius;
     }
 
     // Update is called once per frame

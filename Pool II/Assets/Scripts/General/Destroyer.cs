@@ -10,6 +10,8 @@ public class Destroyer : MonoBehaviour
     bool destroyed;
     float destroy_timer = 0.5f;
 
+    public FXType destroyFX;
+
     public GameEvent DestroyEvent;
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class Destroyer : MonoBehaviour
     public void Destroy()
     {
         if (destroyed) return;
+        if (destroyFX != FXType.Default) FX_Spawner.instance.SpawnFX(destroyFX, transform.position, Quaternion.identity);
         DestroyEvent?.Invoke();
         StartCoroutine(DestroyCo());
     }

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 2
+  ownerNumber: 0
   radius: 5
   power: 10
   lit_icon: {fileID: -342939721763307076, guid: 219f90dc3420da4448196a005c5b32cb,
     type: 3}
-  particles: {fileID: 0}
 --- !u!114 &5890450435060833539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,7 +30,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40da9e74de437c84bb6fb9a2d67cc116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 
+--- !u!58 &5097384875888950662
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163964425059261609}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
 --- !u!1001 &8638283412213029330
 PrefabInstance:
   m_ObjectHideFlags: 0

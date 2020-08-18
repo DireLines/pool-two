@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shaker: {fileID: 0}
+  destroyFX: 4
 --- !u!1 &9121879924688559316
 GameObject:
   m_ObjectHideFlags: 0
