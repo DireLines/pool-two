@@ -32,12 +32,16 @@ public class Feature : MonoBehaviour
 
     public virtual void PostSetup()
     {
+        simulatorBody = transform.FindDeepChild("SimulatorBody");
+        if (simulatorBody) Destroy(simulatorBody.gameObject);
         rb = GetComponent<Rigidbody2D>();
         if (!rb) rb = gameObject.AddComponent<Rigidbody2D>();
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         body = transform.FindDeepChild("Body");
         sprite = transform.FindDeepChild("Sprite");
+        sprite.gameObject.SetActive(true);
+        body.gameObject.SetActive(true);
         destroyer = GetComponent<Destroyer>();
         TagHandler handler = GetComponent<TagHandler>();
         if (!GetComponent<TagHandler>())
@@ -54,9 +58,7 @@ public class Feature : MonoBehaviour
     {
         Vector2 pos = simulatorBody.position;
         transform.position = pos;
-        //sprite.position = simulatorBody.position;
         sprite.gameObject.SetActive(true);
-        //body.position = simulatorBody.position;
         body.gameObject.SetActive(true);
         Destroy(simulatorBody.gameObject);
     }

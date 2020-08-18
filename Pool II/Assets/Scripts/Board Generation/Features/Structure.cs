@@ -8,6 +8,8 @@ public class Structure : Feature
 
     public float shakeThreshold = 8f, destroyThreshold = 12f;
 
+    public GameObject smoothDebris;
+
     public override void PostSetup()
     {
         base.PostSetup();
@@ -36,6 +38,13 @@ public class Structure : Feature
     protected override void Destroy()
     {
         base.Destroy();
+        if (smoothDebris)
+        {
+            var feature = Instantiate(smoothDebris, transform.position, Quaternion.identity).GetComponent<Feature>();
+            feature.transform.position = transform.position;
+            feature.transform.parent = transform.parent;
+            feature.PostSetup();
+        }
         foreach (var c in colliders)
             c.enabled = false;
     }

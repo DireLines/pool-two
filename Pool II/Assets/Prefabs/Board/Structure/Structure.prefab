@@ -191,6 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeThreshold: 8
   destroyThreshold: 12
+  smoothDebris: {fileID: 562759275960157679, guid: 010f65b5d56841546b029d4b0334ca5c,
+    type: 3}
 --- !u!114 &2611695847383357515
 MonoBehaviour:
   m_ObjectHideFlags: 0
