@@ -7,6 +7,7 @@ public delegate void ApplyDel<T>(T obj);
 
 public class Affecter : MonoBehaviour
 {
+    public string affecterName = "Affecter";
     public AffecterSetting affecterSetting;
     public List<Transform> selected_targets = new List<Transform>();
     public string targetName;

@@ -13,12 +13,16 @@ public class Shaker : Affecter
     private void Awake()
     {
         radius = amount / 2f;
+    }
+
+    private void Start()
+    {
         List<Transform> targets = GetTargets<Transform>();
         foreach (var target in targets)
         {
             startingPos[target] = new Vector4(
-                target.localPosition.x-radius,
-                target.localPosition.y-radius,
+                target.localPosition.x - radius,
+                target.localPosition.y - radius,
                 Random.Range(0, 1f),
                 Random.Range(0, 1f));
         }
