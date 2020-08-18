@@ -31,10 +31,7 @@ public class Affecter : MonoBehaviour
                 break;
             case AffecterSetting.Selected:
                 foreach (var selected in selected_targets)
-                {
-                    print(selected);
                     targets.Add(selected.GetComponent<T>());
-                }
                 break;
             case AffecterSetting.None:
                 break;
