@@ -14,10 +14,8 @@ public class Tree : Feature
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        print("bite me retard");
         if (collision.GetComponent<BaseBall>())
         {
-            print("Mega bite me retard");
             shaker.Activate(0.2f);
         }
     }

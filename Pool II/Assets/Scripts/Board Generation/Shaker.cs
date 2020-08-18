@@ -16,7 +16,6 @@ public class Shaker : Affecter
         List<Transform> targets = GetTargets<Transform>();
         foreach (var target in targets)
         {
-            print(target);
             startingPos[target] = new Vector4(
                 target.localPosition.x-radius,
                 target.localPosition.y-radius,
