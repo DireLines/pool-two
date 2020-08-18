@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 9121879924563377696}
   - component: {fileID: 6654730084504928380}
   - component: {fileID: -7137311892372779382}
+  - component: {fileID: 1141600567340909244}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -357,8 +358,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e18a4140fe929e498d612efd3273662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  affecterName: 
   affecterSetting: 3
+  selected_targets: []
   targetName: Sprite
+  speed: 10
+  amount: 0.15
 --- !u!50 &-7137311892372779382
 Rigidbody2D:
   serializedVersion: 4
@@ -380,6 +385,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1141600567340909244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121879924563377697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a69d672d5436704ea4618d0846ebd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaker: {fileID: 0}
 --- !u!1 &9121879924688559316
 GameObject:
   m_ObjectHideFlags: 0
