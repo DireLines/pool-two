@@ -5,7 +5,7 @@ using UnityEngine;
 public class Smooth : Feature
 {
     Dictionary<Rigidbody2D, float> targetBodies = new Dictionary<Rigidbody2D, float>();
-    float dragReductionMultiplier = 0.25f, speedMultipler = 1.5f;
+    float dragReductionMultiplier = 0.25f, speedMultiplier = 0.1f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +15,7 @@ public class Smooth : Feature
         {
             targetBodies[r] = r.drag;
             r.drag *= dragReductionMultiplier;
-            r.velocity *= speedMultipler;
+            r.velocity *= speedMultiplier * Mathf.Log10(r.velocity.magnitude) + 1;
         }
     }
 

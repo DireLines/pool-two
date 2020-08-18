@@ -6,7 +6,7 @@ public class Structure : Feature
 {
     List<Collider2D> colliders = new List<Collider2D>();
 
-    public float shakeThreshold = 3f, destroyThreshold = 6f;
+    public float shakeThreshold = 4f, destroyThreshold = 7f;
 
     protected override void Start()
     {
@@ -19,10 +19,10 @@ public class Structure : Feature
         if (collision.collider.gameObject.HasTag(Tag.Ball))
         {
             float impulse = collision.contacts[0].normalImpulse;
-            if (impulse > shakeThreshold)
-                destroyer.shaker.Activate(1f);
-            else if (impulse > destroyThreshold)
+            if (impulse > destroyThreshold)
                 destroyer.Destroy();
+            else if (impulse > shakeThreshold)
+                destroyer.shaker.Activate(1f);
         }
     }
 
