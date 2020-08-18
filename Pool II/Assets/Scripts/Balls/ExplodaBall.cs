@@ -11,6 +11,9 @@ public class ExplodaBall : BaseBall
 
     bool fuse_lit = false;
 
+    [SerializeField]
+    Sprite lit_icon;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -29,6 +32,8 @@ public class ExplodaBall : BaseBall
     {
         base.OnHitByOtherBall();
         fuse_lit = true;
+
+        icon.sprite = lit_icon;
     }
 
     protected override void OnHitOtherBall()
