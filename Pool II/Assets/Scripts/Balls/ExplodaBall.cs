@@ -14,9 +14,6 @@ public class ExplodaBall : BaseBall
     [SerializeField]
     Sprite lit_icon;
 
-    [SerializeField]
-    ParticleSystem particles;
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,7 +30,6 @@ public class ExplodaBall : BaseBall
 
     protected override void OnHitByOtherBall()
     {
-        base.OnHitByOtherBall();
         fuse_lit = true;
 
         icon.sprite = lit_icon;
@@ -41,8 +37,6 @@ public class ExplodaBall : BaseBall
 
     protected override void OnHitOtherBall()
     {
-        base.OnHitOtherBall();
-
         if (fuse_lit)
         {
             Explode();
@@ -51,27 +45,19 @@ public class ExplodaBall : BaseBall
 
     void Explode()
     {
+        // TODO: destroy objects around you
+        // TODO: add sound effect to Big & Small Explosion prefabs
+
         Vector3 explosionPos = transform.position;
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
-        foreach (Collider hit in colliders)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
+        foreach (Collider2D hit in colliders)
         {
-            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 
             if (rb != null)
                 rb.AddExplosionForce(power, explosionPos, radius, 3.0F);
         }
-        StartCoroutine(Explosion());
-    }
-
-    protected IEnumerator Explosion()
-    {
-        particles.Play();
-
-        while (particles.isEmitting)
-        {
-            yield return null;
-        }
-
+        FX_Spawner.instance.SpawnFX(FXType.SmallExplosion, transform.position, Quaternion.identity, parent : transform);
         Destroy(gameObject);
     }
 

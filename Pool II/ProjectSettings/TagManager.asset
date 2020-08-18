@@ -18,7 +18,7 @@ TagManager:
   - SimulatorMixedFeature
   - SimulatorWall
   - Ball
-  - 
+  - OverlayFX
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Ball
     uniqueID: 3207441021
+    locked: 0
+  - name: OverlayFX
+    uniqueID: 702511429
     locked: 0
