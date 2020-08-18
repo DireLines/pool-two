@@ -16,13 +16,9 @@ public class CueBall : BaseBall {
 
     private bool primed;
     private bool ready;
-    private bool mouseOver;
 
     Vector2 direction = Vector2.zero;
-    RaycastHit2D hit;
 
-
-    // Start is called before the first frame update
     protected override void Start() {
         base.Start();
 
@@ -32,13 +28,13 @@ public class CueBall : BaseBall {
         line.useWorldSpace = true;
         primed = false;
         ready = false;
-        mouseOver = false;
     }
 
 
     private void OnMouseDown() {
         if (ownerNumber != TurnManager.instance.currentPlayer) return;
-        
+        if (PoolManager.instance.boardActive) return;
+
         primed = true;
     }
 
@@ -47,6 +43,7 @@ public class CueBall : BaseBall {
 
         if (ready) {
             rb.velocity = -direction * power;
+            PoolManager.instance.ActivateBoard();
         }
         primed = false;
         ready = false;
@@ -58,6 +55,7 @@ public class CueBall : BaseBall {
 
     private void OnMouseDrag() {
         if (ownerNumber != TurnManager.instance.currentPlayer) return;
+        if (PoolManager.instance.boardActive) return;
 
         direction = ((Vector2)cam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position);
         if (direction.magnitude > max_distance) direction = direction.normalized * max_distance;
@@ -67,16 +65,10 @@ public class CueBall : BaseBall {
     }
 
     private void OnMouseEnter() {
-        if (ownerNumber != TurnManager.instance.currentPlayer) return;
-
         if (primed) ready = false;
-        mouseOver = true;
     }
 
     private void OnMouseExit() {
-        if (ownerNumber != TurnManager.instance.currentPlayer) return;
-
         if (primed) ready = true;
-        mouseOver = false;
     }
 }

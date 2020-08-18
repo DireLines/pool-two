@@ -60,12 +60,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TurnManager.instance.NextTurn(TurnResult.Default);
-        }
+        //print($"Round: {currentRound} - BoardActive: {PoolManager.instance.boardActive}");    
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    List<Player> players = new List<Player>();
-    public int currentPlayer { get; private set; }
+    public List<Player> players = new List<Player>();
+    public int currentPlayer;// { get; private set; }
 
     public TurnEvent EndTurnEvent;
 
@@ -23,19 +23,40 @@ public class TurnManager : MonoBehaviour
         currentPlayer = Random.Range(0, players.Count);
     }
 
+    private void Start()
+    {
+        PoolManager.instance.OnBoardDeactivate += EndTurnDefault;
+    }
+
+    public void EndTurnDefault()
+    {
+        print("NEXT TURN!");
+        EndTurn(TurnResult.Default);
+    }
+
+    public void EndTurnScratch()
+    {
+        EndTurn(TurnResult.Scratch);
+    }
+
+    public void EndTurnBuild()
+    {
+        EndTurn(TurnResult.Build);
+    }
+
     public void NextTurn(TurnResult result)
     {
         if (players.Count == 0) return;
         players[currentPlayer].StartTurn(result);
-        currentPlayer = ++currentPlayer;
     }
 
     public void EndTurn(TurnResult result)
     {
+        currentPlayer++;
         if (currentPlayer >= players.Count)
         {
             GameManager.instance.currentRound++;
-            currentPlayer = currentPlayer % players.Count;
+            currentPlayer = 0;
         }
         players[currentPlayer].EndTurn();
         EndTurnEvent?.Invoke(result);

@@ -34,6 +34,13 @@ public class BaseBall : MonoBehaviour {
         TagHandler handler = GetComponent<TagHandler>();
         if (!handler) handler = gameObject.AddComponent<TagHandler>();
         handler.tags.Add(Tag.Ball);
+
+        PoolManager.instance.RegisterBall(this);
+    }
+
+    private void OnDestroy()
+    {
+        PoolManager.instance.UnregisterBall(this);
     }
 
     protected virtual void LateUpdate() {
