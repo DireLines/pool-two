@@ -15,8 +15,9 @@ MonoBehaviour:
   cost: 2
   radius: 5
   power: 10
-  lit_icon: {fileID: -1416402422317084636, guid: 4393a8a105b9f6b498acafa8e718de95,
+  lit_icon: {fileID: -342939721763307076, guid: 219f90dc3420da4448196a005c5b32cb,
     type: 3}
+  particles: {fileID: 0}
 --- !u!114 &5890450435060833539
 MonoBehaviour:
   m_ObjectHideFlags: 0
