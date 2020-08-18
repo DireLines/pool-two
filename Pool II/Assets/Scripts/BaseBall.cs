@@ -16,8 +16,8 @@ public class BaseBall : MonoBehaviour {
 
     float epsilon = 0.1f;
 
-    public virtual void OnHitByOtherBall() { }
-    public virtual void OnHitOtherBall() { }
+    protected virtual void OnHitByOtherBall() { }
+    protected virtual void OnHitOtherBall() { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
     public virtual void OnSink() { }
