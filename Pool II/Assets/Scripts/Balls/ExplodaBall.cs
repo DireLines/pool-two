@@ -52,7 +52,7 @@ public class ExplodaBall : BaseBall
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
         foreach (Collider2D hit in colliders)
         {
-            if (hit.gameObject.HasTag(Tag.Feature) && hit.GetComponentInParent<Destroyer>())
+            if (hit.transform.parent && hit.transform.parent.gameObject.HasTag(Tag.Feature) && hit.GetComponentInParent<Destroyer>())
                 hit.GetComponentInParent<Destroyer>().Destroy();
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 

@@ -47,6 +47,7 @@ public class Shaker : Affecter
         {
             foreach (var target in startingPos.Keys)
             {
+                if (!target) continue;
                 target.position = (Vector2)startingPos[target] + new Vector2(
                     Mathf.PerlinNoise(Time.time * speed, startingPos[target].z) * amount, 
                     Mathf.PerlinNoise(Time.time * speed, startingPos[target].w) * amount);
@@ -62,6 +63,7 @@ public class Shaker : Affecter
     {
         foreach (var target in startingPos.Keys)
         {
+            if (!target) continue;
             target.position = (Vector2)startingPos[target] + new Vector2(radius, radius);
         }
     }

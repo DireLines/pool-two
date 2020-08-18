@@ -33,7 +33,7 @@ new Dictionary<ParticleSystem, ParticleSystem.MinMaxCurve>();
     {
         if (collision.GetComponent<BaseBall>())
         {
-            if (shaker && shaker.shaking) return;
+            if (!shaker || shaker.shaking) return;
             shaker.Activate(0.2f);
             EmitLeaves(shakeLeafCount);
         }

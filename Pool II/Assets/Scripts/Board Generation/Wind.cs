@@ -44,9 +44,23 @@ public class Wind : MonoBehaviour
             featureMap[feature.transform] = feature;
             AddFeature(feature.transform);
         }
-        targets.Sort((p1, p2) => p1.position.x.CompareTo(p2.position.x));
-        foreach (Shaker shaker in GetComponents<Shaker>())
+        for (int i = targets.Count - 1; i > 0; i--)
+        {
+            var target = targets[i];
+            if (target == null) { targets.RemoveAt(i); continue; }
+        }
+        try
+        {
+            targets.Sort((p1, p2) => p1.position.x.CompareTo(p2.position.x));
+        }
+        catch { }
+        List<Shaker> shakers = new List<Shaker>(GetComponents<Shaker>());
+        for (int i = shakers.Count - 1; i > 0; i--)
+        {
+            var shaker = shakers[i];
+            if (shaker.selected_targets.Count == 0) { shakers.RemoveAt(i); Destroy(shaker); continue; }
             shaker.SetPositions();
+        }
     }
 
     void AddFeature(Transform t)
@@ -76,19 +90,22 @@ public class Wind : MonoBehaviour
     IEnumerator Blow()
     {
         blowing = true;
-        targets.Sort((p1, p2) => p1.position.x.CompareTo(p2.position.x));
-        for (int i = targets.Count-1; i > 0; i--)
+        if (targets.Count > 0)
         {
-            var target = targets[i];
-            if (!target.gameObject.activeInHierarchy) continue;
-            if (target == null) { targets.RemoveAt(i); continue; }
-            if (featureMap[target] is Tree)
+            targets.Sort((p1, p2) => p1.position.x.CompareTo(p2.position.x));
+            for (int i = targets.Count - 1; i > 0; i--)
             {
-                ((Tree)featureMap[target]).EmitLeaves(blowLeafCount, speed, blowSpeedX, blowSpeedY);
+                var target = targets[i];
+                if (target == null) { targets.RemoveAt(i); continue; }
+                if (!target.gameObject.activeInHierarchy) continue;
+                if (featureMap[target] is Tree)
+                {
+                    ((Tree)featureMap[target]).EmitLeaves(blowLeafCount, speed, blowSpeedX, blowSpeedY);
+                }
+                shakerMap[target].Activate(speed);
+                yield return (i > 0 && targets[i - 1]) ? new WaitForSeconds((Mathf.Abs(targets[i - 1].position.x - target.position.x) / speed))
+                    : new WaitForSeconds(speed);
             }
-            shakerMap[target].Activate(speed);
-            yield return (i > 0) ? new WaitForSeconds((Mathf.Abs(targets[i - 1].position.x - target.position.x) / speed)) 
-                : new WaitForSeconds(speed);
         }
         blowing = false;
     }

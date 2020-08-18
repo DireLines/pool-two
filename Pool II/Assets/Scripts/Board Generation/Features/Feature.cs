@@ -34,7 +34,8 @@ public class Feature : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         if (!rb) rb = gameObject.AddComponent<Rigidbody2D>();
-        rb.isKinematic = true;
+        rb.isKinematic = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         body = transform.FindDeepChild("Body");
         sprite = transform.FindDeepChild("Sprite");
         destroyer = GetComponent<Destroyer>();
