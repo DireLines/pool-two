@@ -197,7 +197,7 @@ public static class Rigidbody2DExtension
     {
         var dir = (body.transform.position - explosionPosition);
         float wearoff = 1 - (dir.magnitude / explosionRadius);
-        body.AddForce(dir.normalized * (wearoff <= 0f ? 0f : explosionForce) * wearoff);
+        body.AddForce(dir.normalized * (wearoff <= 0f ? 0f : explosionForce) * wearoff, ForceMode2D.Impulse);
     }
 
     public static void AddExplosionForce(this Rigidbody2D body, float explosionForce, Vector3 explosionPosition, float explosionRadius, float upliftModifier)
@@ -205,10 +205,10 @@ public static class Rigidbody2DExtension
         var dir = (body.transform.position - explosionPosition);
         float wearoff = 1 - (dir.magnitude / explosionRadius);
         Vector3 baseForce = dir.normalized * (wearoff <= 0f ? 0f : explosionForce) * wearoff;
-        body.AddForce(baseForce);
+        body.AddForce(baseForce, ForceMode2D.Impulse);
 
         float upliftWearoff = 1 - upliftModifier / explosionRadius;
         Vector3 upliftForce = Vector2.up * explosionForce * upliftWearoff;
-        body.AddForce(upliftForce);
+        body.AddForce(upliftForce, ForceMode2D.Impulse);
     }
 }
