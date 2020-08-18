@@ -1,8 +1,8 @@
 ﻿public class EightBall : BaseBall {
-    public override void OnHitByOtherBall() {
+    protected override void OnHitByOtherBall() {
         print("OnHitByOtherBall");
     }
-    public override void OnHitOtherBall() {
+    protected override void OnHitOtherBall() {
         print("OnHitOtherBall");
     }
     protected override void OnMoving() {
