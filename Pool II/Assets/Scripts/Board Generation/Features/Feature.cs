@@ -16,6 +16,11 @@ public class Feature : MonoBehaviour
     {
     }
 
+    public virtual void CloneSetup()
+    {
+
+    }
+
     public virtual void Setup()
     {
         foreach (var randomTile in GetComponentsInChildren<RandomTiles>()) randomTile.Setup();

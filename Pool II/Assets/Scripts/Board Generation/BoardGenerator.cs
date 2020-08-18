@@ -48,6 +48,7 @@ public class BoardGenerator : MonoBehaviour
         p.localScale = new Vector3(-p.localScale.x, -p.localScale.y, p.localScale.z);
         foreach (var feature in p.GetComponentsInChildren<Feature>())
         {
+            feature.CloneSetup();
             feature.transform.localScale = new Vector3(
                 feature.transform.localScale.x, 
                 -feature.transform.localScale.y, 
