@@ -18,8 +18,9 @@ public class BuildController : MonoBehaviour {
     }
 
     private void Update() {
-        if (heldObject) {
-            heldObject.transform.position = transform.position;//TODO: put object at mouse position
+        print(mouseWorldPos());
+        if (holdingSomething()) {
+            heldObject.transform.position = mouseWorldPos();
         }
     }
 
@@ -27,16 +28,26 @@ public class BuildController : MonoBehaviour {
     //pick up an item from the shop
     public void onClickShopButton(GameObject obj) {
         print("clicked on " + obj.name);
-        if (holdingSomething()) {
-            Destroy(heldObject);
-            heldObject = null;
-        } else {
-            Instantiate(obj, transform);
+        if (!holdingSomething()) {
+            hold(obj);
         }
     }
 
     public void onClick() {
+        bool holding = holdingSomething();
+        bool overUI = overShopUI();
+        if (holding) {
+            if (overUI) {
+                Destroy(heldObject);
+                heldObject = null;
+            } else {
+                placeHeldObject();
+            }
+        } else {
+            if (canPlace(mouseWorldPos())) {
 
+            }
+        }
     }
 
     private bool holdingSomething() {
@@ -45,12 +56,12 @@ public class BuildController : MonoBehaviour {
 
     //begin holding obj
     private void hold(GameObject obj) {
-
+        heldObject = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
     }
 
     //place currently held object
-    private void place() {
-
+    private void placeHeldObject() {
+        Vector3 spawnPos = mouseWorldPos();
     }
 
 
@@ -60,7 +71,13 @@ public class BuildController : MonoBehaviour {
     }
 
     //is screenPos currently on top of the shop UI?
-    private bool overShopUI(Vector2 screenPos) {
+    private bool overShopUI() {
+        Vector3 worldPoint = mouseWorldPos();
         return false;
+    }
+
+    private Vector3 mouseWorldPos() {
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return new Vector3(mouse.x, mouse.y, 0);
     }
 }
