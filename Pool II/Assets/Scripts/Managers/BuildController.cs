@@ -18,36 +18,45 @@ public class BuildController : MonoBehaviour {
     }
 
     private void Update() {
-        print(mouseWorldPos());
         if (holdingSomething()) {
             heldObject.transform.position = mouseWorldPos();
+        }
+
+        if (Input.GetMouseButtonDown(0)) {
+            onMouseDown();
+        }
+
+        if (Input.GetMouseButtonUp(0)) {
+            onMouseUp();
         }
     }
 
 
     //pick up an item from the shop
     public void onClickShopButton(GameObject obj) {
-        print("clicked on " + obj.name);
+        print("onClickShopButton(" + obj.name + ")");
         if (!holdingSomething()) {
             hold(obj);
         }
     }
 
-    public void onClick() {
+    void onMouseDown() {
+        print("onMouseDown" + mouseWorldPos());
         bool holding = holdingSomething();
         bool overUI = overShopUI();
         if (holding) {
             if (overUI) {
-                Destroy(heldObject);
-                heldObject = null;
-            } else {
+                dropHeldObject();
+            } else if (canPlace(mouseWorldPos())) {
                 placeHeldObject();
             }
-        } else {
-            if (canPlace(mouseWorldPos())) {
-
-            }
         }
+    }
+
+    void onMouseUp() {
+        print("onMouseUp" + mouseWorldPos());
+        bool holding = holdingSomething();
+        bool overUI = overShopUI();
     }
 
     private bool holdingSomething() {
@@ -59,9 +68,15 @@ public class BuildController : MonoBehaviour {
         heldObject = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
     }
 
+    private void dropHeldObject() {
+        Destroy(heldObject);
+        heldObject = null;
+    }
+
     //place currently held object
     private void placeHeldObject() {
-        Vector3 spawnPos = mouseWorldPos();
+        Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
+        dropHeldObject();
     }
 
 
@@ -80,4 +95,6 @@ public class BuildController : MonoBehaviour {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return new Vector3(mouse.x, mouse.y, 0);
     }
+
+
 }
