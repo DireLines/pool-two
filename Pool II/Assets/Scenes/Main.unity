@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 960384332, guid: 32130514ba21f324596b765dac19cf43, type: 3}
       propertyPath: blowSpeedY.m_ConstantMax
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1899127197580648224, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
