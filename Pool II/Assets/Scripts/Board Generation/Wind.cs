@@ -27,6 +27,7 @@ public class Wind : MonoBehaviour
     {
         Tree[] trees = FindObjectsOfType<Tree>();
         Grass[] grass = FindObjectsOfType<Grass>();
+        Structure[] structures = FindObjectsOfType<Structure>();
         foreach (var feature in trees)
         {
             if (!feature.gameObject.HasTag(Tag.Greenery)) continue;
@@ -43,6 +44,13 @@ public class Wind : MonoBehaviour
             if (featureMap.ContainsValue(feature)) continue;
             featureMap[feature.transform] = feature;
             AddFeature(feature.transform);
+        }
+        foreach (var feature in structures)
+        {
+            if (!feature.gameObject.HasTag(Tag.Structure)) continue;
+            if (featureMap.ContainsValue(feature)) continue;
+            featureMap[feature.transform] = feature;
+            targets.Add(feature.transform);
         }
         for (int i = targets.Count - 1; i > 0; i--)
         {
@@ -100,9 +108,14 @@ public class Wind : MonoBehaviour
                 if (!target.gameObject.activeInHierarchy) continue;
                 if (featureMap[target] is Tree)
                 {
-                    ((Tree)featureMap[target]).EmitLeaves(blowLeafCount, speed, blowSpeedX, blowSpeedY);
+                    ((Tree)featureMap[target]).blower.Blow(blowLeafCount, speed, blowSpeedX, blowSpeedY);
                 }
-                shakerMap[target].Activate(speed);
+                if (featureMap[target] is Structure)
+                {
+                    ((Structure)featureMap[target]).blower.Blow(0, speed, blowSpeedX, blowSpeedY);
+                }
+                if (shakerMap.ContainsKey(target))
+                    shakerMap[target].Activate(speed);
                 yield return (i > 0 && targets[i - 1]) ? new WaitForSeconds((Mathf.Abs(targets[i - 1].position.x - target.position.x) / speed))
                     : new WaitForSeconds(speed);
             }

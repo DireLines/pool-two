@@ -10,9 +10,14 @@ public class Structure : Feature
 
     public GameObject smoothDebris;
 
+    [HideInInspector]
+    public Blower blower;
+
     public override void PostSetup()
     {
         base.PostSetup();
+        blower = GetComponent<Blower>();
+        gameObject.GetComponent<TagHandler>().tags.Add(Tag.Structure);
         colliders = new List<Collider2D>();
         foreach (var c in GetComponentsInChildren<Collider2D>())
         {

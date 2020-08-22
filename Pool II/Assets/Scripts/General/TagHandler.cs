@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Tag { None, Ball, Feature, Greenery };
+public enum Tag { None, Ball, Feature, Greenery, Structure };
 
 public class TagHandler : MonoBehaviour
 {
@@ -17,18 +17,20 @@ public static class TagExtension
         return (handler) ? handler.tags.Contains(tag) : false;
     }
 
-    public static bool HasTags(this GameObject g, List<Tag> tags)
+    public static bool HasTags(this GameObject g, params Tag[] tags)
     {
         TagHandler handler = g.GetComponent<TagHandler>();
+        if (!handler) return false;
         foreach (Tag tag in tags)
             if (!handler.tags.Contains(tag))
                 return false;
         return true;
     }
 
-    public static bool HasAnyTag(this GameObject g, List<Tag> tags)
+    public static bool HasAnyTag(this GameObject g, params Tag[] tags)
     {
         TagHandler handler = g.GetComponent<TagHandler>();
+        if (!handler) return false;
         foreach (Tag tag in tags)
             if (handler.tags.Contains(tag))
                 return true;
