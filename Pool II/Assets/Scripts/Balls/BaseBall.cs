@@ -20,6 +20,8 @@ public class BaseBall : MonoBehaviour {
 
     float epsilon = 0.1f;
 
+    float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
+
     protected virtual void OnHitByOtherBall() { }
     protected virtual void OnHitOtherBall() { }
     protected virtual void OnHitNotBall() { }
@@ -29,6 +31,7 @@ public class BaseBall : MonoBehaviour {
 
     protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();
+        originalDrag = rb.drag;
 
         icon = transform.Find("Icon")?.GetComponent<SpriteRenderer>();
         inside = transform.Find("Inside")?.GetComponent<SpriteRenderer>();
@@ -53,8 +56,15 @@ public class BaseBall : MonoBehaviour {
     protected virtual void Update() {
         if (rb.velocity.magnitude > epsilon) {
             moving = true;
+            timeMoving += Time.deltaTime;
+            if (timeMoving > dragThreshold)
+            {
+                rb.drag += dragRate;
+            }
             OnMoving();
         } else if (moving) {
+            timeMoving = 0;
+            rb.drag = originalDrag;
             rb.velocity = Vector2.zero;
             moving = false;
             struckByBall = false;
