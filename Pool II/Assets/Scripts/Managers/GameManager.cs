@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         // give a player another build phase turn if their balls are all gone
         int winner_num = ScoreManager.instance.CheckScore();
 
-        if (winner_num != 0)
+        if (winner_num == 0 || winner_num == 1)
         {
             WinGame(winner_num);
         }

@@ -54,6 +54,10 @@ public class BaseBall : MonoBehaviour {
 
     private void OnDestroy() {
         PoolManager.instance.UnregisterBall(this);
+
+        Player owner = TurnManager.instance.players[ownerNumber];
+
+        owner.BallLost();
     }
 
     protected virtual void LateUpdate() {

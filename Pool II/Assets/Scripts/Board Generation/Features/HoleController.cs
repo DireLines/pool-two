@@ -76,8 +76,8 @@ public class HoleController : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         rb.drag = initialDrag;
-        rb.gameObject.SetActive(false);
         rb.transform.localScale = scale;
+        Destroy(rb.gameObject);
         r.color = color;
     }
 }
