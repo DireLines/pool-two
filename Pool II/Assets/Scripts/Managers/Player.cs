@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public static int playerCount = 0;
     public int playerNum { get; private set; }
 
-    int ball_count;
+    int ball_count = 0;
 
     public void StartTurn(TurnResult result)
     {
