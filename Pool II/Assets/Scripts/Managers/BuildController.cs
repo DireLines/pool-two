@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class BuildController : MonoBehaviour {
     [HideInInspector]
     public GameObject heldObject;
+    private GameObject preview;
     private int heldObjectPrice;
 
     public EconomyManager EM;
@@ -27,7 +28,7 @@ public class BuildController : MonoBehaviour {
 
     private void Update() {
         if (holdingSomething()) {
-            heldObject.transform.position = mouseWorldPos();
+            preview.transform.position = mouseWorldPos();
         }
 
         if (Input.GetMouseButtonDown(0)) {
@@ -52,8 +53,12 @@ public class BuildController : MonoBehaviour {
 
     void onMouseDown() {
         if (holdingSomething()) {
-            if (!overUI() && canPlace(mouseWorldPos())) {
-                placeHeldObject();
+            if (!overUI()) {
+                if (canPlace(mouseWorldPos())) {
+                    placeHeldObject();
+                } else {
+                    oopsSFX.Play();
+                }
             }
         }
     }
@@ -64,20 +69,28 @@ public class BuildController : MonoBehaviour {
 
     //begin holding obj
     private void hold(GameObject obj) {
-        //TODO: make scriptless preview of ball instead of actual ball
+        preview = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
+        UIUtils.DisableBall(preview);
+        UIUtils.RepositionInSortingOrder(preview, 100);
         heldObject = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
+        heldObject.SetActive(false);
+    }
+
+    private void stopHolding() {
+        Destroy(preview);
+        Destroy(heldObject);
+        heldObject = null;
     }
 
     private void dropHeldObject() {
         EM.Refund(heldObjectPrice);
-        Destroy(heldObject);
-        heldObject = null;
+        stopHolding();
     }
 
     private void placeHeldObject() {
-        Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
-        Destroy(heldObject);
-        heldObject = null;
+        GameObject newObj = Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
+        newObj.SetActive(true);
+        stopHolding();
     }
 
 
@@ -96,6 +109,4 @@ public class BuildController : MonoBehaviour {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return new Vector3(mouse.x, mouse.y, 0);
     }
-
-
 }

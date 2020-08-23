@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         currentRound = 0;
         TurnManager.instance.EndTurnEvent += OnEndTurn;
         TurnManager.instance.NextTurn(TurnResult.Build);
+        ScoreManager.instance.Setup();
     }
 
     void OnEndTurn(TurnResult result)
