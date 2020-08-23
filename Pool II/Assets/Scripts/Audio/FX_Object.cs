@@ -11,15 +11,11 @@ public class FX_Object : MonoBehaviour
     public float vol = -1f;
     public bool live_forever;
     public float lifetime = 0;
-    Transform parent;
 
     public AudioMixerGroup mixerGroup;
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent;
-        transform.SetParent(null);
-        DontDestroyOnLoad(gameObject);
         LookAtConstraint lac = GetComponent<LookAtConstraint>();
         if (lac)
         {

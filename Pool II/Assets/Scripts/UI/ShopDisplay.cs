@@ -19,7 +19,7 @@ public class ShopDisplay : MonoBehaviour {
     GameObject FillUIForShopItem(ShopItem item) {
         GameObject itemUI = Instantiate(ShopItemUI, transform.FindDeepChild("Content"));
         itemUI.GetComponent<Button>().onClick.AddListener(delegate {
-            BuildController.instance.onClickShopButton(item.prefab);
+            BuildController.instance.onClickShopButton(item);
         });
         itemUI.GetComponent<Image>().sprite = item.icon;
         itemUI.transform.Find("ItemName").GetComponent<TextMeshProUGUI>().text = item.name.ToUpper();
