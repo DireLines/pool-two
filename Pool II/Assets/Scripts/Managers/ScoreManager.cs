@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     int[] scoreMap = { 0, 0 };
     public List<GameObject> playerBoards;
 
+    public GameEvent ScratchEvent;
+
     public static ScoreManager instance;
     private void Awake()
     {
@@ -32,16 +34,24 @@ public class ScoreManager : MonoBehaviour
         {
             pocket.ownerNumber = 1;
             pocket.OnScoreEvent += delegate { UpdateScore(1, 1); };
+            pocket.OnScratchEvent += Scratch;
         }
         foreach (var pocket in GameObject.Find("Player2Board").GetComponentsInChildren<HoleController>())
         {
             pocket.ownerNumber = 2;
             pocket.OnScoreEvent += delegate { UpdateScore(2, 1); };
+            pocket.OnScratchEvent += Scratch;
         }
     }
     void UpdateScore(int playerNumber, int score)
     {
+        ScoreEvent?.Invoke();
         ScoreUIManager.instance.SetScore(playerNumber - 1, score);
         scoreMap[playerNumber-1] += score;
+    }
+
+    void Scratch()
+    {
+        ScratchEvent?.Invoke();
     }
 }
