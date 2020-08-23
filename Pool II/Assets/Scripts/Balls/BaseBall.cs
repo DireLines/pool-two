@@ -22,7 +22,7 @@ public class BaseBall : MonoBehaviour {
 
     float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
 
-    float wallFXThreshold = 5f; 
+    float wallFXThreshold = 10f, wallFXMin = 4f; 
 
     protected Animator anim;
 
@@ -95,11 +95,10 @@ public class BaseBall : MonoBehaviour {
                 OnHitOtherBall(other, collision);
             }
         } else {
-            if (other.CompareTag("Wall") && collision.contacts[0].normalImpulse > wallFXThreshold)
+            if (other.CompareTag("Wall") && collision.contacts[0].normalImpulse > wallFXMin)
             {
                 var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, wallFXThreshold) / wallFXThreshold;
-                print(vol);
-                print(FX_Spawner.instance.SpawnFX(FXType.BallToWall, transform.position, Quaternion.identity));
+                FX_Spawner.instance.SpawnFX(FXType.BallToWall, transform.position, Quaternion.identity, vol:vol);
             }
             OnHitNotBall(other, collision);
         }
