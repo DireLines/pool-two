@@ -62,7 +62,7 @@ public class ExplodaBall : BaseBall
             if (rb != null)
                 rb.AddExplosionForce(power, explosionPos, radius, 3.0F);
         }
-        FX_Spawner.instance.SpawnFX(FXType.SmallExplosion, transform.position, Quaternion.identity, parent : transform);
+        FX_Spawner.instance.SpawnFX(FXType.SmallExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

@@ -10,6 +10,7 @@ public enum FXType
     BigExplosion,
     StructureDestroy,
     TreeDestroy,
+    SlimePop,
 }
 
 public class FX_Spawner : MonoBehaviour

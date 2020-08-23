@@ -5,7 +5,10 @@ using UnityEngine;
 public class SlimeBall : BaseBall {
 
     [SerializeField]
-    int blob_count = 5;
+    int blob_count;
+
+    [SerializeField]
+    float force;
 
     float radius;
 
@@ -39,11 +42,14 @@ public class SlimeBall : BaseBall {
     {
         for (int i=0; i<blob_count; i++)
         {
-            Vector3 relative_point = (Random.insideUnitCircle * radius);
-            Vector3 world_point = transform.position + relative_point;
+            GameObject blobbo = Instantiate(slime_blob, transform.position, Quaternion.identity);
 
-            Instantiate(slime_blob, world_point, Quaternion.identity);
+            Rigidbody2D blobbo_rb = blobbo.GetComponent<Rigidbody2D>();
+
+            Vector2 force_vector = (Random.insideUnitCircle * radius).normalized * force;
+            blobbo_rb.AddForce(force_vector, ForceMode2D.Impulse);
         }
+        FX_Spawner.instance.SpawnFX(FXType.SlimePop, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
