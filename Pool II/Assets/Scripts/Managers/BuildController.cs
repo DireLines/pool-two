@@ -7,6 +7,8 @@ public class BuildController : MonoBehaviour {
     [HideInInspector]
     public GameObject heldObject;
 
+    public List<GameObject> placedThisTurn;
+
     //singleton pattern
     public static BuildController instance;
     private void Awake() {
@@ -16,6 +18,7 @@ public class BuildController : MonoBehaviour {
         }
 
         instance = this;
+        placedThisTurn = new List<GameObject>();
     }
 
     private void Update() {
@@ -31,7 +34,6 @@ public class BuildController : MonoBehaviour {
 
     //pick up an item from the shop
     public void onClickShopButton(GameObject obj) {
-        print("onClickShopButton(" + obj.name + ")");
         if (holdingSomething()) {
             dropHeldObject();
         } else {
@@ -40,7 +42,6 @@ public class BuildController : MonoBehaviour {
     }
 
     void onMouseDown() {
-        print("onMouseDown" + mouseWorldPos());
         if (holdingSomething()) {
             if (!overUI() && canPlace(mouseWorldPos())) {
                 placeHeldObject();
@@ -56,6 +57,7 @@ public class BuildController : MonoBehaviour {
 
     //begin holding obj
     private void hold(GameObject obj) {
+        //TODO: make scriptless preview of ball instead of actual ball
         heldObject = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
     }
 
@@ -67,8 +69,8 @@ public class BuildController : MonoBehaviour {
 
     //place currently held object
     private void placeHeldObject() {
-        //TODO try to purchase from shop
-        Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
+        GameObject newObj = Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
+        placedThisTurn.Add(newObj);
         dropHeldObject();
     }
 
