@@ -27,33 +27,37 @@ public class CueBall : BaseBall {
         ready = false;
     }
 
+    private bool CheckClickable()
+    {
+        if (GameManager.instance.debug) return true;
+        if (TurnManager.instance.currentPlayer == 0)
+        {
+            if (TableZoneManager.instance.player1Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0)
+            {
+                if (!(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
+                    TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return false;
+            }
+        }
+        else if (TurnManager.instance.currentPlayer == 1)
+        {
+            if (TableZoneManager.instance.player2Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0)
+            {
+                if (!(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
+                    TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return false;
+            }
+        }
+        return true;
+    }
+
 
     private void OnMouseDown() {
-        if (!GameManager.instance.debug)
-        {
-            if (TurnManager.instance.currentPlayer == 0 &&
-            !(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
-             TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
-            if (TurnManager.instance.currentPlayer == 1 &&
-                !(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
-                 TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
-            if (PoolManager.instance.boardActive) return;
-        }
+        if (!CheckClickable()) return;
 
         primed = true;
     }
 
     private void OnMouseUp() {
-        if (!GameManager.instance.debug)
-        {
-            if (TurnManager.instance.currentPlayer == 0 &&
-            !(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
-             TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
-            if (TurnManager.instance.currentPlayer == 1 &&
-                !(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
-                 TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
-            if (PoolManager.instance.boardActive) return;
-        }
+        if (!CheckClickable()) return;
 
         if (ready) {
             rb.velocity = -direction * power;
@@ -68,16 +72,7 @@ public class CueBall : BaseBall {
     }
 
     private void OnMouseDrag() {
-        if (!GameManager.instance.debug)
-        {
-            if (TurnManager.instance.currentPlayer == 0 &&
-            !(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
-             TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
-            if (TurnManager.instance.currentPlayer == 1 &&
-                !(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
-                 TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
-            if (PoolManager.instance.boardActive) return;
-        }
+        if (!CheckClickable()) return;
 
         direction = ((Vector2)cam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position);
         if (direction.magnitude > max_distance) direction = direction.normalized * max_distance;

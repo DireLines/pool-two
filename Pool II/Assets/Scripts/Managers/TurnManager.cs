@@ -66,14 +66,16 @@ public class TurnManager : MonoBehaviour
             currentPlayer = 0;
         }
 
-        if (currentPlayer == 0 && TableZoneManager.instance.player1Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
-        {
-            currentPlayer = 1;
-        }
-        else if (currentPlayer == 1 && TableZoneManager.instance.player2Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
-        {
-            currentPlayer = 0;
-        }
+        print($"Player {currentPlayer + 1}'s turn!");
+
+        //if (currentPlayer == 0 && TableZoneManager.instance.player1Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
+        //{
+        //    currentPlayer = 1;
+        //}
+        //else if (currentPlayer == 1 && TableZoneManager.instance.player2Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
+        //{
+        //    currentPlayer = 0;
+        //}
 
         players[currentPlayer].EndTurn();
         EndTurnEvent?.Invoke(result);
