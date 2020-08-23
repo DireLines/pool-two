@@ -27,6 +27,7 @@ public class TurnManager : MonoBehaviour
         instance = this;
         players = new List<Player>(FindObjectsOfType<Player>());
         currentPlayer = Random.Range(0, players.Count);
+        ScoreUIManager.instance.SetActiveCursor(currentPlayer);
     }
 
     private void Start()
@@ -67,6 +68,7 @@ public class TurnManager : MonoBehaviour
         }
 
         print($"Player {currentPlayer + 1}'s turn!");
+        ScoreUIManager.instance.SetActiveCursor(currentPlayer);
 
         //if (currentPlayer == 0 && TableZoneManager.instance.player1Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
         //{
