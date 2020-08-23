@@ -27,10 +27,8 @@ public class StickyBall : BaseBall
     {
         if (!targets.Contains(r))
         {
-            print("goo goo");
             targets.Add(r);
             Sticker sticker = Instantiate(joint, transform).GetComponent<Sticker>();
-            print(sticker);
             sticker.AddTarget(r);
             sticker.OnBreakEvent += Deregister;
         }
