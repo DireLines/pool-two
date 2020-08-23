@@ -63,15 +63,17 @@ public class BaseBall : MonoBehaviour {
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.HasTag(Tag.Ball) && !struckByBall) {
+        GameObject other = collision.gameObject;
+        // TODO(Simon): This logic might be wrong, consider the blocking tag
+        if (other.HasTag(Tag.Ball) && !other.HasTag(Tag.Blocking)) {
             if (!struckByBall) {
                 struckByBall = true;
-                OnHitByOtherBall(collision.gameObject);
+                OnHitByOtherBall(other);
             } else {
-                OnHitOtherBall(collision.gameObject);
+                OnHitOtherBall(other);
             }
         } else {
-            OnHitNotBall(collision.gameObject);
+            OnHitNotBall(other);
         }
     }
 

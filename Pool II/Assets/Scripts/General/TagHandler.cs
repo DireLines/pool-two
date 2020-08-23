@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Tag { None, Ball, Feature, Greenery, Structure };
+public enum Tag { None, Ball, Blocking, Feature, Greenery, Structure };
 
 public class TagHandler : MonoBehaviour
 {
+    [SerializeField]
+    List<Tag> inspector_tags = new List<Tag>();
     public HashSet<Tag> tags = new HashSet<Tag>();
+
+    private void Awake()
+    {
+        tags.UnionWith(inspector_tags);
+    }
 }
 
 public static class TagExtension
