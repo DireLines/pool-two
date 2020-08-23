@@ -2085,6 +2085,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 67e232339732d8b4daf1456a68d907c4, type: 2}
+    - target: {fileID: 4443771231386895032, guid: 32130514ba21f324596b765dac19cf43,
+        type: 3}
+      propertyPath: m_Name
+      value: Player1Board
+      objectReference: {fileID: 0}
     - target: {fileID: 4443771231879591558, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: m_Offset.x

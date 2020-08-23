@@ -37,6 +37,6 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateScore(int playerNumber, int score)
     {
-
+        scoreMap[playerNumber] += score;
     }
 }

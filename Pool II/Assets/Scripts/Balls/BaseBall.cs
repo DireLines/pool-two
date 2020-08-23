@@ -20,9 +20,9 @@ public class BaseBall : MonoBehaviour {
 
     float epsilon = 0.1f;
 
-    protected virtual void OnHitByOtherBall() { }
-    protected virtual void OnHitOtherBall() { }
-    protected virtual void OnHitNotBall() { }
+    protected virtual void OnHitByOtherBall(GameObject other) { }
+    protected virtual void OnHitOtherBall(GameObject other) { }
+    protected virtual void OnHitNotBall(GameObject other) { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
     public virtual void OnSink() { }
@@ -66,12 +66,12 @@ public class BaseBall : MonoBehaviour {
         if (collision.gameObject.HasTag(Tag.Ball) && !struckByBall) {
             if (!struckByBall) {
                 struckByBall = true;
-                OnHitByOtherBall();
+                OnHitByOtherBall(collision.gameObject);
             } else {
-                OnHitOtherBall();
+                OnHitOtherBall(collision.gameObject);
             }
         } else {
-            OnHitNotBall();
+            OnHitNotBall(collision.gameObject);
         }
     }
 
