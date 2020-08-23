@@ -1,8 +1,12 @@
-﻿public class EightBall : BaseBall {
-    protected override void OnHitByOtherBall() {
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EightBall : BaseBall {
+    protected override void OnHitByOtherBall(GameObject other) {
         print("OnHitByOtherBall");
     }
-    protected override void OnHitOtherBall() {
+    protected override void OnHitOtherBall(GameObject other) {
         print("OnHitOtherBall");
     }
     protected override void OnMoving() {
