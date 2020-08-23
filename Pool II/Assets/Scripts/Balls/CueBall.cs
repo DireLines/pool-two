@@ -89,4 +89,18 @@ public class CueBall : BaseBall {
     private void OnMouseExit() {
         if (primed) ready = true;
     }
+
+    protected override void OnHitByOtherBall(GameObject other) {
+        var myEmoter = GetComponent<EmotionListener>();
+        var cue = other.GetComponent<CueBall>();
+
+        // If both are Cueballs, I get mad, they get happy
+        if(cue != null) {
+            var emoter = GetComponent<EmotionListener>();
+            emoter.OnHappy(cue.ownerNumber);
+
+        }
+
+        myEmoter.OnMad();
+    }
 }

@@ -7,9 +7,7 @@ public class ScoreManager : MonoBehaviour
     // player number mapped to score
     int[] scoreMap = { 0, 0 };
     public List<GameObject> playerBoards;
-    public static event EmotiveEvent OnHappy;
-
-    public GameEvent ScratchEvent, ScoreEvent;
+    public static event EmotiveEvent OnHappy, OnSadEvent;
 
     public static ScoreManager instance;
     private void Awake()
@@ -35,13 +33,13 @@ public class ScoreManager : MonoBehaviour
         {
             pocket.ownerNumber = 1;
             pocket.OnScoreEvent += delegate { UpdateScore(1, 1); };
-            pocket.OnScratchEvent += Scratch;
+            pocket.OnScratchEvent += delegate { Scratch(1); };
         }
         foreach (var pocket in GameObject.Find("Player2Board").GetComponentsInChildren<HoleController>())
         {
             pocket.ownerNumber = 2;
             pocket.OnScoreEvent += delegate { UpdateScore(2, 1); };
-            pocket.OnScratchEvent += Scratch;
+            pocket.OnScratchEvent += delegate { Scratch(2); };
         }
     }
     void UpdateScore(int playerNumber, int score)
@@ -52,8 +50,8 @@ public class ScoreManager : MonoBehaviour
         scoreMap[playerNumber-1] += score;
     }
 
-    void Scratch()
+    void Scratch(int playerNumber)
     {
-        ScratchEvent?.Invoke();
+        OnSadEvent?.Invoke(playerNumber);
     }
 }

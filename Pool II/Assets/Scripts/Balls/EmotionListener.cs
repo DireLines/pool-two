@@ -22,6 +22,7 @@ public class EmotionListener : MonoBehaviour {
     private void Start() {
         anim = GetComponentInChildren<Animator>();
         ScoreManager.OnHappy += OnHappy;
+        ScoreManager.OnSadEvent += OnSad;
         var ball = GetComponent<BaseBall>();
         this.playerNyum = ball.ownerNumber;
     }
@@ -31,8 +32,7 @@ public class EmotionListener : MonoBehaviour {
         anim.SetInteger("emotion", (int)Emotion.Happy);
     }
 
-    public void OnMad(int playerNum) {
-        if (playerNum != this.playerNyum) return;
+    public void OnMad() {
         anim.SetInteger("emotion", (int)Emotion.Mad);
     }
 
