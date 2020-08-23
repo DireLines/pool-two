@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     // player number mapped to score
-    int[] scoreMap = { 0, 0 };
+    Dictionary<int, int> scoreMap = new Dictionary<int, int>() { {1,0}, {2,0} };
     public List<GameObject> playerBoards;
     public static event EmotiveEvent OnHappy, OnSadEvent;
 
@@ -21,14 +21,10 @@ public class ScoreManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    public void Setup()
     {
         UpdateScore(1, 0);
         UpdateScore(2, 0);
-    }
-
-    public void Setup()
-    {
         foreach (var pocket in GameObject.Find("Player1Board").GetComponentsInChildren<HoleController>())
         {
             pocket.ownerNumber = 1;
@@ -44,10 +40,10 @@ public class ScoreManager : MonoBehaviour
     }
     void UpdateScore(int playerNumber, int score)
     {
+        
         scoreMap[playerNumber] += score;
         OnHappy?.Invoke(playerNumber);
         ScoreUIManager.instance.SetScore(playerNumber - 1, score);
-        scoreMap[playerNumber-1] += score;
     }
 
     void Scratch(int playerNumber)

@@ -83,11 +83,19 @@ public class CueBall : BaseBall {
     }
 
     private void OnMouseEnter() {
-        if (primed) ready = false;
+        anim.SetBool("Blink", true);
+        if (primed)
+        {
+            ready = false;
+        }
     }
 
     private void OnMouseExit() {
-        if (primed) ready = true;
+        anim.SetBool("Blink", false);
+        if (primed) 
+        {
+            ready = true; 
+        }
     }
 
     protected override void OnHitByOtherBall(GameObject other) {

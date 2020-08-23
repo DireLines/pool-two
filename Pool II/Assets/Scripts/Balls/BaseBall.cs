@@ -22,6 +22,8 @@ public class BaseBall : MonoBehaviour {
 
     float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
 
+    protected Animator anim;
+
     protected virtual void OnHitByOtherBall(GameObject other) { }
     protected virtual void OnHitOtherBall(GameObject other) { }
     protected virtual void OnHitNotBall(GameObject other) { }
@@ -33,6 +35,7 @@ public class BaseBall : MonoBehaviour {
     }
 
     protected virtual void Start() {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         originalDrag = rb.drag;
 
