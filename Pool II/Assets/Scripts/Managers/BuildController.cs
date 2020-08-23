@@ -70,7 +70,8 @@ public class BuildController : MonoBehaviour {
     //begin holding obj
     private void hold(GameObject obj) {
         preview = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
-        DisableBall(preview);
+        UIUtils.DisableBall(preview);
+        UIUtils.RepositionInSortingOrder(preview, 100);
         heldObject = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
         heldObject.SetActive(false);
     }
@@ -107,46 +108,5 @@ public class BuildController : MonoBehaviour {
     private Vector3 mouseWorldPos() {
         Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return new Vector3(mouse.x, mouse.y, 0);
-    }
-
-
-    // stolen/adapted from Keywords
-    public void DisableBall(GameObject obj) {
-        if (obj.GetComponents<Collider2D>() != null) {
-            foreach (Collider2D col in obj.GetComponents<Collider2D>()) {
-                col.enabled = false;
-            }
-        }
-        if (obj.GetComponent<Rigidbody2D>()) {
-            obj.GetComponent<Rigidbody2D>().simulated = false;
-        }
-        if (obj.GetComponents<BaseBall>() != null) {
-            foreach (BaseBall bol in obj.GetComponents<BaseBall>()) {
-                bol.enabled = false;
-            }
-        }
-        //add other scripts here if needed
-        foreach (Transform child in obj.transform) {
-            DisableBall(child.gameObject);
-        }
-    }
-    public void EnableBall(GameObject obj) {
-        if (obj.GetComponents<Collider2D>() != null) {
-            foreach (Collider2D col in obj.GetComponents<Collider2D>()) {
-                col.enabled = true;
-            }
-        }
-        if (obj.GetComponent<Rigidbody2D>() != null) {
-            obj.GetComponent<Rigidbody2D>().simulated = true;
-        }
-        if (obj.GetComponents<BaseBall>() != null) {
-            foreach (BaseBall bol in obj.GetComponents<BaseBall>()) {
-                bol.enabled = true;
-            }
-        }
-        //add other scripts here if needed
-        foreach (Transform child in obj.transform) {
-            EnableBall(child.gameObject);
-        }
     }
 }
