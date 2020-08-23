@@ -16,8 +16,6 @@ public class CueBall : BaseBall {
 
     Vector2 direction = Vector2.zero;
 
-    List<Rect> playableAreas;
-
     protected override void Start() {
         base.Start();
 
@@ -31,14 +29,31 @@ public class CueBall : BaseBall {
 
 
     private void OnMouseDown() {
-        if (ownerNumber != TurnManager.instance.currentPlayer) return;
-        if (PoolManager.instance.boardActive) return;
+        if (!GameManager.instance.debug)
+        {
+            if (TurnManager.instance.currentPlayer == 0 &&
+            !(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
+             TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
+            if (TurnManager.instance.currentPlayer == 1 &&
+                !(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
+                 TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
+            if (PoolManager.instance.boardActive) return;
+        }
 
         primed = true;
     }
 
     private void OnMouseUp() {
-        if (ownerNumber != TurnManager.instance.currentPlayer) return;
+        if (!GameManager.instance.debug)
+        {
+            if (TurnManager.instance.currentPlayer == 0 &&
+            !(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
+             TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
+            if (TurnManager.instance.currentPlayer == 1 &&
+                !(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
+                 TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
+            if (PoolManager.instance.boardActive) return;
+        }
 
         if (ready) {
             rb.velocity = -direction * power;
@@ -53,8 +68,16 @@ public class CueBall : BaseBall {
     }
 
     private void OnMouseDrag() {
-        if (ownerNumber != TurnManager.instance.currentPlayer) return;
-        if (PoolManager.instance.boardActive) return;
+        if (!GameManager.instance.debug)
+        {
+            if (TurnManager.instance.currentPlayer == 0 &&
+            !(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
+             TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
+            if (TurnManager.instance.currentPlayer == 1 &&
+                !(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
+                 TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return;
+            if (PoolManager.instance.boardActive) return;
+        }
 
         direction = ((Vector2)cam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position);
         if (direction.magnitude > max_distance) direction = direction.normalized * max_distance;
