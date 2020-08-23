@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildController : MonoBehaviour {
     [HideInInspector]
@@ -31,21 +32,21 @@ public class BuildController : MonoBehaviour {
     //pick up an item from the shop
     public void onClickShopButton(GameObject obj) {
         print("onClickShopButton(" + obj.name + ")");
-        if (!holdingSomething()) {
+        if (holdingSomething()) {
+            dropHeldObject();
+        } else {
             hold(obj);
         }
     }
 
     void onMouseDown() {
         print("onMouseDown" + mouseWorldPos());
-        bool holding = holdingSomething();
-        bool overUI = overShopUI();
-        if (holding) {
-            if (overUI) {
-                dropHeldObject();
-            } else if (canPlace(mouseWorldPos())) {
+        if (holdingSomething()) {
+            if (!overUI() && canPlace(mouseWorldPos())) {
                 placeHeldObject();
             }
+        } else {
+            //TODO: click and drag existing balls if you placed them this turn
         }
     }
 
@@ -59,26 +60,28 @@ public class BuildController : MonoBehaviour {
     }
 
     private void dropHeldObject() {
+        //TODO: give money back if you are deleting a ball from the set of current balls
         Destroy(heldObject);
         heldObject = null;
     }
 
     //place currently held object
     private void placeHeldObject() {
+        //TODO try to purchase from shop
         Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
         dropHeldObject();
     }
 
 
     //can I place this object at this position on screen?
+    //TODO detect if object would collide with other balls
     private bool canPlace(Vector2 screenPos) {
         return true;
     }
 
     //is screenPos currently on top of the shop UI?
-    private bool overShopUI() {
-        Vector3 worldPoint = mouseWorldPos();
-        return false;
+    private bool overUI() {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     private Vector3 mouseWorldPos() {
