@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public static int playerCount = 0;
     public int playerNum { get; private set; }
 
+    int ball_count;
+
     public void StartTurn(TurnResult result)
     {
         myTurn = true;
@@ -32,7 +34,16 @@ public class Player : MonoBehaviour
 
     public int BallCount()
     {
-        // FIXME(Simon): This method should return the number of non-cue balls tha Player has.
-        return 0;
+        return ball_count;
+    }
+
+    public void BallLost()
+    {
+        ball_count--;
+    }
+
+    public void BallGained()
+    {
+        ball_count++;
     }
 }

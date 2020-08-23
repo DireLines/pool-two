@@ -91,6 +91,19 @@ public class BuildController : MonoBehaviour {
         GameObject newObj = Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
         newObj.SetActive(true);
         stopHolding();
+
+        BaseBall newBall = newObj.GetComponent<BaseBall>();
+        if (newBall)
+        {
+            int player_num = TurnManager.instance.currentPlayer;
+
+            newBall.SetOwner(player_num);
+
+            Player owner = TurnManager.instance.players[player_num];
+
+            owner.BallGained();
+        }
+
     }
 
 
