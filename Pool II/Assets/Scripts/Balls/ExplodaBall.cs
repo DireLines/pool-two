@@ -19,7 +19,7 @@ public class ExplodaBall : BaseBall
     {
         base.Start();
         foreach (var collider in GetComponents<CircleCollider2D>())
-            if (collider.isTrigger) radius = collider.radius;
+            if (collider.isTrigger) { radius = collider.radius; collider.enabled = false; }
     }
 
     // Update is called once per frame
