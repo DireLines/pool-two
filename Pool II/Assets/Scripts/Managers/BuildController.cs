@@ -100,7 +100,7 @@ public class BuildController : MonoBehaviour {
         return true;
     }
 
-    //is screenPos currently on top of the shop UI?
+    //is screenPos currently on top of any UI?
     private bool overUI() {
         return EventSystem.current.IsPointerOverGameObject();
     }

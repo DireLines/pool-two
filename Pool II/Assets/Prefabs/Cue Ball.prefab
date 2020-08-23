@@ -156,11 +156,39 @@ MonoBehaviour:
   ownerNumber: 0
   line: {fileID: 85386689710594229}
   cam: {fileID: 0}
-  ballLayer:
-    serializedVersion: 2
-    m_Bits: 0
   max_distance: 4
   power: 6
+--- !u!114 &6071976718882666721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815249568382149081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc0074d8f20f1b499f404db1fde7ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &4507467833450136992
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618635901758091760}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 896499d83a2dd7546b6b98fed2e65a22, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &935399155979478178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,6 +289,12 @@ GameObject:
 --- !u!4 &4815249568382149080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5631759493711660410, guid: 8353f41f2fa854e8488d67bfce364800,
+    type: 3}
+  m_PrefabInstance: {fileID: 935399155979478178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7618635901758091760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7296359639905424722, guid: 8353f41f2fa854e8488d67bfce364800,
     type: 3}
   m_PrefabInstance: {fileID: 935399155979478178}
   m_PrefabAsset: {fileID: 0}
