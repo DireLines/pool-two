@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TurnResult { Default, Scratch, Build };
-public delegate void TurnEvent(TurnResult result);
 public delegate void GameEvent();
 
 public class GameManager : MonoBehaviour
