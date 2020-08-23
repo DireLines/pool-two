@@ -22,11 +22,13 @@ public class BaseBall : MonoBehaviour {
 
     float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
 
+    float wallFXThreshold = 5f; 
+
     protected Animator anim;
 
-    protected virtual void OnHitByOtherBall(GameObject other) { }
-    protected virtual void OnHitOtherBall(GameObject other) { }
-    protected virtual void OnHitNotBall(GameObject other) { }
+    protected virtual void OnHitByOtherBall(GameObject other, Collision2D collision) { }
+    protected virtual void OnHitOtherBall(GameObject other, Collision2D collision) { }
+    protected virtual void OnHitNotBall(GameObject other, Collision2D collision) { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
     public virtual void OnSink() 
@@ -88,12 +90,12 @@ public class BaseBall : MonoBehaviour {
         if (other.HasTag(Tag.Ball) && !other.HasTag(Tag.Blocking)) {
             if (!struckByBall) {
                 struckByBall = true;
-                OnHitByOtherBall(other);
+                OnHitByOtherBall(other, collision);
             } else {
-                OnHitOtherBall(other);
+                OnHitOtherBall(other, collision);
             }
         } else {
-            OnHitNotBall(other);
+            OnHitNotBall(other, collision);
         }
     }
 
