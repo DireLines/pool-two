@@ -7,22 +7,37 @@ public enum Emotion {
     Idle,
     Mad,
     Sad,
-    Had,
+    Happy,
 }
 
-//public delegate void EmotiveEvent(Emotion emotion);
+
+public delegate void EmotiveEvent(int playerNyum);
 
 public class EmotionListener : MonoBehaviour {
     //public event EmotiveEvent Emote;
 
     Animator anim;
+    int playerNyum;
 
     private void Start() {
         anim = GetComponentInChildren<Animator>();
-        //Emote += OnListen;
+        ScoreManager.OnHappy += OnHappy;
+        var ball = GetComponent<BaseBall>();
+        this.playerNyum = ball.ownerNumber;
     }
 
-    public void OnListen(Emotion emotion) {
-        anim.SetInteger("emotion", (int)emotion);
+    public void OnHappy(int playerNum) {
+        if (playerNum != this.playerNyum) return;
+        anim.SetInteger("emotion", (int)Emotion.Happy);
+    }
+
+    public void OnMad(int playerNum) {
+        if (playerNum != this.playerNyum) return;
+        anim.SetInteger("emotion", (int)Emotion.Mad);
+    }
+
+    public void OnSad(int playerNum) {
+        if (playerNum != this.playerNyum) return;
+        anim.SetInteger("emotion", (int)Emotion.Sad);
     }
 }

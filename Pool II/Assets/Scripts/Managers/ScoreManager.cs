@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     // player number mapped to score
     Dictionary<int, int> scoreMap = new Dictionary<int, int>();
+    public static event EmotiveEvent OnHappy;
 
     public static ScoreManager instance;
     private void Awake()
@@ -38,5 +39,6 @@ public class ScoreManager : MonoBehaviour
     void UpdateScore(int playerNumber, int score)
     {
         scoreMap[playerNumber] += score;
+        OnHappy?.Invoke(playerNumber);
     }
 }
