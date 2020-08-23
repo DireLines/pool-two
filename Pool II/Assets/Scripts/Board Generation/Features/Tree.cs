@@ -10,6 +10,8 @@ public class Tree : Feature
     public Blower blower;
     int shakeLeafCount = 1;
 
+    float shakeTimer, shakeLimit = 5f;
+
     public override void PostSetup()
     {
         base.PostSetup();
@@ -18,13 +20,25 @@ public class Tree : Feature
         GetComponent<TagHandler>().tags.Add(Tag.Greenery);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<BaseBall>())
+        {
+            shakeTimer = 0f;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<BaseBall>())
         {
-            if (!shaker || shaker.shaking) return;
-            shaker.Activate(0.5f);
-            EmitLeaves(shakeLeafCount);
+            shakeTimer += Time.deltaTime;
+            if (shakeTimer < shakeLimit)
+            {
+                if (!shaker || shaker.shaking) return;
+                shaker.Activate(0.2f);
+                EmitLeaves(shakeLeafCount);
+            }
         }
     }
 
