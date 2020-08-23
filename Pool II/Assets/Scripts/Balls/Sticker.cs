@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public delegate void RBEvent(Rigidbody2D rigidbody);
 [RequireComponent(typeof(LineRenderer))]
@@ -13,6 +14,11 @@ public class Sticker : MonoBehaviour
     public RBEvent OnBreakEvent;
 
     float breakForce = 25f;
+
+    float max_distance = 2f, width_scale = 1f;
+
+    public AnimationCurve width_curve;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -30,6 +36,7 @@ public class Sticker : MonoBehaviour
             //joint.connectedBody.angularVelocity = 0;
             lr.SetPosition(0, transform.parent.position);
             lr.SetPosition(1, target.transform.position);
+            lr.startWidth = width_curve.Evaluate((Mathf.Clamp(Vector2.Distance(transform.parent.position, target.transform.position), 1, max_distance)-1) / (max_distance-1)) * width_scale;
             return;
         }
         if (target)
