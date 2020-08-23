@@ -8,6 +8,8 @@ public class PoolManager : MonoBehaviour
 
     public List<BaseBall> activeBalls;
     public bool boardActive { get; private set; }
+    public bool scratchedThisTurn;
+    public bool scoredThisTurn;
 
     private const float secondsNeutralUntilRoundEnd = 1f;
     private float currentSecondsNeutral;
@@ -34,6 +36,8 @@ public class PoolManager : MonoBehaviour
     {
         boardActive = false;
         currentSecondsNeutral = 0f;
+        scratchedThisTurn = false;
+        scoredThisTurn = false;
     }
 
     public void ActivateBoard()
@@ -58,7 +62,27 @@ public class PoolManager : MonoBehaviour
         if (currentSecondsNeutral >= secondsNeutralUntilRoundEnd)
         {
             boardActive = false;
-            OnBoardDeactivate?.Invoke();
+            currentSecondsNeutral = 0f;
+
+            if (scratchedThisTurn && scoredThisTurn)
+            {
+                TurnManager.instance.EndTurn(TurnResult.ScoreAndScratch);
+            }
+            else if (scratchedThisTurn)
+            {
+                TurnManager.instance.EndTurn(TurnResult.Scratch);
+            }
+            else if (scoredThisTurn)
+            {
+                TurnManager.instance.EndTurn(TurnResult.Score);
+            }
+            else
+            {
+                TurnManager.instance.EndTurn(TurnResult.Default);
+            }
+
+            scratchedThisTurn = false;
+            scoredThisTurn = false;
         }
     }
 

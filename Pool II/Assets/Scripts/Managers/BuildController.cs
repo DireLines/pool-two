@@ -6,8 +6,12 @@ using UnityEngine.EventSystems;
 public class BuildController : MonoBehaviour {
     [HideInInspector]
     public GameObject heldObject;
+    private GameObject preview;
+    private int heldObjectPrice;
 
-    public List<GameObject> placedThisTurn;
+    public EconomyManager EM;
+
+    private AudioSource oopsSFX;
 
     //singleton pattern
     public static BuildController instance;
@@ -18,12 +22,13 @@ public class BuildController : MonoBehaviour {
         }
 
         instance = this;
-        placedThisTurn = new List<GameObject>();
+
+        oopsSFX = GetComponent<AudioSource>();
     }
 
     private void Update() {
         if (holdingSomething()) {
-            heldObject.transform.position = mouseWorldPos();
+            preview.transform.position = mouseWorldPos();
         }
 
         if (Input.GetMouseButtonDown(0)) {
@@ -33,21 +38,28 @@ public class BuildController : MonoBehaviour {
 
 
     //pick up an item from the shop
-    public void onClickShopButton(GameObject obj) {
+    public void onClickShopButton(ShopItem item) {
         if (holdingSomething()) {
             dropHeldObject();
         } else {
-            hold(obj);
+            if (EM.TryPurchaseItem(item)) {
+                heldObjectPrice = item.cost;
+                hold(item.prefab);
+            } else {
+                oopsSFX.Play();
+            }
         }
     }
 
     void onMouseDown() {
         if (holdingSomething()) {
-            if (!overUI() && canPlace(mouseWorldPos())) {
-                placeHeldObject();
+            if (!overUI()) {
+                if (canPlace(mouseWorldPos())) {
+                    placeHeldObject();
+                } else {
+                    oopsSFX.Play();
+                }
             }
-        } else {
-            //TODO: click and drag existing balls if you placed them this turn
         }
     }
 
@@ -57,21 +69,27 @@ public class BuildController : MonoBehaviour {
 
     //begin holding obj
     private void hold(GameObject obj) {
-        //TODO: make scriptless preview of ball instead of actual ball
+        preview = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
+        DisableBall(preview);
         heldObject = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
+        heldObject.SetActive(false);
     }
 
-    private void dropHeldObject() {
-        //TODO: give money back if you are deleting a ball from the set of current balls
+    private void stopHolding() {
+        Destroy(preview);
         Destroy(heldObject);
         heldObject = null;
     }
 
-    //place currently held object
+    private void dropHeldObject() {
+        EM.Refund(heldObjectPrice);
+        stopHolding();
+    }
+
     private void placeHeldObject() {
         GameObject newObj = Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
-        placedThisTurn.Add(newObj);
-        dropHeldObject();
+        newObj.SetActive(true);
+        stopHolding();
     }
 
 
@@ -92,4 +110,43 @@ public class BuildController : MonoBehaviour {
     }
 
 
+    // stolen/adapted from Keywords
+    public void DisableBall(GameObject obj) {
+        if (obj.GetComponents<Collider2D>() != null) {
+            foreach (Collider2D col in obj.GetComponents<Collider2D>()) {
+                col.enabled = false;
+            }
+        }
+        if (obj.GetComponent<Rigidbody2D>()) {
+            obj.GetComponent<Rigidbody2D>().simulated = false;
+        }
+        if (obj.GetComponents<BaseBall>() != null) {
+            foreach (BaseBall bol in obj.GetComponents<BaseBall>()) {
+                bol.enabled = false;
+            }
+        }
+        //add other scripts here if needed
+        foreach (Transform child in obj.transform) {
+            DisableBall(child.gameObject);
+        }
+    }
+    public void EnableBall(GameObject obj) {
+        if (obj.GetComponents<Collider2D>() != null) {
+            foreach (Collider2D col in obj.GetComponents<Collider2D>()) {
+                col.enabled = true;
+            }
+        }
+        if (obj.GetComponent<Rigidbody2D>() != null) {
+            obj.GetComponent<Rigidbody2D>().simulated = true;
+        }
+        if (obj.GetComponents<BaseBall>() != null) {
+            foreach (BaseBall bol in obj.GetComponents<BaseBall>()) {
+                bol.enabled = true;
+            }
+        }
+        //add other scripts here if needed
+        foreach (Transform child in obj.transform) {
+            EnableBall(child.gameObject);
+        }
+    }
 }

@@ -20,15 +20,21 @@ public class BaseBall : MonoBehaviour {
 
     float epsilon = 0.1f;
 
-    protected virtual void OnHitByOtherBall() { }
-    protected virtual void OnHitOtherBall() { }
-    protected virtual void OnHitNotBall() { }
+    float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
+
+    protected virtual void OnHitByOtherBall(GameObject other) { }
+    protected virtual void OnHitOtherBall(GameObject other) { }
+    protected virtual void OnHitNotBall(GameObject other) { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
-    public virtual void OnSink() { }
+    public virtual void OnSink() 
+    { 
+        PoolManager.instance.UnregisterBall(this);
+    }
 
     protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();
+        originalDrag = rb.drag;
 
         icon = transform.Find("Icon")?.GetComponent<SpriteRenderer>();
         inside = transform.Find("Inside")?.GetComponent<SpriteRenderer>();
@@ -53,8 +59,15 @@ public class BaseBall : MonoBehaviour {
     protected virtual void Update() {
         if (rb.velocity.magnitude > epsilon) {
             moving = true;
+            timeMoving += Time.deltaTime;
+            if (timeMoving > dragThreshold)
+            {
+                rb.drag += dragRate;
+            }
             OnMoving();
         } else if (moving) {
+            timeMoving = 0;
+            rb.drag = originalDrag;
             rb.velocity = Vector2.zero;
             moving = false;
             struckByBall = false;
@@ -63,15 +76,17 @@ public class BaseBall : MonoBehaviour {
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.HasTag(Tag.Ball) && !struckByBall) {
+        GameObject other = collision.gameObject;
+        // TODO(Simon): This logic might be wrong, consider the blocking tag
+        if (other.HasTag(Tag.Ball) && !other.HasTag(Tag.Blocking)) {
             if (!struckByBall) {
                 struckByBall = true;
-                OnHitByOtherBall();
+                OnHitByOtherBall(other);
             } else {
-                OnHitOtherBall();
+                OnHitOtherBall(other);
             }
         } else {
-            OnHitNotBall();
+            OnHitNotBall(other);
         }
     }
 

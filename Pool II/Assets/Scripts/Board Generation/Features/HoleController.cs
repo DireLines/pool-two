@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HoleController : MonoBehaviour {
+    [HideInInspector]
+    public int ownerNumber;
+
     Collider2D holeCollider;
 
     List<GameObject> sunkBalls = new List<GameObject>();
     float tumult = 2f, tumultThreshold = 8f;
+
+    public GameEvent OnScoreEvent;
+    public GameEvent OnScratchEvent;
 
     private void Start()
     {
@@ -26,8 +32,27 @@ public class HoleController : MonoBehaviour {
         if (r.velocity.magnitude > tumultThreshold) r.AddForce(Random.insideUnitCircle * tumult, ForceMode2D.Impulse);
         if (holeCollider.OverlapPoint(collision.transform.position))
         {
+            var ball = collision.GetComponent<BaseBall>();
+            if (collision.GetComponent<CueBall>())
+            {
+                PoolManager.instance.scratchedThisTurn = true;
+            }
+            else
+            {
+                // sinky the stinky
+                if (ball.ownerNumber != ownerNumber)
+                {
+                    OnScoreEvent?.Invoke();
+                    PoolManager.instance.scoredThisTurn = true;
+                }
+                else
+                {
+                    PoolManager.instance.scratchedThisTurn = true;
+                }
+            }
+
             sunkBalls.Add(collision.gameObject);
-            collision.GetComponent<BaseBall>().OnSink();
+            ball.OnSink();
             StartCoroutine(EnterHole(r));
         }
     }

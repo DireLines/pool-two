@@ -1,69 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3273210386496764184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3199524691261128373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9777e35e6a141f544913364aca982efa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 0
-  ownerNumber: 0
-  joint: {fileID: 2360247694752917357, guid: 64b7edc9bc0fbab499d8cfa745fe45cf, type: 3}
---- !u!114 &3294035444182828465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3199524691261128373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40da9e74de437c84bb6fb9a2d67cc116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &7083873774917647310
+--- !u!1001 &2223553370444352348
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 761598548391205411, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6750872
-      objectReference: {fileID: 0}
-    - target: {fileID: 761598548391205411, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0029
-      objectReference: {fileID: 0}
-    - target: {fileID: 761598548391205411, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0023
-      objectReference: {fileID: 0}
-    - target: {fileID: 761598548391205411, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.843859
-      objectReference: {fileID: 0}
-    - target: {fileID: 761598548391205411, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.843859
-      objectReference: {fileID: 0}
-    - target: {fileID: 4422899187890303604, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_Mass
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5631759493711660410, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -122,20 +65,18 @@ PrefabInstance:
     - target: {fileID: 5631759493711660411, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Name
-      value: StickyBall
+      value: Expensive Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631759493711660413, guid: 8353f41f2fa854e8488d67bfce364800,
+        type: 3}
+      propertyPath: cost
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 5793678186897353990, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6877417041060883555, guid: 219f90dc3420da4448196a005c5b32cb,
+      objectReference: {fileID: 8173493674193486002, guid: 219f90dc3420da4448196a005c5b32cb,
         type: 3}
-    m_RemovedComponents:
-    - {fileID: 5631759493711660413, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}
---- !u!1 &3199524691261128373 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5631759493711660411, guid: 8353f41f2fa854e8488d67bfce364800,
-    type: 3}
-  m_PrefabInstance: {fileID: 7083873774917647310}
-  m_PrefabAsset: {fileID: 0}

@@ -1030,6 +1030,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cue Ball (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815249568382149081, guid: 14be23a8acf704f6583aae8f067d8975,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14be23a8acf704f6583aae8f067d8975, type: 3}
 --- !u!4 &1004729862 stripped
@@ -1104,6 +1109,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cue Ball (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815249568382149081, guid: 14be23a8acf704f6583aae8f067d8975,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5704575988008388645, guid: 14be23a8acf704f6583aae8f067d8975,
         type: 3}
@@ -1272,6 +1282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cue Ball (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815249568382149081, guid: 14be23a8acf704f6583aae8f067d8975,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5704575988008388645, guid: 14be23a8acf704f6583aae8f067d8975,
         type: 3}
       propertyPath: ownerNumber
@@ -1363,6 +1378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cue Ball (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815249568382149081, guid: 14be23a8acf704f6583aae8f067d8975,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5704575988008388645, guid: 14be23a8acf704f6583aae8f067d8975,
         type: 3}
@@ -1941,6 +1961,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cue Ball (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815249568382149081, guid: 14be23a8acf704f6583aae8f067d8975,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14be23a8acf704f6583aae8f067d8975, type: 3}
 --- !u!1001 &2085487925
@@ -2055,6 +2080,11 @@ PrefabInstance:
       propertyPath: blowSpeedY.m_ConstantMax
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1899127196385820946, guid: 32130514ba21f324596b765dac19cf43,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1899127197580648224, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: m_Material
@@ -2085,6 +2115,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 67e232339732d8b4daf1456a68d907c4, type: 2}
+    - target: {fileID: 4443771231386895032, guid: 32130514ba21f324596b765dac19cf43,
+        type: 3}
+      propertyPath: m_Name
+      value: Player1Board
+      objectReference: {fileID: 0}
     - target: {fileID: 4443771231879591558, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: m_Offset.x
@@ -2203,7 +2238,7 @@ PrefabInstance:
     - target: {fileID: 5240370610352545017, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 5240370610510379050, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
@@ -2273,7 +2308,7 @@ PrefabInstance:
     - target: {fileID: 5240370611477233612, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: debug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5240370611557169088, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}

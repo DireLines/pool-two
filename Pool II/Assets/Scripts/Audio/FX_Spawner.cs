@@ -11,6 +11,8 @@ public enum FXType
     StructureDestroy,
     TreeDestroy,
     SlimePop,
+    FlamingBall,
+    BallConflagration,
 }
 
 public class FX_Spawner : MonoBehaviour
@@ -54,7 +56,7 @@ public class FX_Spawner : MonoBehaviour
 
         if (spawned_fx == null) return null;
 
-        spawned_fx.transform.parent = (parent == null ? parent : holder.transform);
+        spawned_fx.transform.parent = (parent != null ? parent : holder.transform);
 
         if (rotation != Vector3.zero)
             spawned_fx.transform.forward = rotation;

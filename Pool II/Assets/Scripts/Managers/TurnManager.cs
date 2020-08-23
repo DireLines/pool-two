@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TurnResult { Default, Scratch, Build, Score, ScoreAndScratch, };
+public delegate void TurnEvent(TurnResult result);
+
 public class TurnManager : MonoBehaviour
 {
+    public static TurnManager instance;
+
+    public TurnResult lastTurnResult = TurnResult.Default;
+
     public List<Player> players = new List<Player>();
     public int currentPlayer;// { get; private set; }
 
     public TurnEvent EndTurnEvent;
 
-    public static TurnManager instance;
     private void Awake()
     {
         if (instance)
@@ -47,6 +53,7 @@ public class TurnManager : MonoBehaviour
     public void NextTurn(TurnResult result)
     {
         if (players.Count == 0) return;
+        lastTurnResult = result;
         players[currentPlayer].StartTurn(result);
     }
 
@@ -58,6 +65,18 @@ public class TurnManager : MonoBehaviour
             GameManager.instance.currentRound++;
             currentPlayer = 0;
         }
+
+        print($"Player {currentPlayer + 1}'s turn!");
+
+        //if (currentPlayer == 0 && TableZoneManager.instance.player1Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
+        //{
+        //    currentPlayer = 1;
+        //}
+        //else if (currentPlayer == 1 && TableZoneManager.instance.player2Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
+        //{
+        //    currentPlayer = 0;
+        //}
+
         players[currentPlayer].EndTurn();
         EndTurnEvent?.Invoke(result);
     }

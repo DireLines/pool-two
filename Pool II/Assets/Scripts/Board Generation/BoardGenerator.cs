@@ -9,7 +9,10 @@ using System.Linq;
 public class BoardGenerator : MonoBehaviour
 {
     public List<FeatureSet> playerFeatureSets = new List<FeatureSet>(), neutralFeatureSets = new List<FeatureSet>();
-    Transform pivot;
+    [HideInInspector]
+    public Transform player1Board;
+    [HideInInspector]
+    public Transform player2Board;
     public Board playerBoard, neutralBoard;
     bool simulating = false;
     public GameEvent GenerationDoneEvent;
@@ -23,7 +26,7 @@ public class BoardGenerator : MonoBehaviour
             return;
         }
         instance = this;
-        pivot = transform.FindDeepChild("BoardPivot");
+        player1Board = transform.FindDeepChild("Player1Board");
     }
 
     public void Generate()
@@ -33,6 +36,7 @@ public class BoardGenerator : MonoBehaviour
 
     IEnumerator CreateBoard()
     {
+        Time.timeScale = 3f;
         neutralBoard.gameObject.SetActive(false);
         Aggregate(playerFeatureSets, playerBoard);
         while (simulating) yield return null;
@@ -44,9 +48,10 @@ public class BoardGenerator : MonoBehaviour
         neutralBoard.DeactivateWalls();
         playerBoard.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
-        Transform p = Instantiate(pivot.gameObject, transform).transform;
-        p.localScale = new Vector3(-p.localScale.x, -p.localScale.y, p.localScale.z);
-        foreach (var feature in p.GetComponentsInChildren<Feature>())
+        player2Board = Instantiate(player1Board.gameObject, transform).transform;
+        player2Board.gameObject.name = "Player2Board";
+        player2Board.localScale = new Vector3(-player2Board.localScale.x, -player2Board.localScale.y, player2Board.localScale.z);
+        foreach (var feature in player2Board.GetComponentsInChildren<Feature>())
         {
             feature.CloneSetup();
             feature.transform.localScale = new Vector3(
@@ -56,6 +61,7 @@ public class BoardGenerator : MonoBehaviour
         }
         foreach (var feature in FindObjectsOfType<Feature>()) feature.PostSetup();
         GenerationDoneEvent?.Invoke();
+        Time.timeScale = 1f;
     }
 
     void Aggregate(List<FeatureSet> featureSets, Board board) 
