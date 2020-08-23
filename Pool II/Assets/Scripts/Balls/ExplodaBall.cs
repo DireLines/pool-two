@@ -36,10 +36,6 @@ public class ExplodaBall : BaseBall
         icon.sprite = lit_icon;
     }
 
-    protected override void OnHitOtherBall() { }
-
-    protected override void OnHitNotBall() { }
-
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         if (fuse_lit)
