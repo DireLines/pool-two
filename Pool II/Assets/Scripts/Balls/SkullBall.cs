@@ -16,6 +16,7 @@ public class SkullBall : BaseBall {
     {
         kill_primed = true;
         flame_eyes.SetActive(true);
+        FX_Spawner.instance.SpawnFX(FXType.FlamingBall, transform.position, transform.rotation.eulerAngles, parent : transform);
     }
 
     protected override void OnHitOtherBall(GameObject other)
@@ -23,9 +24,8 @@ public class SkullBall : BaseBall {
         // TODO(Simon): Don't kill your own balls
         if (kill_primed)
         {
-            Instantiate(bones_pile, transform.position, Quaternion.identity);
+            FX_Spawner.instance.SpawnFX(FXType.BallConflagration, other.transform.position, Quaternion.identity);
             Instantiate(bones_pile, other.transform.position, Quaternion.identity);
-
             Destroy(other);
         }
     }
@@ -34,6 +34,8 @@ public class SkullBall : BaseBall {
     {
         if (kill_primed)
         {
+            FX_Spawner.instance.SpawnFX(FXType.BallConflagration, transform.position, Quaternion.identity);
+            Instantiate(bones_pile, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
