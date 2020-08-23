@@ -34,6 +34,11 @@ public class FX_SoundList : FX_Object
             aud.clip = clips[Random.Range(0, clips.Count)];
         }
 
+        if (transform.parent && transform.parent.GetComponentInParent<FX_Object>())
+        {
+            vol = transform.parent.GetComponentInParent<FX_Object>().vol;
+        }
+
 
         aud.Play();
 

@@ -6,7 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D), typeof(TagHandler))]
 public class BaseBall : MonoBehaviour {
     public int cost;
-    public int ownerNumber;// {get; private set; }
+    [SerializeField]
+    public int ownerNumber=3;// {get; private set; }
 
     protected SpriteRenderer icon;
     protected SpriteRenderer inside;
@@ -22,7 +23,7 @@ public class BaseBall : MonoBehaviour {
 
     float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
 
-    float wallFXThreshold = 5f; 
+    float wallFXThreshold = 10f, wallFXMin = 4f; 
 
     protected Animator anim;
 
@@ -50,10 +51,23 @@ public class BaseBall : MonoBehaviour {
         handler.tags.Add(Tag.Ball);
 
         PoolManager.instance.RegisterBall(this);
+
+        if (ownerNumber == 0)
+        {
+            inside.color = Color.blue;
+        }
+        else if (ownerNumber == 1)
+        {
+            inside.color = Color.red;
+        }
     }
 
     private void OnDestroy() {
         PoolManager.instance.UnregisterBall(this);
+
+        Player owner = TurnManager.instance.players[ownerNumber];
+
+        owner.BallLost();
     }
 
     protected virtual void LateUpdate() {
@@ -91,6 +105,11 @@ public class BaseBall : MonoBehaviour {
                 OnHitOtherBall(other, collision);
             }
         } else {
+            if (other.CompareTag("Wall") && collision.contacts[0].normalImpulse > wallFXMin)
+            {
+                var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, wallFXThreshold) / wallFXThreshold;
+                FX_Spawner.instance.SpawnFX(FXType.BallToWall, transform.position, Quaternion.identity, vol:vol);
+            }
             OnHitNotBall(other, collision);
         }
     }
