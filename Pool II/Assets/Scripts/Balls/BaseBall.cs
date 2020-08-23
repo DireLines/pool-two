@@ -22,6 +22,7 @@ public class BaseBall : MonoBehaviour {
 
     protected virtual void OnHitByOtherBall() { }
     protected virtual void OnHitOtherBall() { }
+    protected virtual void OnHitNotBall() { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
     public virtual void OnSink() { }
@@ -62,13 +63,15 @@ public class BaseBall : MonoBehaviour {
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.HasTag(Tag.Ball)) {
+        if (collision.gameObject.HasTag(Tag.Ball) && !struckByBall) {
             if (!struckByBall) {
                 struckByBall = true;
                 OnHitByOtherBall();
             } else {
                 OnHitOtherBall();
             }
+        } else {
+            OnHitNotBall();
         }
     }
 
