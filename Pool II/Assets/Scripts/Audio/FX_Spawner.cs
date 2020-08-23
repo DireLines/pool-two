@@ -13,6 +13,8 @@ public enum FXType
     SlimePop,
     FlamingBall,
     BallConflagration,
+    BallToWall,
+    BallToBall,
 }
 
 public class FX_Spawner : MonoBehaviour

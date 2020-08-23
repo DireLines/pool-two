@@ -29,7 +29,7 @@ public class ExplodaBall : BaseBall
 
     }
 
-    protected override void OnHitByOtherBall(GameObject other)
+    protected override void OnHitByOtherBall(GameObject other, Collision2D collision)
     {
         fuse_lit = true;
 

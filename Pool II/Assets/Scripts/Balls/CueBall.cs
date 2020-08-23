@@ -98,7 +98,7 @@ public class CueBall : BaseBall {
         }
     }
 
-    protected override void OnHitByOtherBall(GameObject other) {
+    protected override void OnHitByOtherBall(GameObject other, Collision2D collision) {
         var myEmoter = GetComponent<EmotionListener>();
         var cue = other.GetComponent<CueBall>();
 

@@ -12,14 +12,14 @@ public class SkullBall : BaseBall {
 
     bool kill_primed;
 
-    protected override void OnHitByOtherBall(GameObject other)
+    protected override void OnHitByOtherBall(GameObject other, Collision2D collision)
     {
         kill_primed = true;
         flame_eyes.SetActive(true);
         FX_Spawner.instance.SpawnFX(FXType.FlamingBall, transform.position, transform.rotation.eulerAngles, parent : transform);
     }
 
-    protected override void OnHitOtherBall(GameObject other)
+    protected override void OnHitOtherBall(GameObject other, Collision2D collision)
     {
         // TODO(Simon): Don't kill your own balls
         if (kill_primed)

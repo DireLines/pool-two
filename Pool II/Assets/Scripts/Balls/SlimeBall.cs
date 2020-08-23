@@ -33,7 +33,7 @@ public class SlimeBall : BaseBall {
         base.Update();
     }
 
-    protected override void OnHitByOtherBall(GameObject other)
+    protected override void OnHitByOtherBall(GameObject other, Collision2D collision)
     {
         Explode();
     }
