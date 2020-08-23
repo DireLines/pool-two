@@ -50,7 +50,7 @@ public class HoleController : MonoBehaviour {
                     PoolManager.instance.scratchedThisTurn = true;
                 }
             }
-            
+
             sunkBalls.Add(collision.gameObject);
             ball.OnSink();
             StartCoroutine(EnterHole(r));

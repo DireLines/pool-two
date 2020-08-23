@@ -66,19 +66,19 @@ public class PoolManager : MonoBehaviour
 
             if (scratchedThisTurn && scoredThisTurn)
             {
-                TurnManager.instance.NextTurn(TurnResult.ScoreAndScratch);
+                TurnManager.instance.EndTurn(TurnResult.ScoreAndScratch);
             }
             else if (scratchedThisTurn)
             {
-                TurnManager.instance.NextTurn(TurnResult.Scratch);
+                TurnManager.instance.EndTurn(TurnResult.Scratch);
             }
             else if (scoredThisTurn)
             {
-                TurnManager.instance.NextTurn(TurnResult.Score);
+                TurnManager.instance.EndTurn(TurnResult.Score);
             }
             else
             {
-                TurnManager.instance.NextTurn(TurnResult.Default);
+                TurnManager.instance.EndTurn(TurnResult.Default);
             }
 
             scratchedThisTurn = false;

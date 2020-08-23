@@ -27,7 +27,10 @@ public class BaseBall : MonoBehaviour {
     protected virtual void OnHitNotBall(GameObject other) { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
-    public virtual void OnSink() { }
+    public virtual void OnSink() 
+    { 
+        PoolManager.instance.UnregisterBall(this);
+    }
 
     protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();

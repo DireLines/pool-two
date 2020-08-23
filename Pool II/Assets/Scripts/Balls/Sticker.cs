@@ -41,7 +41,6 @@ public class Sticker : MonoBehaviour
         }
         if (target)
         {
-            print("BREAK");
             OnBreakEvent?.Invoke(target);
         }
         if (joint) Destroy(joint);

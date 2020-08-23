@@ -9,6 +9,7 @@ public class FX_Object : MonoBehaviour
 {
     public float pitch_range = 0.2f, amp_range = 0.02f;
     public float vol = -1f;
+    public bool live_forever;
     public float lifetime = 0;
 
     public AudioMixerGroup mixerGroup;
@@ -42,8 +43,12 @@ public class FX_Object : MonoBehaviour
         {
             if (part.main.duration > max_part_len) max_part_len = part.main.duration;
         }
-        lifetime = Mathf.Max(lifetime, max_audio_len);
-        lifetime = Mathf.Max(lifetime, max_part_len);
-        Destroy(gameObject, lifetime);
+        if (live_forever) { lifetime = float.MaxValue; }
+        else
+        {
+            lifetime = Mathf.Max(lifetime, max_audio_len);
+            lifetime = Mathf.Max(lifetime, max_part_len);
+            Destroy(gameObject, lifetime);
+        }
     }
 }
