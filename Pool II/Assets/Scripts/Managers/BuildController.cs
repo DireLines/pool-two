@@ -25,10 +25,6 @@ public class BuildController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             onMouseDown();
         }
-
-        if (Input.GetMouseButtonUp(0)) {
-            onMouseUp();
-        }
     }
 
 
@@ -51,12 +47,6 @@ public class BuildController : MonoBehaviour {
                 placeHeldObject();
             }
         }
-    }
-
-    void onMouseUp() {
-        print("onMouseUp" + mouseWorldPos());
-        bool holding = holdingSomething();
-        bool overUI = overShopUI();
     }
 
     private bool holdingSomething() {

@@ -16,6 +16,8 @@ public class BaseBall : MonoBehaviour {
 
     public bool moving { get; private set; }
 
+    public bool struckByBall { get; private set; }
+
     float epsilon = 0.1f;
 
     protected virtual void OnHitByOtherBall() { }
@@ -38,8 +40,7 @@ public class BaseBall : MonoBehaviour {
         PoolManager.instance.RegisterBall(this);
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         PoolManager.instance.UnregisterBall(this);
     }
 
@@ -55,13 +56,15 @@ public class BaseBall : MonoBehaviour {
         } else if (moving) {
             rb.velocity = Vector2.zero;
             moving = false;
+            struckByBall = false;
             OnSettle();
         }
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.HasTag(Tag.Ball)) {
-            if (!moving) {
+            if (!struckByBall) {
+                struckByBall = true;
                 OnHitByOtherBall();
             } else {
                 OnHitOtherBall();
@@ -69,8 +72,7 @@ public class BaseBall : MonoBehaviour {
         }
     }
 
-    public virtual void SetOwner (int number) 
-    {
+    public virtual void SetOwner(int number) {
         ownerNumber = number;
     }
 }
