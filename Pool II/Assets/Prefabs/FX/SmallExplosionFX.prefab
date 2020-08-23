@@ -142,10 +142,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pitch_range: 0.2
   amp_range: 0.02
-  vol: -1
+  vol: 0.6
+  live_forever: 0
   lifetime: 0
   mixerGroup: {fileID: 0}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 5786b4209a259aa46a34882f99b9e3cb, type: 3}
+  - {fileID: 8300000, guid: 65f794f7fc5ec59428db5499fc502ae7, type: 3}
   randomize: 1
 --- !u!1 &2121033796372809160
 GameObject:
@@ -196,6 +199,7 @@ MonoBehaviour:
   pitch_range: 0.2
   amp_range: 0.02
   vol: -1
+  live_forever: 0
   lifetime: 0
   mixerGroup: {fileID: 0}
 --- !u!114 &2058655101609540490
@@ -210,6 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2296a27feea664eb0a60df74ce9ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0.2
+  magnitude: 0.4
 --- !u!1 &2121033797459438446
 GameObject:
   m_ObjectHideFlags: 0

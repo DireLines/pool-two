@@ -23,7 +23,7 @@ public class BaseBall : MonoBehaviour {
 
     float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
 
-    float wallFXThreshold = 10f, wallFXMin = 4f; 
+    float collisionFXThreshold = 10f, collisionFXMin = 4f;
 
     protected Animator anim;
 
@@ -96,6 +96,7 @@ public class BaseBall : MonoBehaviour {
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
         GameObject other = collision.gameObject;
+        CollisionSound(other, collision);
         // TODO(Simon): This logic might be wrong, consider the blocking tag
         if (other.HasTag(Tag.Ball) && !other.HasTag(Tag.Blocking)) {
             if (!struckByBall) {
@@ -105,13 +106,19 @@ public class BaseBall : MonoBehaviour {
                 OnHitOtherBall(other, collision);
             }
         } else {
-            if (other.CompareTag("Wall") && collision.contacts[0].normalImpulse > wallFXMin)
-            {
-                var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, wallFXThreshold) / wallFXThreshold;
-                FX_Spawner.instance.SpawnFX(FXType.BallToWall, transform.position, Quaternion.identity, vol:vol);
-            }
             OnHitNotBall(other, collision);
         }
+    }
+
+    void CollisionSound(GameObject other, Collision2D collision)
+    {
+        FXType effectName = FXType.Default;
+        if (other.HasTag(Tag.Ball))
+            effectName = FXType.BallToBall;
+        else if (other.CompareTag("Wall"))
+            effectName = FXType.BallToWall;
+        var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, collisionFXThreshold) / collisionFXThreshold;
+        FX_Spawner.instance.SpawnFX(effectName, transform.position, Quaternion.identity, vol: vol);
     }
 
     public virtual void SetOwner(int number) {

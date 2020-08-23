@@ -80,6 +80,8 @@ public class FX_Spawner : MonoBehaviour
 
     public UnityEngine.GameObject SpawnFX(FXType effectName, Vector3 position, Quaternion rotation, float vol = -1, Transform parent = null)
     {
+        if (!FX_Dict.ContainsKey(effectName))
+            return SpawnFX(fx_default, position, rotation.eulerAngles, vol, parent);
         return SpawnFX(FX_Dict[effectName], position, rotation.eulerAngles, vol, parent);
     }
 }
