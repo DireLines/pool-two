@@ -1,26 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5767427573813580599
+--- !u!114 &6275446606702619928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950771597692118168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc04527e2c6b31e419067274e419eb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  ownerNumber: 0
+  oil_frequency: 0.25
+  oil_blob: {fileID: 8568851580037448207, guid: 69bd39288e3da6441bb9f59d06cd33b8,
+    type: 3}
+--- !u!114 &8472667874284811721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950771597692118168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40da9e74de437c84bb6fb9a2d67cc116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspector_tags: 01000000
+--- !u!1001 &3611746385273430499
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4422899187890303604, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5631759493711660410, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5631759493711660410, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5631759493711660410, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
@@ -70,13 +95,20 @@ PrefabInstance:
     - target: {fileID: 5631759493711660411, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Name
-      value: Heavy Ball Variant
+      value: Oil Ball
       objectReference: {fileID: 0}
     - target: {fileID: 5793678186897353990, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -793613343797790965, guid: 219f90dc3420da4448196a005c5b32cb,
+      objectReference: {fileID: 7747951910788802021, guid: 219f90dc3420da4448196a005c5b32cb,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5631759493711660413, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}
+--- !u!1 &8950771597692118168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5631759493711660411, guid: 8353f41f2fa854e8488d67bfce364800,
+    type: 3}
+  m_PrefabInstance: {fileID: 3611746385273430499}
+  m_PrefabAsset: {fileID: 0}
