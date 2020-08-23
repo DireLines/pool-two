@@ -6,7 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D), typeof(TagHandler))]
 public class BaseBall : MonoBehaviour {
     public int cost;
-    public int ownerNumber;// {get; private set; }
+    [SerializeField]
+    public int ownerNumber=3;// {get; private set; }
 
     protected SpriteRenderer icon;
     protected SpriteRenderer inside;
@@ -50,6 +51,15 @@ public class BaseBall : MonoBehaviour {
         handler.tags.Add(Tag.Ball);
 
         PoolManager.instance.RegisterBall(this);
+
+        if (ownerNumber == 0)
+        {
+            inside.color = Color.blue;
+        }
+        else if (ownerNumber == 1)
+        {
+            inside.color = Color.red;
+        }
     }
 
     private void OnDestroy() {
