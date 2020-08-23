@@ -29,4 +29,10 @@ public class Player : MonoBehaviour
     void Update()
     {
     }
+
+    public int BallCount()
+    {
+        // FIXME(Simon): This method should return the number of non-cue balls tha Player has.
+        return 0;
+    }
 }

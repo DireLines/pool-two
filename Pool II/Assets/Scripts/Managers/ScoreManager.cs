@@ -9,6 +9,9 @@ public class ScoreManager : MonoBehaviour
     public List<GameObject> playerBoards;
     public static event EmotiveEvent OnHappy, OnSadEvent;
 
+    [SerializeField]
+    int score_target;
+
     public static ScoreManager instance;
     private void Awake()
     {
@@ -49,5 +52,24 @@ public class ScoreManager : MonoBehaviour
     void Scratch(int playerNumber)
     {
         OnSadEvent?.Invoke(playerNumber);
+    }
+
+    public int CheckScore()
+    {
+        int p1_score = scoreMap[1];
+        int p2_score = scoreMap[2];
+
+        if (p1_score > p2_score && p1_score > score_target)
+        {
+            return 1;
+        }
+        else if (p2_score > p1_score && p2_score > score_target)
+        {
+            return 2;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

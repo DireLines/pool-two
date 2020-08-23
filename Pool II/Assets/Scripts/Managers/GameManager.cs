@@ -41,22 +41,41 @@ public class GameManager : MonoBehaviour
         ScoreManager.instance.Setup();
     }
 
+    public void WinGame(int player_num)
+    {
+
+    }
+
     void OnEndTurn(TurnResult result)
     {
-        // evaluate win conditions
-        // check score
-        // handle turn conditions
-        if (currentRound < buildThreshold)
+        // give a player another build phase turn if their balls are all gone
+        int winner_num = ScoreManager.instance.CheckScore();
+
+        if (winner_num != 0)
         {
-            TurnManager.instance.NextTurn(TurnResult.Build);
-            return;
+            WinGame(winner_num);
         }
-        // handle result
-        if (result == TurnResult.Default)
+        else
         {
-            TurnManager.instance.NextTurn(TurnResult.Default);
-            return;
+
+            int next_player_num = TurnManager.instance.currentPlayer;
+            Player next_player = TurnManager.instance.players[next_player_num];
+
+            // handle turn conditions
+            if (currentRound < buildThreshold || next_player.BallCount() <= 0)
+            {
+                TurnManager.instance.NextTurn(TurnResult.Build);
+                return;
+            }
+            // handle result
+            if (result == TurnResult.Default)
+            {
+                TurnManager.instance.NextTurn(TurnResult.Default);
+                return;
+            }
+
         }
+
     }
 
     private void Update()
