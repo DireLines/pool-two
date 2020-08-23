@@ -30,6 +30,8 @@ public class FX_Spawner : MonoBehaviour
     public List<SerializedDict> Serialized_FX_Dict = new List<SerializedDict>();
     public Dictionary<FXType, UnityEngine.GameObject> FX_Dict = new Dictionary<FXType, UnityEngine.GameObject>();
 
+    public GameObject fx_default;
+
     // Singleton code
     public static FX_Spawner instance;
     private void Awake() {
@@ -68,6 +70,8 @@ public class FX_Spawner : MonoBehaviour
     }
 
     public UnityEngine.GameObject SpawnFX(FXType effectName, Vector3 position, Vector3 rotation, float vol = -1, Transform parent = null) {
+        if (!FX_Dict.ContainsKey(effectName))
+            return SpawnFX(fx_default, position, rotation, vol, parent);
         return SpawnFX(FX_Dict[effectName], position, rotation, vol, parent);
         //return SpawnFX(FX_Dict.GetValueOrDefault(effectName, FX_Dict[FXType.Default]), position, rotation, vol, parent);
     }
