@@ -56,20 +56,20 @@ public class ScoreManager : MonoBehaviour
 
     public int CheckScore()
     {
-        int p1_score = scoreMap[1];
-        int p2_score = scoreMap[2];
+        int p1_score = scoreMap[0];
+        int p2_score = scoreMap[1];
 
         if (p1_score > p2_score && p1_score > score_target)
         {
-            return 1;
+            return 0;
         }
         else if (p2_score > p1_score && p2_score > score_target)
         {
-            return 2;
+            return 1;
         }
         else
         {
-            return 0;
+            return -1;
         }
     }
 }

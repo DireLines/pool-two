@@ -91,6 +91,13 @@ public class BaseBall : MonoBehaviour {
                 OnHitOtherBall(other, collision);
             }
         } else {
+            if (other.CompareTag("Wall") && collision.contacts[0].normalImpulse > wallFXThreshold)
+            {
+                var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, wallFXThreshold) / wallFXThreshold;
+                print(vol);
+                print(FX_Spawner.instance.SpawnFX(FXType.BallToWall, transform.position, Quaternion.identity,
+                    vol:vol));
+            }
             OnHitNotBall(other, collision);
         }
     }
