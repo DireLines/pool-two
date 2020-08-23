@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     int[] scoreMap = { 0, 0 };
     public List<GameObject> playerBoards;
 
-    public GameEvent ScratchEvent;
+    public GameEvent ScratchEvent, ScoreEvent;
 
     public static ScoreManager instance;
     private void Awake()
