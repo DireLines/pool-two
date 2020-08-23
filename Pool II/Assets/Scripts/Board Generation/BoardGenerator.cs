@@ -36,6 +36,7 @@ public class BoardGenerator : MonoBehaviour
 
     IEnumerator CreateBoard()
     {
+        Time.timeScale = 3f;
         neutralBoard.gameObject.SetActive(false);
         Aggregate(playerFeatureSets, playerBoard);
         while (simulating) yield return null;
@@ -60,6 +61,7 @@ public class BoardGenerator : MonoBehaviour
         }
         foreach (var feature in FindObjectsOfType<Feature>()) feature.PostSetup();
         GenerationDoneEvent?.Invoke();
+        Time.timeScale = 1f;
     }
 
     void Aggregate(List<FeatureSet> featureSets, Board board) 

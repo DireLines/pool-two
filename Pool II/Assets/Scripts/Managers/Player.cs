@@ -12,13 +12,11 @@ public class Player : MonoBehaviour
 
     public void StartTurn(TurnResult result)
     {
-        print($"It's a {result} turn!");
         myTurn = true;
     }
 
     public void EndTurn()
     {
-        print("Ending turn!");
         myTurn = false;
     }
 
