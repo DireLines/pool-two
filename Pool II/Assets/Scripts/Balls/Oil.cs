@@ -5,7 +5,7 @@ using UnityEngine;
 public class Oil : MonoBehaviour
 {
     Dictionary<Rigidbody2D, float> targetBodies = new Dictionary<Rigidbody2D, float>();
-    float dragReductionMultiplier = 0.25f, speedMultiplier = 0.1f;
+    float dragReductionMultiplier = 0.25f, speedMultiplier = 0.1f, velocity_threshold = 15f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +15,7 @@ public class Oil : MonoBehaviour
         {
             targetBodies[r] = r.drag;
             r.drag *= dragReductionMultiplier;
-            if (r.velocity.magnitude > 0)
+            if (r.velocity.magnitude > 0 && r.velocity.magnitude < velocity_threshold)
                 r.velocity *= speedMultiplier * Mathf.Log10(r.velocity.magnitude) + 1;
         }
     }

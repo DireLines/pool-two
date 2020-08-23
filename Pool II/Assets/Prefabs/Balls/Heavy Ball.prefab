@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2298310804323361557
+--- !u!1001 &5767427573813580599
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4422899187890303604, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Mass
-      value: 0.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5631759493711660410, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
@@ -70,18 +70,13 @@ PrefabInstance:
     - target: {fileID: 5631759493711660411, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Name
-      value: Light Ball Variant
+      value: Heavy Ball
       objectReference: {fileID: 0}
     - target: {fileID: 5793678186897353990, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3421373207634483457, guid: 219f90dc3420da4448196a005c5b32cb,
+      objectReference: {fileID: -793613343797790965, guid: 219f90dc3420da4448196a005c5b32cb,
         type: 3}
-    - target: {fileID: 5793678186897353990, guid: 8353f41f2fa854e8488d67bfce364800,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8353f41f2fa854e8488d67bfce364800, type: 3}
