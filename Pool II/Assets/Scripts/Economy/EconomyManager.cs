@@ -23,12 +23,15 @@ public class EconomyManager : MonoBehaviour {
 
     public int GetCurrentGold() => currentGold;
 
-    public bool TryPurchaseItem(int itemIndex, Vector3 spawnPoint) {
+    public bool TryPurchaseItem(ShopItem item) {
+        int itemIndex = items.IndexOf(item);
         if (itemIndex < 0 || itemIndex >= items.Count) return false;
-        ShopItem item = items[itemIndex];
         if (item.cost > currentGold) return false;
         currentGold -= item.cost;
-        Instantiate(item.prefab, spawnPoint, Quaternion.identity);
         return true;
+    }
+
+    public void Refund(int amount) {
+        currentGold += amount;
     }
 }

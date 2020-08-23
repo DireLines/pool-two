@@ -6,8 +6,11 @@ using UnityEngine.EventSystems;
 public class BuildController : MonoBehaviour {
     [HideInInspector]
     public GameObject heldObject;
+    private int heldObjectPrice;
 
-    public List<GameObject> placedThisTurn;
+    public EconomyManager EM;
+
+    private AudioSource oopsSFX;
 
     //singleton pattern
     public static BuildController instance;
@@ -18,7 +21,8 @@ public class BuildController : MonoBehaviour {
         }
 
         instance = this;
-        placedThisTurn = new List<GameObject>();
+
+        oopsSFX = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -33,11 +37,16 @@ public class BuildController : MonoBehaviour {
 
 
     //pick up an item from the shop
-    public void onClickShopButton(GameObject obj) {
+    public void onClickShopButton(ShopItem item) {
         if (holdingSomething()) {
             dropHeldObject();
         } else {
-            hold(obj);
+            if (EM.TryPurchaseItem(item)) {
+                heldObjectPrice = item.cost;
+                hold(item.prefab);
+            } else {
+                oopsSFX.Play();
+            }
         }
     }
 
@@ -46,8 +55,6 @@ public class BuildController : MonoBehaviour {
             if (!overUI() && canPlace(mouseWorldPos())) {
                 placeHeldObject();
             }
-        } else {
-            //TODO: click and drag existing balls if you placed them this turn
         }
     }
 
@@ -62,16 +69,15 @@ public class BuildController : MonoBehaviour {
     }
 
     private void dropHeldObject() {
-        //TODO: give money back if you are deleting a ball from the set of current balls
+        EM.Refund(heldObjectPrice);
         Destroy(heldObject);
         heldObject = null;
     }
 
-    //place currently held object
     private void placeHeldObject() {
-        GameObject newObj = Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
-        placedThisTurn.Add(newObj);
-        dropHeldObject();
+        Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
+        Destroy(heldObject);
+        heldObject = null;
     }
 
 
