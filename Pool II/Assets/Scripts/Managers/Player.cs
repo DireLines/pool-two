@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
 
     [HideInInspector]
     bool myTurn = false;
@@ -12,38 +11,31 @@ public class Player : MonoBehaviour
 
     int ball_count = 0;
 
-    public void StartTurn(TurnResult result)
-    {
+    public void StartTurn(TurnResult result) {
         myTurn = true;
     }
 
-    public void EndTurn()
-    {
+    public void EndTurn() {
         myTurn = false;
     }
 
-    void Start()
-    {
+    void Start() {
         playerNum = playerCount++;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
     }
 
-    public int BallCount()
-    {
+    public int BallCount() {
         return ball_count;
     }
 
-    public void BallLost()
-    {
+    public void BallLost() {
         ball_count--;
     }
 
-    public void BallGained()
-    {
+    public void BallGained() {
         ball_count++;
     }
 }

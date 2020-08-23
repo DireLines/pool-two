@@ -54,7 +54,7 @@ public class BuildController : MonoBehaviour {
     void onMouseDown() {
         if (holdingSomething()) {
             if (!overUI()) {
-                if (canPlace(mouseWorldPos())) {
+                if (canPlaceHeld()) {
                     placeHeldObject();
                 } else {
                     oopsSFX.Play();
@@ -93,8 +93,7 @@ public class BuildController : MonoBehaviour {
         stopHolding();
 
         BaseBall newBall = newObj.GetComponent<BaseBall>();
-        if (newBall)
-        {
+        if (newBall) {
             int player_num = TurnManager.instance.currentPlayer;
 
             newBall.SetOwner(player_num);
@@ -109,8 +108,17 @@ public class BuildController : MonoBehaviour {
 
     //can I place this object at this position on screen?
     //TODO detect if object would collide with other balls
-    private bool canPlace(Vector2 screenPos) {
-        return true;
+    private bool canPlaceHeld() {
+        int player_num = TurnManager.instance.currentPlayer;
+        Vector2 mousePos = mouseWorldPos();
+        RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos, mousePos);
+        foreach (RaycastHit2D hit in hits) {
+            TableZone tableZone = hit.collider.gameObject.GetComponent<TableZone>();
+            if (tableZone && tableZone.ownerNumber == player_num) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //is screenPos currently on top of any UI?
