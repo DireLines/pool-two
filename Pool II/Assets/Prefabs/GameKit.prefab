@@ -318,7 +318,7 @@ MonoBehaviour:
   playerBoards:
   - {fileID: 0}
   - {fileID: 0}
-  score_target: 0
+  score_target: 8
 --- !u!1 &1858440499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,7 +3587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P1 - 2
+  m_text: 'P1 - 0
 
 '
   m_isRightToLeft: 0
@@ -3846,6 +3846,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972484841822275739, guid: 1da754afd2918164fbc433ef0364e60c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8982522189333710778, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
