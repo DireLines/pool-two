@@ -67,7 +67,7 @@ public class BuildController : MonoBehaviour {
     }
 
     //begin holding obj
-    private void hold(GameObject obj) {
+    public void hold(GameObject obj) {
         preview = Instantiate(obj, mouseWorldPos(), Quaternion.identity);
         UIUtils.DisableBall(preview);
         UIUtils.RepositionInSortingOrder(preview, 100);
@@ -93,7 +93,7 @@ public class BuildController : MonoBehaviour {
         stopHolding();
 
         BaseBall newBall = newObj.GetComponent<BaseBall>();
-        if (newBall) {
+        if (newBall && !newObj.HasTag(Tag.Cue)) {
             int player_num = TurnManager.instance.currentPlayerIndex;
 
             newBall.SetOwner(player_num);

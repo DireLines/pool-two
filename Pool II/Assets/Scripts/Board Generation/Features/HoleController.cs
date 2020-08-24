@@ -77,7 +77,12 @@ public class HoleController : MonoBehaviour {
         }
         rb.drag = initialDrag;
         rb.transform.localScale = scale;
-        Destroy(rb.gameObject);
         r.color = color;
+
+        if (rb.gameObject.HasTag(Tag.Cue))
+        {
+            BuildController.instance.hold(rb.gameObject);
+        }
+        Destroy(rb.gameObject);
     }
 }
