@@ -36,6 +36,7 @@ public class Tree : Feature
             if (shakeTimer < shakeLimit)
             {
                 if (!shaker || shaker.shaking) return;
+                FX_Spawner.instance.SpawnFX(FXType.TreeRustle, transform.position, Quaternion.identity);
                 shaker.Activate(0.2f);
                 EmitLeaves(shakeLeafCount);
             }
