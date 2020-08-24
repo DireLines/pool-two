@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         else
         {
 
-            int next_player_num = TurnManager.instance.currentPlayer;
+            int next_player_num = TurnManager.instance.currentPlayerIndex;
             Player next_player = TurnManager.instance.players[next_player_num];
 
             // handle turn conditions
