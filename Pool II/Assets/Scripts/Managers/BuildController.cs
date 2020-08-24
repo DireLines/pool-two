@@ -9,8 +9,6 @@ public class BuildController : MonoBehaviour {
     private GameObject preview;
     private int heldObjectPrice;
 
-    public EconomyManager EM;
-
     private AudioSource oopsSFX;
 
     //singleton pattern
@@ -39,6 +37,7 @@ public class BuildController : MonoBehaviour {
 
     //pick up an item from the shop
     public void onClickShopButton(ShopItem item) {
+        EconomyManager EM = TurnManager.instance.currentPlayer().wallet;
         if (holdingSomething()) {
             dropHeldObject();
         } else {
@@ -83,6 +82,7 @@ public class BuildController : MonoBehaviour {
     }
 
     private void dropHeldObject() {
+        EconomyManager EM = TurnManager.instance.currentPlayer().wallet;
         EM.Refund(heldObjectPrice);
         stopHolding();
     }

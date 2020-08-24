@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GoldTextHandler : MonoBehaviour
-{
+public class GoldTextHandler : MonoBehaviour {
     [SerializeField]
     private TMP_Text text = null;
 
-    [SerializeField]
-    private EconomyManager economyManager = null;
 
-    private void Update()
-    {
-        UpdateGoldText(economyManager.currentGold);
+    private void Update() {
+        EconomyManager EM = TurnManager.instance.currentPlayer().wallet;
+        UpdateGoldText(EM.currentGold);
     }
 
-    public void UpdateGoldText(int gold)
-    {
+    public void UpdateGoldText(int gold) {
         text.text = gold.ToString();
     }
 }
