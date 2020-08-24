@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Trees
   m_EditorClassIdentifier: 
   small_count: 2
-  medium_count: 1
+  medium_count: 0
   large_count: 0
   small_features:
   - {fileID: 9121879924563377697, guid: 79f96b92e0b6424489176d0a814a31cc, type: 3}
