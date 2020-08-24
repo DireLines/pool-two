@@ -60,6 +60,7 @@ public class BuildController : MonoBehaviour {
         if (holdingSomething()) {
             if (!overUI()) {
                 if (canPlaceHeld()) {
+                    FX_Spawner.instance.SpawnFX(FXType.PlaceBall, transform.position, Quaternion.identity);
                     placeHeldObject();
                 } else {
                     oopsSFX.Play();

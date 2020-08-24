@@ -70,22 +70,28 @@ public class HoleController : MonoBehaviour {
         SpriteRenderer r = rb.GetComponentInChildren<SpriteRenderer>();
         Color color = r.color;
         while (t < timer) {
-            rb.transform.localScale = Vector3.Slerp(scale, targetScale, t/timer);
-            r.color = Color.Lerp(color, Color.black, t/timer);
-            direction = ((Vector2)transform.position - rb.position).normalized;
-            rb.velocity = direction * rb.velocity.magnitude * (1 - 2f * Time.deltaTime);
-            Debug.DrawRay(rb.position, rb.velocity, Color.cyan);
-            t += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            if (rb)
+            {
+                rb.transform.localScale = Vector3.Slerp(scale, targetScale, t / timer);
+                r.color = Color.Lerp(color, Color.black, t / timer);
+                direction = ((Vector2)transform.position - rb.position).normalized;
+                rb.velocity = direction * rb.velocity.magnitude * (1 - 2f * Time.deltaTime);
+                Debug.DrawRay(rb.position, rb.velocity, Color.cyan);
+            }
+                t += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
         }
-        rb.drag = initialDrag;
-        rb.transform.localScale = scale;
-        r.color = color;
-
-        if (rb.gameObject.HasTag(Tag.Cue))
+        if (rb)
         {
-            BuildController.instance.hold(rb.gameObject);
+            rb.drag = initialDrag;
+            rb.transform.localScale = scale;
+            r.color = color;
+
+            if (rb.gameObject.HasTag(Tag.Cue))
+            {
+                BuildController.instance.hold(rb.gameObject);
+            }
+            Destroy(rb.gameObject);
         }
-        Destroy(rb.gameObject);
     }
 }

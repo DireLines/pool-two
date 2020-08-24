@@ -57,6 +57,7 @@ public class CueBall : BaseBall {
         if (!CheckClickable()) return;
 
         if (ready) {
+            FX_Spawner.instance.SpawnFX(FXType.HitCue, transform.position, Quaternion.identity);
             rb.velocity = -direction * power;
             PoolManager.instance.ActivateBoard();
         }
