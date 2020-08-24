@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 79427aaf1d1b26c4ab193b8d4b8725bd, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -148,9 +148,9 @@ MonoBehaviour:
   onesie: 0
   mixerGroup: {fileID: 0}
   clips:
-  - {fileID: 8300000, guid: b56e3c4a3bbe7314fb2ec0110bc78662, type: 3}
-  - {fileID: 8300000, guid: 62be2df6f34acfe4d9b9206f7af7e2d5, type: 3}
-  - {fileID: 8300000, guid: e14d0f1024f34ac448975fca2a55802c, type: 3}
+  - {fileID: 8300000, guid: 342e164034647ef49a2aeaa858e433f9, type: 3}
+  - {fileID: 8300000, guid: 1655edf97cceebc469f19f42966cc78d, type: 3}
+  - {fileID: 8300000, guid: 0098b5e8318336a41b69b6deb1116677, type: 3}
   randomize: 1
 --- !u!1 &2121033796372809160
 GameObject:
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 2121033796372809161}
   - component: {fileID: 2121033796372809162}
   m_Layer: 0
-  m_Name: fx_BallToBall
+  m_Name: fx_SkullActivate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,6 +200,6 @@ MonoBehaviour:
   amp_range: 0.02
   vol: -1
   live_forever: 0
-  lifetime: 1
+  lifetime: 2
   onesie: 0
   mixerGroup: {fileID: 0}

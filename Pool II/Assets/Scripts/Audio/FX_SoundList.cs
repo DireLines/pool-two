@@ -34,11 +34,6 @@ public class FX_SoundList : FX_Object
             aud.clip = clips[Random.Range(0, clips.Count)];
         }
 
-        if (transform.parent && transform.parent.GetComponentInParent<FX_Object>())
-        {
-            vol = transform.parent.GetComponentInParent<FX_Object>().vol;
-        }
-
 
         aud.Play();
 
@@ -46,6 +41,7 @@ public class FX_SoundList : FX_Object
         {
             aud.volume = vol;
         }
+
         aud.pitch += Random.Range(-pitch_range, pitch_range);
         aud.volume += Random.Range(-amp_range, 0);
 
