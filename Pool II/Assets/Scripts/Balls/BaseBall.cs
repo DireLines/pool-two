@@ -6,8 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D), typeof(TagHandler))]
 public class BaseBall : MonoBehaviour {
     public int cost;
-    [SerializeField]
-    public int ownerNumber = 3;// {get; private set; }
+    [HideInInspector]
+    public int ownerNumber = -1;// {get; private set; }
 
     protected SpriteRenderer icon;
     protected SpriteRenderer inside;
@@ -59,11 +59,11 @@ public class BaseBall : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        PoolManager.instance.UnregisterBall(this);
-
-        Player owner = TurnManager.instance.players[ownerNumber];
-
-        owner.BallLost();
+        if (ownerNumber > 0 && ownerNumber < 2) {
+            PoolManager.instance.UnregisterBall(this);
+            Player owner = TurnManager.instance.players[ownerNumber];
+            owner.BallLost();
+        }
     }
 
     protected virtual void LateUpdate() {
@@ -116,6 +116,7 @@ public class BaseBall : MonoBehaviour {
     }
 
     public virtual void SetOwner(int number) {
+        print(number);
         ownerNumber = number;
     }
 }
