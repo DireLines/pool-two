@@ -18,13 +18,43 @@ MonoBehaviour:
     prefab: {fileID: 2753811569566750638, guid: f5fe6c3b456a044978424c5cdb312c54,
       type: 3}
     icon: {fileID: -4403585896192614519, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - name: Expensive Ball
+    cost: 1000000
+    prefab: {fileID: 5833183417460280871, guid: bf69be9639db5424da721c40a5f441ee,
+      type: 3}
+    icon: {fileID: 8173493674193486002, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - name: Exploda Ball
+    cost: 10
+    prefab: {fileID: 4163964425059261609, guid: a01acd52c30785f479fc261e05186c55,
+      type: 3}
+    icon: {fileID: -1494109973978636815, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - name: Heavy Ball
+    cost: 10
+    prefab: {fileID: 2171302067475158604, guid: 86761f94003f4754faacfa548fac6055,
+      type: 3}
+    icon: {fileID: -793613343797790965, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - name: Light Ball
+    cost: 4
+    prefab: {fileID: 5894431345680901742, guid: b73e669f53e4c5b478684412e89bfc9b,
+      type: 3}
+    icon: {fileID: 3421373207634483457, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - name: Oil Ball
+    cost: 15
+    prefab: {fileID: 8950771597692118168, guid: ec4ccd2323c445746b63ebd1e35f2dbe,
+      type: 3}
+    icon: {fileID: 7747951910788802021, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
   - name: Skull Ball
-    cost: 150
+    cost: 20
     prefab: {fileID: 6434026634984705674, guid: 99b13ff39905d4c928aabbd191d095dd,
       type: 3}
-    icon: {fileID: -5064215441075482510, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+    icon: {fileID: -503911388349606050, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
   - name: Slime Ball
-    cost: 50
+    cost: 12
     prefab: {fileID: 7521249889887203894, guid: 71eb4032234e04ae1bc9d64f2f5e04f7,
       type: 3}
     icon: {fileID: 1809279386393797116, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}
+  - name: StickyBall
+    cost: 15
+    prefab: {fileID: 3199524691261128373, guid: 4e7e2e8f365fc7544951bc128d83c9dd,
+      type: 3}
+    icon: {fileID: 6877417041060883555, guid: 219f90dc3420da4448196a005c5b32cb, type: 3}

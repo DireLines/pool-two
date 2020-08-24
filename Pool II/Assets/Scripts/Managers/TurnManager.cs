@@ -71,7 +71,7 @@ public class TurnManager : MonoBehaviour {
             currentPlayerIndex = 0;
             if (duringBuildPhase) {
                 foreach (Player player in players) {
-                    player.wallet.Add(100);
+                    player.wallet.Add(50);
                 }
                 buildTurnsLeftInPhase--;
             }

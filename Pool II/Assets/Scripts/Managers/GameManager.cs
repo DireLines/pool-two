@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
     [HideInInspector]
     public int currentRound;
-    int buildThreshold = 3;
+    int buildThreshold = 2;
 
 
     public bool debug = true;
