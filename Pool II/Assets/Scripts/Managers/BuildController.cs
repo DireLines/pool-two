@@ -9,6 +9,8 @@ public class BuildController : MonoBehaviour {
     private GameObject preview;
     private int heldObjectPrice;
 
+    private Transform ballContainer;
+
     private AudioSource oopsSFX;
 
     //singleton pattern
@@ -22,6 +24,10 @@ public class BuildController : MonoBehaviour {
         instance = this;
 
         oopsSFX = GetComponent<AudioSource>();
+    }
+
+    private void Start() {
+        ballContainer = GameObject.Find("BALLS").transform;
     }
 
     private void Update() {
@@ -88,7 +94,7 @@ public class BuildController : MonoBehaviour {
     }
 
     private void placeHeldObject() {
-        GameObject newObj = Instantiate(heldObject, mouseWorldPos(), Quaternion.identity);
+        GameObject newObj = Instantiate(heldObject, mouseWorldPos(), Quaternion.identity, ballContainer);
         newObj.SetActive(true);
         stopHolding();
 
