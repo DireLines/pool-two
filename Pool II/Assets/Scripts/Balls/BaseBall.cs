@@ -15,7 +15,7 @@ public class BaseBall : MonoBehaviour {
 
     protected Rigidbody2D rb;
 
-    public bool moving { get; private set; }
+    public bool moving;
 
     public bool struckByBall { get; private set; }
 
@@ -59,8 +59,9 @@ public class BaseBall : MonoBehaviour {
     }
 
     private void OnDestroy() {
+        PoolManager.instance.UnregisterBall(this);
+
         if (ownerNumber > 0 && ownerNumber < 2) {
-            PoolManager.instance.UnregisterBall(this);
             Player owner = TurnManager.instance.players[ownerNumber];
             owner.BallLost();
         }
