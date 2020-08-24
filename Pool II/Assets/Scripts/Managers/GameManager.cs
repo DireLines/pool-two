@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public delegate void GameEvent();
 
@@ -43,7 +44,21 @@ public class GameManager : MonoBehaviour
 
     public void WinGame(int player_num)
     {
-
+        // load a scene for "player 1 wins"
+        // "player 2 wins"
+        // or "tie" based on the player_num
+        switch (player_num)
+        {
+            case 0:
+                SceneManager.LoadScene("WinPlayer1");
+                break;
+            case 1:
+                SceneManager.LoadScene("WinPlayer2");
+                break;
+            case 2:
+                SceneManager.LoadScene("WinTie");
+                break;
+        }
     }
 
     void OnEndTurn(TurnResult result)
@@ -51,9 +66,27 @@ public class GameManager : MonoBehaviour
         // give a player another build phase turn if their balls are all gone
         int winner_num = ScoreManager.instance.CheckScore();
 
+        Player player_1 = TurnManager.instance.players[0];
+        Player player_2 = TurnManager.instance.players[1];
+
+        int player_1_balls = player_1.BallCount();
+        int player_2_balls = player_2.BallCount();
+
         if (winner_num == 0 || winner_num == 1)
         {
             WinGame(winner_num);
+        }
+        else if (player_1_balls <= 0 && player_2_balls > 0)
+        {
+            WinGame(1);
+        }
+        else if (player_2_balls <= 0 && player_1_balls > 0)
+        {
+            WinGame(0);
+        }
+        else if (player_1_balls <= 0 && player_2_balls <= 0)
+        {
+            WinGame(2);
         }
         else
         {
@@ -62,7 +95,7 @@ public class GameManager : MonoBehaviour
             Player next_player = TurnManager.instance.players[next_player_num];
 
             // handle turn conditions
-            if (currentRound < buildThreshold || next_player.BallCount() <= 0)
+            if (currentRound < buildThreshold)
             {
                 TurnManager.instance.NextTurn(TurnResult.Build);
                 return;
