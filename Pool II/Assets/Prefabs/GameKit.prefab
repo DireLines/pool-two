@@ -1553,8 +1553,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5240370611557169089}
   m_HandleRect: {fileID: 5240370611557169088}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.37747833
+  m_Value: 0.7550027
+  m_Size: 0.3774783
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1803,7 +1803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.000045776367, y: 152.51614}
   m_SizeDelta: {x: 108, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5240370610352545023
@@ -2422,6 +2422,8 @@ MonoBehaviour:
   lastTurnResult: 0
   players: []
   currentPlayerIndex: 0
+  shopUI: {fileID: 5240370610351613334}
+  duringBuildPhase: 0
 --- !u!1 &5240370611248816555
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,7 +3459,7 @@ PrefabInstance:
     - target: {fileID: 5375035326900048602, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5972484840130262381, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
@@ -3467,7 +3469,7 @@ PrefabInstance:
     - target: {fileID: 5972484840746029372, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5972484841371362129, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}
