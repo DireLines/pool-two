@@ -30,7 +30,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 2
   ownerNumber: 0
-  player1Color: {r: 0.3254902, g: 0.7019608, b: 1, a: 1}
+  player1Color: {r: 0, g: 0, b: 1, a: 1}
   player2Color: {r: 1, g: 0.39215687, b: 0.39215687, a: 1}
   power: 10
   lit_icon: {fileID: -342939721763307076, guid: 219f90dc3420da4448196a005c5b32cb,

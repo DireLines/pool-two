@@ -4803,7 +4803,9 @@ MonoBehaviour:
   pitch_range: 0.2
   amp_range: 0.02
   vol: -1
+  live_forever: 0
   lifetime: 0
+  onesie: 0
   mixerGroup: {fileID: 0}
 --- !u!1 &9025649039050907597
 GameObject:
@@ -4948,7 +4950,12 @@ MonoBehaviour:
   pitch_range: 0.2
   amp_range: 0.02
   vol: -1
+  live_forever: 0
   lifetime: 0
+  onesie: 0
   mixerGroup: {fileID: 0}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 342e164034647ef49a2aeaa858e433f9, type: 3}
+  - {fileID: 8300000, guid: 1655edf97cceebc469f19f42966cc78d, type: 3}
+  - {fileID: 8300000, guid: 0098b5e8318336a41b69b6deb1116677, type: 3}
   randomize: 1

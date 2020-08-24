@@ -145,6 +145,7 @@ MonoBehaviour:
   vol: -1
   live_forever: 0
   lifetime: 0
+  onesie: 0
   mixerGroup: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: 79427aaf1d1b26c4ab193b8d4b8725bd, type: 3}
@@ -198,5 +199,6 @@ MonoBehaviour:
   amp_range: 0.02
   vol: -1
   live_forever: 0
-  lifetime: 0
+  lifetime: 1
+  onesie: 0
   mixerGroup: {fileID: 0}
