@@ -30,12 +30,20 @@ public class ToggleShopVisibility : MonoBehaviour {
 
     public void Close()
     {
-        if (open) Toggle();
+        if (open)
+        {
+            FX_Spawner.instance.SpawnFX(FXType.CloseShop, transform.position, Quaternion.identity);
+            Toggle();
+        }
     }
 
     public void Open()
-    {
-        if (!open) Toggle();
+    {        
+        if (!open)
+        {
+            FX_Spawner.instance.SpawnFX(FXType.OpenShop, transform.position, Quaternion.identity);
+            Toggle();
+        }
     }
 
     public void Lock()

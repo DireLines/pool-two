@@ -89,6 +89,18 @@ MonoBehaviour:
     onesie: 1
   - key: 14
     value: {fileID: 2121033796372809160, guid: fe5679d55e60c5e4cb04aa0619157930, type: 3}
-    onesie: 1
+    onesie: 0
+  - key: 17
+    value: {fileID: 2121033796372809160, guid: 0e635e250a14f7d4292ab2b66a28db12, type: 3}
+    onesie: 0
+  - key: 19
+    value: {fileID: 2121033796372809160, guid: 747ce6486ae760641b1040442a0b4b52, type: 3}
+    onesie: 0
+  - key: 20
+    value: {fileID: 2121033796372809160, guid: bcc868244e1d8f940bad6e7e0642cfb8, type: 3}
+    onesie: 0
+  - key: 21
+    value: {fileID: 2121033796372809160, guid: 84e1af38868605d47ae16a618bd11bfb, type: 3}
+    onesie: 0
   fx_default: {fileID: 2121033796372809160, guid: 8f0567e13728e6943ab1fdf885096087,
     type: 3}

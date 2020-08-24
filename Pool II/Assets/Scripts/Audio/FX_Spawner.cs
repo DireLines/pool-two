@@ -24,6 +24,9 @@ public enum FXType
     StartGame,
     PlaceBall,
     OilSplooge,
+    OpenShop,
+    CloseShop,
+    HitCue,
 }
 
 public class FX_Spawner : MonoBehaviour
