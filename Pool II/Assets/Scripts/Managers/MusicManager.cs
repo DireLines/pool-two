@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager instance;
+
     public AudioClip music;
     public AudioMixerGroup mixer;
 
@@ -13,6 +15,15 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
         source1 = gameObject.AddComponent<AudioSource>();
         source2 = gameObject.AddComponent<AudioSource>();
@@ -25,9 +36,10 @@ public class MusicManager : MonoBehaviour
 
         source1.playOnAwake = false;
         source2.playOnAwake = false;
-
-        source1.Play();
     }
 
-
+    public void Play()
+    {
+        source1.Play();
+    }
 }
