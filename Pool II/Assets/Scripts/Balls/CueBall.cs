@@ -31,8 +31,8 @@ public class CueBall : BaseBall {
     {
         if (GameManager.instance.debug) return true;
         if (PoolManager.instance.boardActive) return false;
-        //if (TurnManager.instance./*buil*/)
-        if (TurnManager.instance.currentPlayerIndex == 0)
+        if (TurnManager.instance.duringBuildPhase) return false;
+            if (TurnManager.instance.currentPlayerIndex == 0)
         {
             if (TableZoneManager.instance.player1Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0)
             {
