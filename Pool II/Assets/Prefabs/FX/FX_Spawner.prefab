@@ -47,21 +47,33 @@ MonoBehaviour:
   Serialized_FX_Dict:
   - key: 1
     value: {fileID: 2121033796372809160, guid: c42356cb73c5c6145ac61d36572794bf, type: 3}
+    onesie: 0
   - key: 2
     value: {fileID: 2121033796372809160, guid: 43d28c84efbadc5449e05b1f9348015c, type: 3}
+    onesie: 0
   - key: 3
     value: {fileID: 7405692003590420293, guid: a40f1b95a67e4f84b942aeff71f5d602, type: 3}
+    onesie: 0
   - key: 4
     value: {fileID: 6977878527566027858, guid: ab460a972184d6a4ebd2678a5beba5dc, type: 3}
+    onesie: 0
   - key: 5
     value: {fileID: 8172813932304027533, guid: 14708da304364dd49a0933716fe7b7d4, type: 3}
+    onesie: 0
   - key: 6
     value: {fileID: 7329717525250041808, guid: 530db4dc135512341b5f4d88772eb1d5, type: 3}
+    onesie: 0
   - key: 7
     value: {fileID: 1824634910489355043, guid: fbe8381dc156aa7458bdbe8cd15777b5, type: 3}
+    onesie: 0
   - key: 8
     value: {fileID: 2121033796372809160, guid: 9e266d121cfe7fa40a92937b0af9029d, type: 3}
+    onesie: 0
   - key: 9
     value: {fileID: 2121033796372809160, guid: 3bad14a1689ae5945833b382ee920839, type: 3}
+    onesie: 0
+  - key: 10
+    value: {fileID: 8172813932304027533, guid: a60a819f4eece9a489abf219249b8af8, type: 3}
+    onesie: 0
   fx_default: {fileID: 2121033796372809160, guid: 8f0567e13728e6943ab1fdf885096087,
     type: 3}
