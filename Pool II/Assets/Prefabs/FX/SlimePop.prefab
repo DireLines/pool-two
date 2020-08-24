@@ -4956,9 +4956,16 @@ MonoBehaviour:
   pitch_range: 0.2
   amp_range: 0.02
   vol: -1
+  live_forever: 0
   lifetime: 0
+  onesie: 0
   mixerGroup: {fileID: 0}
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 1100ed0ae098c6b4ca98b3133d606c1d, type: 3}
+  - {fileID: 8300000, guid: 8273abf5770766c42868628349fc15c5, type: 3}
+  - {fileID: 8300000, guid: 00e4a742e1fc95d468e121f6b4829538, type: 3}
+  - {fileID: 8300000, guid: afddfe18746b7694d9309fbc501b8609, type: 3}
+  - {fileID: 8300000, guid: 63b9fac59f2806e47aa1d1402f4ce0a4, type: 3}
   randomize: 1
 --- !u!1 &8172813932304027533
 GameObject:
@@ -5008,5 +5015,7 @@ MonoBehaviour:
   pitch_range: 0.2
   amp_range: 0.02
   vol: -1
+  live_forever: 0
   lifetime: 0
+  onesie: 0
   mixerGroup: {fileID: 0}

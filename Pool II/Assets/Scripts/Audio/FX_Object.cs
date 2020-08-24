@@ -7,10 +7,13 @@ using UnityEngine.Audio;
 
 public class FX_Object : MonoBehaviour
 {
+    public GameEvent OnDead;
     public float pitch_range = 0.2f, amp_range = 0.02f;
     public float vol = -1f;
     public bool live_forever;
     public float lifetime = 0;
+
+    public bool onesie;
 
     public AudioMixerGroup mixerGroup;
     // Start is called before the first frame update

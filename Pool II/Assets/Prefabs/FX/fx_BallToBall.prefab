@@ -145,12 +145,12 @@ MonoBehaviour:
   vol: -1
   live_forever: 0
   lifetime: 0
+  onesie: 0
   mixerGroup: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: b56e3c4a3bbe7314fb2ec0110bc78662, type: 3}
   - {fileID: 8300000, guid: 62be2df6f34acfe4d9b9206f7af7e2d5, type: 3}
   - {fileID: 8300000, guid: e14d0f1024f34ac448975fca2a55802c, type: 3}
-  - {fileID: 8300000, guid: d27cdb3bfee3f054cabac8f4224fb233, type: 3}
   randomize: 1
 --- !u!1 &2121033796372809160
 GameObject:
@@ -201,4 +201,5 @@ MonoBehaviour:
   vol: -1
   live_forever: 0
   lifetime: 0
+  onesie: 0
   mixerGroup: {fileID: 0}
