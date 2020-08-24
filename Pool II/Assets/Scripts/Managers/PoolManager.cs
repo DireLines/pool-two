@@ -99,10 +99,12 @@ public class PoolManager : MonoBehaviour
 
     public bool IsBoardNeutral()
     {
+        int movingBallCount = 0;
         foreach (var ball in activeBalls)
         {
-            if (ball.moving) return false;
+            if (ball.moving) movingBallCount++;
         }
-        return true;
+        print("Moving balls: " + movingBallCount);
+        return movingBallCount > 0 ? false : true;
     }
 }
