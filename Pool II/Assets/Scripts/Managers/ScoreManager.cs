@@ -31,13 +31,13 @@ public class ScoreManager : MonoBehaviour
         foreach (var pocket in GameObject.Find("Player1Board").GetComponentsInChildren<HoleController>())
         {
             pocket.ownerNumber = 0;
-            pocket.OnScoreEvent += delegate { UpdateScore(0, 1); };
+            pocket.OnScoreEvent += delegate { UpdateScore(1, 1); };
             pocket.OnScratchEvent += delegate { Scratch(0); };
         }
         foreach (var pocket in GameObject.Find("Player2Board").GetComponentsInChildren<HoleController>())
         {
             pocket.ownerNumber = 1;
-            pocket.OnScoreEvent += delegate { UpdateScore(1, 1); };
+            pocket.OnScoreEvent += delegate { UpdateScore(0, 1); };
             pocket.OnScratchEvent += delegate { Scratch(1); };
         }
     }
