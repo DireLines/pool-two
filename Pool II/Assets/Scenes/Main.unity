@@ -918,6 +918,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1068678577, guid: 32130514ba21f324596b765dac19cf43, type: 3}
+      propertyPath: score_target
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1899127197272959704, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: m_TagString

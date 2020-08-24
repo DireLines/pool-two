@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
-{
+public class PoolManager : MonoBehaviour {
     public static PoolManager instance;
 
     public List<BaseBall> activeBalls;
@@ -20,64 +19,46 @@ public class PoolManager : MonoBehaviour
     public event BoardDeactivateEvent OnBoardDeactivate;
     #endregion
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
+    private void Awake() {
+        if (instance == null) {
             instance = this;
-        }
-        else
-        {
+        } else {
             Destroy(gameObject);
         }
     }
 
-    private void Start()
-    {
+    private void Start() {
         boardActive = false;
         currentSecondsNeutral = 0f;
         scratchedThisTurn = false;
         scoredThisTurn = false;
     }
 
-    public void ActivateBoard()
-    {
+    public void ActivateBoard() {
         boardActive = true;
         currentSecondsNeutral = 0f;
     }
 
-    private void Update()
-    {
+    private void Update() {
         if (!boardActive) return;
 
-        if (IsBoardNeutral())
-        {
+        if (IsBoardNeutral()) {
             currentSecondsNeutral += Time.deltaTime;
-        }
-        else
-        {
+        } else {
             currentSecondsNeutral = 0f;
         }
 
-        if (currentSecondsNeutral >= secondsNeutralUntilRoundEnd)
-        {
+        if (currentSecondsNeutral >= secondsNeutralUntilRoundEnd) {
             boardActive = false;
             currentSecondsNeutral = 0f;
 
-            if (scratchedThisTurn && scoredThisTurn)
-            {
+            if (scratchedThisTurn && scoredThisTurn) {
                 TurnManager.instance.EndTurn(TurnResult.ScoreAndScratch);
-            }
-            else if (scratchedThisTurn)
-            {
+            } else if (scratchedThisTurn) {
                 TurnManager.instance.EndTurn(TurnResult.Scratch);
-            }
-            else if (scoredThisTurn)
-            {
+            } else if (scoredThisTurn) {
                 TurnManager.instance.EndTurn(TurnResult.Score);
-            }
-            else
-            {
+            } else {
                 TurnManager.instance.EndTurn(TurnResult.Default);
             }
 
@@ -86,25 +67,20 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public void RegisterBall(BaseBall ball)
-    {
+    public void RegisterBall(BaseBall ball) {
         if (activeBalls == null) activeBalls = new List<BaseBall>();
         activeBalls.Add(ball);
     }
 
-    public void UnregisterBall(BaseBall ball)
-    {
+    public void UnregisterBall(BaseBall ball) {
         activeBalls.Remove(ball);
     }
 
-    public bool IsBoardNeutral()
-    {
+    public bool IsBoardNeutral() {
         int movingBallCount = 0;
-        foreach (var ball in activeBalls)
-        {
+        foreach (var ball in activeBalls) {
             if (ball.moving) movingBallCount++;
         }
-        print("Moving balls: " + movingBallCount);
         return movingBallCount > 0 ? false : true;
     }
 }

@@ -9,15 +9,13 @@ public enum SceneTransition {
     CircleWipe,
 }
 
-public class SceneLoader : MonoBehaviour
-{
+public class SceneLoader : MonoBehaviour {
     public static SceneLoader instance;
     Animator anim;
 
     bool loading;
 
-    private void Awake()
-    {
+    private void Awake() {
         if (null == instance) {
             instance = this;
             transform.SetParent(null);
@@ -28,7 +26,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    private void SetAnimator (SceneTransition transition) {
+    private void SetAnimator(SceneTransition transition) {
         switch (transition) {
             case SceneTransition.Fade:
                 anim = transform.Find("BasicFade").GetComponent<Animator>();
@@ -44,9 +42,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public void LoadNextScene()
-    {
-        print("YEEEEEE");
+    public void LoadNextScene() {
         LoadNextScene(SceneTransition.CircleWipe);
     }
 
@@ -73,8 +69,7 @@ public class SceneLoader : MonoBehaviour
         }
 
         AsyncOperation async = SceneManager.LoadSceneAsync(buildIndex);
-        while (!async.isDone)
-        {
+        while (!async.isDone) {
             yield return null;
         }
         if (anim != null) anim.SetTrigger("In");
