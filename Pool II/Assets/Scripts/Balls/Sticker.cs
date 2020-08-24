@@ -49,6 +49,7 @@ public class Sticker : MonoBehaviour
 
     public void AddTarget(Rigidbody2D rigidbody)
     {
+        FX_Spawner.instance.SpawnFX(FXType.WebStick, transform.position, Quaternion.identity);
         target = rigidbody;
         if (!joint) { 
             joint = transform.parent.gameObject.AddComponent<SpringJoint2D>(); joint.breakForce = breakForce;

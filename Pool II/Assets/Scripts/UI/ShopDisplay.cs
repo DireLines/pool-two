@@ -6,12 +6,12 @@ using TMPro;
 
 public class ShopDisplay : MonoBehaviour {
     [SerializeField]
-    EconomyManager EM;
+    ShopItemList items;
     [SerializeField]
     GameObject ShopItemUI;
 
     void Start() {
-        foreach (ShopItem item in EM.GetShopItems()) {
+        foreach (ShopItem item in items.shopItems) {
             FillUIForShopItem(item);
         }
     }

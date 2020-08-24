@@ -15,6 +15,15 @@ public enum FXType
     BallConflagration,
     BallToWall,
     BallToBall,
+    WebStick,
+    SinkBall,
+    ScratchBall,
+    ExplodaPrime,
+    TreeRustle,
+    SelectingCue,
+    StartGame,
+    PlaceBall,
+
 }
 
 public class FX_Spawner : MonoBehaviour

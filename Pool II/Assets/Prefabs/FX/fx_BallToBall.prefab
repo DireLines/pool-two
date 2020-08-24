@@ -200,6 +200,6 @@ MonoBehaviour:
   amp_range: 0.02
   vol: -1
   live_forever: 0
-  lifetime: 0
+  lifetime: 1
   onesie: 0
   mixerGroup: {fileID: 0}
