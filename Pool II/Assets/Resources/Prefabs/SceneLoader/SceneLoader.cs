@@ -44,6 +44,11 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    public void LoadNextScene()
+    {
+        LoadNextScene(SceneTransition.CircleWipe);
+    }
+
     public static void LoadNextScene(SceneTransition transition = SceneTransition.Fade) {
         LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings, transition);
     }

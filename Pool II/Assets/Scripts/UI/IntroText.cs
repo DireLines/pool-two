@@ -29,7 +29,7 @@ public class IntroText : MonoBehaviour
 
     IEnumerator Intro()
     {
-        MusicManager.instance.Play();
+        MusicManager.instance?.Play();
         while (characterCount <= title.Length)
         {
             text.text = title.Substring(0, characterCount);
