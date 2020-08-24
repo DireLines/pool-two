@@ -15,11 +15,11 @@ public class VolumeSlider : MonoBehaviour
     {
         if (music)
         {
-            mixer.SetFloat("MusicVolume", Mathf.Log(slider.value));
+            mixer.SetFloat("MusicVolume", slider.value);
         }
         else
         {
-            mixer.SetFloat("SFXVolume", Mathf.Log(slider.value));
+            mixer.SetFloat("SFXVolume", slider.value);
         }
     }
 }
