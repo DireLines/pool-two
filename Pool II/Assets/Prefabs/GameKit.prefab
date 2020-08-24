@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46eb249015c6504e9b79cfa22e3f61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingGold: 1000
+  startingGold: 100
   allItems: {fileID: 11400000, guid: a3df2c7b790f146119a3a90ca214bebe, type: 2}
 --- !u!1 &5240370609697234079
 GameObject:
@@ -1058,7 +1058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5240370609855889620}
-  economyManager: {fileID: 0}
 --- !u!1 &5240370609887735595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46eb249015c6504e9b79cfa22e3f61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingGold: 1000
+  startingGold: 100
   allItems: {fileID: 11400000, guid: a3df2c7b790f146119a3a90ca214bebe, type: 2}
 --- !u!1 &5240370609920361256
 GameObject:

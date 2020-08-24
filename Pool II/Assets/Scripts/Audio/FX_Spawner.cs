@@ -82,7 +82,7 @@ public class FX_Spawner : MonoBehaviour
         }
 
         UnityEngine.GameObject spawned_fx = Instantiate(fx, position, Quaternion.identity);
-        if (onesieChecker.ContainsKey(effectName))
+        if (onesieChecker.ContainsKey(effectName) && onesieChecker[effectName])
         {
             onesieTracker[effectName] = spawned_fx;
         }

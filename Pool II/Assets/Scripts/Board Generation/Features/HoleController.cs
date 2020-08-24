@@ -35,6 +35,7 @@ public class HoleController : MonoBehaviour {
             var ball = collision.GetComponent<BaseBall>();
             if (collision.GetComponent<CueBall>())
             {
+                FX_Spawner.instance.SpawnFX(FXType.ScratchBall, transform.position, Quaternion.identity);
                 PoolManager.instance.scratchedThisTurn = true;
             }
             else
@@ -43,10 +44,12 @@ public class HoleController : MonoBehaviour {
                 if (ball.ownerNumber != ownerNumber)
                 {
                     OnScoreEvent?.Invoke();
+                    FX_Spawner.instance.SpawnFX(FXType.SinkBall, transform.position, Quaternion.identity);
                     PoolManager.instance.scoredThisTurn = true;
                 }
                 else
                 {
+                    FX_Spawner.instance.SpawnFX(FXType.ScratchBall, transform.position, Quaternion.identity);
                     PoolManager.instance.scratchedThisTurn = true;
                 }
             }

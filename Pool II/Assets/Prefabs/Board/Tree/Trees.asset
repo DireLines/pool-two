@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b004adb2a2487724daabd0dfe9084a08, type: 3}
   m_Name: Trees
   m_EditorClassIdentifier: 
-  small_count: 3
-  medium_count: 2
+  small_count: 2
+  medium_count: 0
   large_count: 0
   small_features:
   - {fileID: 9121879924563377697, guid: 79f96b92e0b6424489176d0a814a31cc, type: 3}
