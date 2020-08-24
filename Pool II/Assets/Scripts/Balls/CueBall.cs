@@ -31,7 +31,7 @@ public class CueBall : BaseBall {
     {
         if (GameManager.instance.debug) return true;
         if (PoolManager.instance.boardActive) return false;
-        if (TurnManager.instance.currentPlayer == 0)
+        if (TurnManager.instance.currentPlayerIndex == 0)
         {
             if (TableZoneManager.instance.player1Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0)
             {
@@ -39,7 +39,7 @@ public class CueBall : BaseBall {
                     TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return false;
             }
         }
-        else if (TurnManager.instance.currentPlayer == 1)
+        else if (TurnManager.instance.currentPlayerIndex == 1)
         {
             if (TableZoneManager.instance.player2Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0)
             {

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EconomyManager))]
 public class Player : MonoBehaviour {
 
     [HideInInspector]
     bool myTurn = false;
     public static int playerCount = 0;
     public int playerNum { get; private set; }
+
+
+    [HideInInspector]
+    public EconomyManager wallet;
 
     int ball_count = 0;
 
@@ -20,6 +25,7 @@ public class Player : MonoBehaviour {
     }
 
     void Start() {
+        wallet = GetComponent<EconomyManager>();
         playerNum = playerCount++;
     }
 

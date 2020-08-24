@@ -94,7 +94,7 @@ public class BuildController : MonoBehaviour {
 
         BaseBall newBall = newObj.GetComponent<BaseBall>();
         if (newBall) {
-            int player_num = TurnManager.instance.currentPlayer;
+            int player_num = TurnManager.instance.currentPlayerIndex;
 
             newBall.SetOwner(player_num);
 
@@ -109,7 +109,7 @@ public class BuildController : MonoBehaviour {
     //can I place this object at this position on screen?
     //TODO detect if object would collide with other balls
     private bool canPlaceHeld() {
-        int player_num = TurnManager.instance.currentPlayer;
+        int player_num = TurnManager.instance.currentPlayerIndex;
         Vector2 mousePos = mouseWorldPos();
         RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos, mousePos);
         foreach (RaycastHit2D hit in hits) {

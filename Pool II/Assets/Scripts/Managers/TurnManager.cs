@@ -11,7 +11,11 @@ public class TurnManager : MonoBehaviour {
     public TurnResult lastTurnResult = TurnResult.Default;
 
     public List<Player> players = new List<Player>();
-    public int currentPlayer;// { get; private set; }
+    public int currentPlayerIndex;// { get; private set; }
+
+    public Player currentPlayer() {
+        return players[currentPlayerIndex];
+    }
 
     public TurnEvent EndTurnEvent;
 
@@ -23,12 +27,12 @@ public class TurnManager : MonoBehaviour {
 
         instance = this;
         players = new List<Player>(FindObjectsOfType<Player>());
-        currentPlayer = Random.Range(0, players.Count);
+        currentPlayerIndex = Random.Range(0, players.Count);
         //ScoreUIManager.instance.SetActiveCursor(currentPlayer);
     }
 
     private void Start() {
-        ScoreUIManager.instance.SetActiveCursor(currentPlayer);
+        ScoreUIManager.instance.SetActiveCursor(currentPlayerIndex);
         PoolManager.instance.OnBoardDeactivate += EndTurnDefault;
     }
 
@@ -48,18 +52,18 @@ public class TurnManager : MonoBehaviour {
     public void NextTurn(TurnResult result) {
         if (players.Count == 0) return;
         lastTurnResult = result;
-        players[currentPlayer].StartTurn(result);
+        players[currentPlayerIndex].StartTurn(result);
     }
 
     public void EndTurn(TurnResult result) {
-        currentPlayer++;
-        if (currentPlayer >= players.Count) {
+        currentPlayerIndex++;
+        if (currentPlayerIndex >= players.Count) {
             GameManager.instance.currentRound++;
-            currentPlayer = 0;
+            currentPlayerIndex = 0;
         }
 
-        print($"Player {currentPlayer + 1}'s turn!");
-        ScoreUIManager.instance.SetActiveCursor(currentPlayer);
+        print($"Player {currentPlayerIndex + 1}'s turn!");
+        ScoreUIManager.instance.SetActiveCursor(currentPlayerIndex);
 
         //if (currentPlayer == 0 && TableZoneManager.instance.player1Zone.cueBalls.Count == 0 && TableZoneManager.instance.neutralZone.cueBalls.Count == 0)
         //{
@@ -70,7 +74,7 @@ public class TurnManager : MonoBehaviour {
         //    currentPlayer = 0;
         //}
 
-        players[currentPlayer].EndTurn();
+        players[currentPlayerIndex].EndTurn();
         EndTurnEvent?.Invoke(result);
     }
 
