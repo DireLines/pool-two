@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 public class ExitText : MonoBehaviour
 {
-    public string[] texts = { "Exiting", "Exiting.", "Exiting..", "Exiting..." };
+    private string[] texts = { "EXITING", "EXITING.", "EXITING..", "EXITING..." };
     public float interval = 0.25f;
     int i = 0;
     float t;
@@ -16,13 +16,14 @@ public class ExitText : MonoBehaviour
     {
         i = 0;
         t = 0f;
-        InvokeRepeating("SetText", 0f, 0.25f);
+        InvokeRepeating("SetText", 0f, 0.33f);
         DontDestroyOnLoad(transform.root.gameObject);
     }
 
     void SetText()
     {
         textbox.text = texts[i++];
+        i = (i + 1) % texts.Length;
     }
 
     private void Update()
@@ -35,7 +36,7 @@ public class ExitText : MonoBehaviour
         else
         {
             holdTime = 0f;
-            t -= Time.deltaTime;
+            t = 0f;
         }
 
         t = Mathf.Clamp01(t);
