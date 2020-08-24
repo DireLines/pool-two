@@ -27,23 +27,18 @@ public class CueBall : BaseBall {
         ready = false;
     }
 
-    private bool CheckClickable()
-    {
+    private bool CheckClickable() {
+        if (TurnManager.instance.duringBuildPhase) return false;
         if (GameManager.instance.debug) return true;
         if (PoolManager.instance.boardActive) return false;
-        if (TurnManager.instance.duringBuildPhase) return false;
-            if (TurnManager.instance.currentPlayerIndex == 0)
-        {
-            if (TableZoneManager.instance.player1Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0)
-            {
+
+        if (TurnManager.instance.currentPlayerIndex == 0) {
+            if (TableZoneManager.instance.player1Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0) {
                 if (!(TableZoneManager.instance.player1Zone.cueBalls.Contains(this) ||
                     TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return false;
             }
-        }
-        else if (TurnManager.instance.currentPlayerIndex == 1)
-        {
-            if (TableZoneManager.instance.player2Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0)
-            {
+        } else if (TurnManager.instance.currentPlayerIndex == 1) {
+            if (TableZoneManager.instance.player2Zone.cueBalls.Count + TableZoneManager.instance.neutralZone.cueBalls.Count > 0) {
                 if (!(TableZoneManager.instance.player2Zone.cueBalls.Contains(this) ||
                     TableZoneManager.instance.neutralZone.cueBalls.Contains(this))) return false;
             }
@@ -85,17 +80,15 @@ public class CueBall : BaseBall {
 
     private void OnMouseEnter() {
         anim.SetBool("Blink", true);
-        if (primed)
-        {
+        if (primed) {
             ready = false;
         }
     }
 
     private void OnMouseExit() {
         anim.SetBool("Blink", false);
-        if (primed) 
-        {
-            ready = true; 
+        if (primed) {
+            ready = true;
         }
     }
 
@@ -104,7 +97,7 @@ public class CueBall : BaseBall {
         var cue = other.GetComponent<CueBall>();
 
         // If both are Cueballs, I get mad, they get happy
-        if(cue != null) {
+        if (cue != null) {
             var emoter = GetComponent<EmotionListener>();
             emoter.OnHappy(cue.ownerNumber);
 

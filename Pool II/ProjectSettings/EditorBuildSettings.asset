@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 320e7cda7a0eb4a4e83e0f047a60fd58
+  - enabled: 1
+    path: Assets/Scenes/WinTie.unity
+    guid: c6f1ac663f3722048a4b4412b0a6a1cc
+  - enabled: 1
+    path: Assets/Scenes/WinPlayer1.unity
+    guid: 8bd432ffa73c7ee47b8a1bb1a4edf22f
+  - enabled: 1
+    path: Assets/Scenes/WinPlayer2.unity
+    guid: b2888a801e9441741bf49e4b92ca624a
   m_configObjects: {}

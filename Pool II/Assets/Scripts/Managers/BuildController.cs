@@ -89,7 +89,7 @@ public class BuildController : MonoBehaviour {
 
     private void dropHeldObject() {
         EconomyManager EM = TurnManager.instance.currentPlayer().wallet;
-        EM.Refund(heldObjectPrice);
+        EM.Add(heldObjectPrice);
         stopHolding();
     }
 
