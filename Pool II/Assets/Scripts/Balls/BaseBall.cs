@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class BaseBall : MonoBehaviour {
     public int cost;
     [SerializeField]
-    public int ownerNumber=3;// {get; private set; }
+    public int ownerNumber = 3;// {get; private set; }
 
     protected SpriteRenderer icon;
     protected SpriteRenderer inside;
@@ -25,6 +25,10 @@ public class BaseBall : MonoBehaviour {
 
     float collisionFXThreshold = 10f, collisionFXMin = 4f;
 
+    public Color player1Color;
+    public Color player2Color;
+
+
     protected Animator anim;
 
     protected virtual void OnHitByOtherBall(GameObject other, Collision2D collision) { }
@@ -32,8 +36,7 @@ public class BaseBall : MonoBehaviour {
     protected virtual void OnHitNotBall(GameObject other, Collision2D collision) { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
-    public virtual void OnSink() 
-    { 
+    public virtual void OnSink() {
         PoolManager.instance.UnregisterBall(this);
     }
 
@@ -52,14 +55,7 @@ public class BaseBall : MonoBehaviour {
 
         PoolManager.instance.RegisterBall(this);
 
-        if (ownerNumber == 0)
-        {
-            inside.color = Color.blue;
-        }
-        else if (ownerNumber == 1)
-        {
-            inside.color = Color.red;
-        }
+        inside.color = ownerNumber == 0 ? player1Color : player2Color;
     }
 
     private void OnDestroy() {
@@ -79,8 +75,7 @@ public class BaseBall : MonoBehaviour {
         if (rb.velocity.magnitude > epsilon) {
             moving = true;
             timeMoving += Time.deltaTime;
-            if (timeMoving > dragThreshold)
-            {
+            if (timeMoving > dragThreshold) {
                 rb.drag += dragRate;
             }
             OnMoving();
@@ -110,8 +105,7 @@ public class BaseBall : MonoBehaviour {
         }
     }
 
-    void CollisionSound(GameObject other, Collision2D collision)
-    {
+    void CollisionSound(GameObject other, Collision2D collision) {
         FXType effectName = FXType.Default;
         if (other.HasTag(Tag.Ball))
             effectName = FXType.BallToBall;

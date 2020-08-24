@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 0
   ownerNumber: 0
+  player1Color: {r: 0.3254902, g: 0.7019608, b: 1, a: 1}
+  player2Color: {r: 1, g: 0.39215687, b: 0.39215687, a: 1}
   joint: {fileID: 2360247694752917357, guid: 64b7edc9bc0fbab499d8cfa745fe45cf, type: 3}
 --- !u!114 &3294035444182828465
 MonoBehaviour:
@@ -27,6 +29,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40da9e74de437c84bb6fb9a2d67cc116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inspector_tags: 
 --- !u!1001 &7083873774917647310
 PrefabInstance:
   m_ObjectHideFlags: 0

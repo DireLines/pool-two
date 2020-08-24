@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5297101563328856293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163964425059261609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4418b5500c78e4b85dbabaeaa97b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 2
-  ownerNumber: 0
-  radius: 5
-  power: 10
-  lit_icon: {fileID: -342939721763307076, guid: 219f90dc3420da4448196a005c5b32cb,
-    type: 3}
---- !u!114 &5890450435060833539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163964425059261609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40da9e74de437c84bb6fb9a2d67cc116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &5097384875888950662
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -46,6 +16,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!114 &5297101563328856293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163964425059261609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4418b5500c78e4b85dbabaeaa97b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 2
+  ownerNumber: 0
+  player1Color: {r: 0.3254902, g: 0.7019608, b: 1, a: 1}
+  player2Color: {r: 1, g: 0.39215687, b: 0.39215687, a: 1}
+  power: 10
+  lit_icon: {fileID: -342939721763307076, guid: 219f90dc3420da4448196a005c5b32cb,
+    type: 3}
+--- !u!114 &5890450435060833539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163964425059261609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40da9e74de437c84bb6fb9a2d67cc116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspector_tags: 
 --- !u!1001 &8638283412213029330
 PrefabInstance:
   m_ObjectHideFlags: 0
