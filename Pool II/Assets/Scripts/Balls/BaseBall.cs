@@ -109,7 +109,7 @@ public class BaseBall : MonoBehaviour {
         FXType effectName = FXType.Default;
         if (other.HasTag(Tag.Ball))
             effectName = FXType.BallToBall;
-        else if (other.CompareTag("Wall"))
+        else
             effectName = FXType.BallToWall;
         var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, collisionFXThreshold) / collisionFXThreshold;
         FX_Spawner.instance.SpawnFX(effectName, transform.position, Quaternion.identity, vol: vol);
