@@ -28,8 +28,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4418b5500c78e4b85dbabaeaa97b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 2
+  cost: 10
   ownerNumber: 0
+  moving: 0
   player1Color: {r: 0, g: 0, b: 1, a: 1}
   player2Color: {r: 1, g: 0.39215687, b: 0.39215687, a: 1}
   power: 10

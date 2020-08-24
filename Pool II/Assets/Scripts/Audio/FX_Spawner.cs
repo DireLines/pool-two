@@ -23,7 +23,7 @@ public enum FXType
     SelectingCue,
     StartGame,
     PlaceBall,
-
+    OilSplooge,
 }
 
 public class FX_Spawner : MonoBehaviour

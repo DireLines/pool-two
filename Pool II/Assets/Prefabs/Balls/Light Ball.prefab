@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 5631759493711660413, guid: 8353f41f2fa854e8488d67bfce364800,
+        type: 3}
+      propertyPath: cost
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5793678186897353990, guid: 8353f41f2fa854e8488d67bfce364800,
         type: 3}
       propertyPath: m_Sprite

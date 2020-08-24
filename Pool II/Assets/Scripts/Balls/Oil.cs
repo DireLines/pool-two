@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Oil : MonoBehaviour
 {
+
+    private void Start()
+    {
+        FX_Spawner.instance.SpawnFX(FXType.OilSplooge, transform.position, Quaternion.identity, onesie:true);
+    }
     Dictionary<Rigidbody2D, float> targetBodies = new Dictionary<Rigidbody2D, float>();
     float dragReductionMultiplier = 0.25f, speedMultiplier = 0.1f, velocity_threshold = 15f;
 

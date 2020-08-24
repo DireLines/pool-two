@@ -32,7 +32,7 @@ public class ExplodaBall : BaseBall
     protected override void OnHitByOtherBall(GameObject other, Collision2D collision)
     {
         fuse_lit = true;
-
+        FX_Spawner.instance.SpawnFX(FXType.ExplodaPrime, transform.position, Quaternion.identity);
         icon.sprite = lit_icon;
     }
 
