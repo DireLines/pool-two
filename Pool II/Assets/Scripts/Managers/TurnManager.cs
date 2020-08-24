@@ -13,6 +13,13 @@ public class TurnManager : MonoBehaviour {
     public List<Player> players = new List<Player>();
     public int currentPlayerIndex;// { get; private set; }
 
+    public GameObject shopUI;
+
+
+    private int buildTurnsPerPhase = 2;
+    private int buildTurnsLeftInPhase;
+    public bool duringBuildPhase; //{ get; private set; }
+
     public Player currentPlayer() {
         return players[currentPlayerIndex];
     }
@@ -60,6 +67,16 @@ public class TurnManager : MonoBehaviour {
         if (currentPlayerIndex >= players.Count) {
             GameManager.instance.currentRound++;
             currentPlayerIndex = 0;
+            if (duringBuildPhase) {
+                buildTurnsLeftInPhase--;
+            }
+        }
+        if (duringBuildPhase && buildTurnsLeftInPhase == 0) {
+            //end build phase
+            duringBuildPhase = false;
+            buildTurnsLeftInPhase = buildTurnsPerPhase;
+            shopUI.SetActive(false);
+
         }
 
         print($"Player {currentPlayerIndex + 1}'s turn!");
