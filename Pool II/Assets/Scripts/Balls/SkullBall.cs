@@ -22,7 +22,7 @@ public class SkullBall : BaseBall {
     protected override void OnHitOtherBall(GameObject other, Collision2D collision)
     {
         // TODO(Simon): Don't kill your own balls
-        if (kill_primed)
+        if (kill_primed && !other.HasTag(Tag.Cue))
         {
             FX_Spawner.instance.SpawnFX(FXType.BallConflagration, other.transform.position, Quaternion.identity);
             Instantiate(bones_pile, other.transform.position, Quaternion.identity);
