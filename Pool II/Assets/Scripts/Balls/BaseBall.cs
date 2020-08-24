@@ -116,7 +116,6 @@ public class BaseBall : MonoBehaviour {
     }
 
     public virtual void SetOwner(int number) {
-        print(number);
         ownerNumber = number;
     }
 }
