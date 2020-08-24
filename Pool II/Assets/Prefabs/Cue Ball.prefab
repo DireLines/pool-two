@@ -33,7 +33,7 @@ MonoBehaviour:
   line: {fileID: 85386689710594229}
   cam: {fileID: 0}
   max_distance: 4
-  power: 6
+  power: 9
 --- !u!114 &6071976718882666721
 MonoBehaviour:
   m_ObjectHideFlags: 0
