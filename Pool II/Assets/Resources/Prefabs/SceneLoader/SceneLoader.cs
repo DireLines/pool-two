@@ -46,6 +46,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadNextScene()
     {
+        print("YEEEEEE");
         LoadNextScene(SceneTransition.CircleWipe);
     }
 
