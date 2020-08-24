@@ -16,9 +16,10 @@ public class TurnManager : MonoBehaviour {
     public GameObject shopUI;
 
 
-    private int buildTurnsPerPhase = 2;
+    private int buildTurnsPerPhase = 3;
     private int buildTurnsLeftInPhase;
-    public bool duringBuildPhase; //{ get; private set; }
+    [HideInInspector]
+    public bool duringBuildPhase = true; //{ get; private set; }
 
     public Player currentPlayer() {
         return players[currentPlayerIndex];
@@ -35,6 +36,8 @@ public class TurnManager : MonoBehaviour {
         instance = this;
         players = new List<Player>(FindObjectsOfType<Player>());
         currentPlayerIndex = Random.Range(0, players.Count);
+        duringBuildPhase = true;
+        buildTurnsLeftInPhase = buildTurnsPerPhase;
         //ScoreUIManager.instance.SetActiveCursor(currentPlayer);
     }
 
@@ -44,7 +47,6 @@ public class TurnManager : MonoBehaviour {
     }
 
     public void EndTurnDefault() {
-        print("NEXT TURN!");
         EndTurn(TurnResult.Default);
     }
 
@@ -68,6 +70,9 @@ public class TurnManager : MonoBehaviour {
             GameManager.instance.currentRound++;
             currentPlayerIndex = 0;
             if (duringBuildPhase) {
+                foreach (Player player in players) {
+                    player.wallet.Add(100);
+                }
                 buildTurnsLeftInPhase--;
             }
         }

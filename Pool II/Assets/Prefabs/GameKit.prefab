@@ -318,7 +318,7 @@ MonoBehaviour:
   playerBoards:
   - {fileID: 0}
   - {fileID: 0}
-  score_target: 0
+  score_target: 8
 --- !u!1 &1858440499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3203,7 +3203,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5059198899943950808}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 5c058b1fd2c46fa4a9e69992d9f399a8, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6484929474999591955
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,7 +3716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P1 - 2
+  m_text: 'P1 - 0
 
 '
   m_isRightToLeft: 0
@@ -3964,6 +3975,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972484841822275739, guid: 1da754afd2918164fbc433ef0364e60c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8982522189333710778, guid: 1da754afd2918164fbc433ef0364e60c,
         type: 3}

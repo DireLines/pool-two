@@ -918,21 +918,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1899127197272959704, guid: 32130514ba21f324596b765dac19cf43,
-        type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 5240370610352545017, guid: 32130514ba21f324596b765dac19cf43,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 5240370610352545017, guid: 32130514ba21f324596b765dac19cf43,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
-      objectReference: {fileID: 0}
     - target: {fileID: 5240370610510379050, guid: 32130514ba21f324596b765dac19cf43,
         type: 3}
       propertyPath: m_Name

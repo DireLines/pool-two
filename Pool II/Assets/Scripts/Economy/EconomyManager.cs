@@ -31,7 +31,7 @@ public class EconomyManager : MonoBehaviour {
         return true;
     }
 
-    public void Refund(int amount) {
+    public void Add(int amount) {
         currentGold += amount;
     }
 }
