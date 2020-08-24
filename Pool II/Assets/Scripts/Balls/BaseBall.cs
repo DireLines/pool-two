@@ -6,8 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D), typeof(TagHandler))]
 public class BaseBall : MonoBehaviour {
     public int cost;
-    [SerializeField]
-    public int ownerNumber=3;// {get; private set; }
+    [HideInInspector]
+    public int ownerNumber = -1;// {get; private set; }
 
     protected SpriteRenderer icon;
     protected SpriteRenderer inside;
@@ -23,7 +23,11 @@ public class BaseBall : MonoBehaviour {
 
     float timeMoving, dragThreshold = 5f, dragRate = 1f, originalDrag;
 
-    float wallFXThreshold = 10f, wallFXMin = 4f; 
+    float collisionFXThreshold = 10f, collisionFXMin = 4f;
+
+    public Color player1Color;
+    public Color player2Color;
+
 
     protected Animator anim;
 
@@ -32,8 +36,7 @@ public class BaseBall : MonoBehaviour {
     protected virtual void OnHitNotBall(GameObject other, Collision2D collision) { }
     protected virtual void OnMoving() { }
     protected virtual void OnSettle() { }
-    public virtual void OnSink() 
-    { 
+    public virtual void OnSink() {
         PoolManager.instance.UnregisterBall(this);
     }
 
@@ -52,22 +55,15 @@ public class BaseBall : MonoBehaviour {
 
         PoolManager.instance.RegisterBall(this);
 
-        if (ownerNumber == 0)
-        {
-            inside.color = Color.blue;
-        }
-        else if (ownerNumber == 1)
-        {
-            inside.color = Color.red;
-        }
+        inside.color = ownerNumber == 0 ? player1Color : player2Color;
     }
 
     private void OnDestroy() {
-        PoolManager.instance.UnregisterBall(this);
-
-        Player owner = TurnManager.instance.players[ownerNumber];
-
-        owner.BallLost();
+        if (ownerNumber > 0 && ownerNumber < 2) {
+            PoolManager.instance.UnregisterBall(this);
+            Player owner = TurnManager.instance.players[ownerNumber];
+            owner.BallLost();
+        }
     }
 
     protected virtual void LateUpdate() {
@@ -79,8 +75,7 @@ public class BaseBall : MonoBehaviour {
         if (rb.velocity.magnitude > epsilon) {
             moving = true;
             timeMoving += Time.deltaTime;
-            if (timeMoving > dragThreshold)
-            {
+            if (timeMoving > dragThreshold) {
                 rb.drag += dragRate;
             }
             OnMoving();
@@ -96,6 +91,7 @@ public class BaseBall : MonoBehaviour {
 
     protected virtual void OnCollisionEnter2D(Collision2D collision) {
         GameObject other = collision.gameObject;
+        CollisionSound(other, collision);
         // TODO(Simon): This logic might be wrong, consider the blocking tag
         if (other.HasTag(Tag.Ball) && !other.HasTag(Tag.Blocking)) {
             if (!struckByBall) {
@@ -105,13 +101,18 @@ public class BaseBall : MonoBehaviour {
                 OnHitOtherBall(other, collision);
             }
         } else {
-            if (other.CompareTag("Wall") && collision.contacts[0].normalImpulse > wallFXMin)
-            {
-                var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, wallFXThreshold) / wallFXThreshold;
-                FX_Spawner.instance.SpawnFX(FXType.BallToWall, transform.position, Quaternion.identity, vol:vol);
-            }
             OnHitNotBall(other, collision);
         }
+    }
+
+    void CollisionSound(GameObject other, Collision2D collision) {
+        FXType effectName = FXType.Default;
+        if (other.HasTag(Tag.Ball))
+            effectName = FXType.BallToBall;
+        else if (other.CompareTag("Wall"))
+            effectName = FXType.BallToWall;
+        var vol = Mathf.Clamp(collision.contacts[0].normalImpulse, 0, collisionFXThreshold) / collisionFXThreshold;
+        FX_Spawner.instance.SpawnFX(effectName, transform.position, Quaternion.identity, vol: vol);
     }
 
     public virtual void SetOwner(int number) {

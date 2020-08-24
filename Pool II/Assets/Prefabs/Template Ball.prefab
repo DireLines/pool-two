@@ -134,6 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 100
   ownerNumber: 0
+  player1Color: {r: 0.3254717, g: 0.70295435, b: 1, a: 1}
+  player2Color: {r: 1, g: 0.3915094, b: 0.3915094, a: 1}
 --- !u!58 &5202871579564308295
 CircleCollider2D:
   m_ObjectHideFlags: 0

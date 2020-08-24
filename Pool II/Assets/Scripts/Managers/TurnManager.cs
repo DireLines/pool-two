@@ -5,8 +5,7 @@ using UnityEngine;
 public enum TurnResult { Default, Scratch, Build, Score, ScoreAndScratch, };
 public delegate void TurnEvent(TurnResult result);
 
-public class TurnManager : MonoBehaviour
-{
+public class TurnManager : MonoBehaviour {
     public static TurnManager instance;
 
     public TurnResult lastTurnResult = TurnResult.Default;
@@ -16,10 +15,8 @@ public class TurnManager : MonoBehaviour
 
     public TurnEvent EndTurnEvent;
 
-    private void Awake()
-    {
-        if (instance)
-        {
+    private void Awake() {
+        if (instance) {
             Destroy(gameObject);
             return;
         }
@@ -27,42 +24,36 @@ public class TurnManager : MonoBehaviour
         instance = this;
         players = new List<Player>(FindObjectsOfType<Player>());
         currentPlayer = Random.Range(0, players.Count);
-        ScoreUIManager.instance.SetActiveCursor(currentPlayer);
+        //ScoreUIManager.instance.SetActiveCursor(currentPlayer);
     }
 
-    private void Start()
-    {
+    private void Start() {
+        ScoreUIManager.instance.SetActiveCursor(currentPlayer);
         PoolManager.instance.OnBoardDeactivate += EndTurnDefault;
     }
 
-    public void EndTurnDefault()
-    {
+    public void EndTurnDefault() {
         print("NEXT TURN!");
         EndTurn(TurnResult.Default);
     }
 
-    public void EndTurnScratch()
-    {
+    public void EndTurnScratch() {
         EndTurn(TurnResult.Scratch);
     }
 
-    public void EndTurnBuild()
-    {
+    public void EndTurnBuild() {
         EndTurn(TurnResult.Build);
     }
 
-    public void NextTurn(TurnResult result)
-    {
+    public void NextTurn(TurnResult result) {
         if (players.Count == 0) return;
         lastTurnResult = result;
         players[currentPlayer].StartTurn(result);
     }
 
-    public void EndTurn(TurnResult result)
-    {
+    public void EndTurn(TurnResult result) {
         currentPlayer++;
-        if (currentPlayer >= players.Count)
-        {
+        if (currentPlayer >= players.Count) {
             GameManager.instance.currentRound++;
             currentPlayer = 0;
         }
@@ -84,10 +75,8 @@ public class TurnManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Jump"))
-        {
+    void Update() {
+        if (Input.GetButtonDown("Jump")) {
             EndTurn(TurnResult.Default);
         }
     }

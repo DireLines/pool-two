@@ -30,6 +30,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 50
   ownerNumber: 0
+  player1Color: {r: 0.3254902, g: 0.7019608, b: 1, a: 1}
+  player2Color: {r: 1, g: 0.39215687, b: 0.39215687, a: 1}
   blob_count: 5
   force: 5
   slime_blob: {fileID: 35917962498768784, guid: 3059b9ca73fd17e4491650bb2cc16e2e,
